@@ -20,14 +20,16 @@ import sys
 
 from host import (CHROMA_HEX, PERSON_PLATE_MODEL, PERSON_PLATE_PROMPT, WORLD_PLATE_MODEL,
                   WORLD_PLATE_SUFFIX, host_cfg, resolve_layout, validate)
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import compose_collage_prompt, image_params, resolve_theme
 
 
 def run(project_dir, only=None, redo=False):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     shots = validate(doc)
     aspect = doc.get("aspect", "16:9")
     layout = resolve_layout(doc)

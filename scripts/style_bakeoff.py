@@ -16,6 +16,7 @@ import json
 import os
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import compose_collage_prompt, STYLE_LIBRARY, THEME_PRESETS, resolve_theme, image_params
 
@@ -30,8 +31,9 @@ def first_shot(beat):
 
 def run(project_dir, styles=None, beat_index=0):
     styles = styles or DEFAULT_CANDIDATES
-    with open(os.path.join(project_dir, "beats.json")) as f:
+    with open(os.path.join(project_dir, "beats.json"), encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     aspect = doc.get("aspect", "16:9")
     img_model = doc.get("image_model", IMAGE_MODEL)
     img_res = doc.get("image_resolution", "1k")

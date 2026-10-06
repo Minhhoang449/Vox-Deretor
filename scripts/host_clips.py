@@ -27,6 +27,7 @@ import sys
 from host import (CHROMA, DEFAULT_WORLD_MOTION, PERSON_VIDEO_PROMPT, WORLD_VIDEO_PROMPT,
                   estimate, host_cfg, person_model, person_price, probe_dur,
                   reference_audio, resolve_layout, validate, video_seconds, world_model)
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 
 FPS = 24
@@ -75,8 +76,9 @@ def composite(person, world, dest, size, similarity=0.20, blend=0.06):
 
 def run(project_dir, only=None, confirmed=False, redo=False):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     shots = [t for t in validate(doc, need_audio=True) if not only or t[2] in only]
     aspect = doc.get("aspect", "16:9")
     layout = resolve_layout(doc)

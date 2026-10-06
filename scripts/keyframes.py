@@ -13,6 +13,7 @@ import json
 import os
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import compose_keyframe_prompt, compose_collage_prompt, resolve_theme, image_params
 
@@ -30,8 +31,9 @@ def shots_of(beat):
 
 def run(project_dir):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     aspect = doc.get("aspect", "16:9")
     img_model = doc.get("image_model", IMAGE_MODEL)   # default nano-banana-2; e.g. openai/gpt-image-2/text-to-image
     img_res = doc.get("image_resolution", "1k")       # 1k (default) | 2k | 4k

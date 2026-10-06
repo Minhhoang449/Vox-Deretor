@@ -11,6 +11,7 @@ import json
 import os
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import resolve_theme, resolve_video_aspect
 
@@ -101,8 +102,9 @@ def painterly_prompt(motion):
 
 def run(project_dir, only=None):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     aspect = doc.get("aspect", "16:9")
     style = doc.get("style", "painterly")
     _theme = resolve_theme(doc.get("theme")) or {}

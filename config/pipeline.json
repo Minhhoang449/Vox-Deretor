@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "editorial_pillars": [
+    "finance mechanics and products",
+    "economic systems and everyday life",
+    "economic history",
+    "war and conflict history through causes, logistics, decisions, and consequences"
+  ],
+  "formats": {
+    "short": {
+      "aspect_ratio": "9:16",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "target_seconds_min": 45,
+      "target_seconds_max": 90,
+      "scene_seconds_min": 4,
+      "scene_seconds_max": 10,
+      "visual_beats_target": "6-9"
+    },
+    "main": {
+      "aspect_ratio": "16:9",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "target_seconds_min": 420,
+      "target_seconds_max": 1200,
+      "target_seconds_default": 600,
+      "scene_seconds_min": 3,
+      "scene_seconds_max": 10,
+      "visual_beats_target": "7-20 minute films. Each Muse clip uses that shot's own duration, the same way the API path passed shot.dur. 10 seconds is the maximum, not a fixed length. Plan about one shot per 5 seconds, then set each dur from 3 to 10 so the durations add up to the target."
+    }
+  },
+  "default_format": "main",
+  "visual_direction": "Original editorial explainer collage built from tactile torn and cut paper: visible fibers, imperfect torn edges, stacked layers, soft cast shadows, bold simple shapes, and a restrained topic-specific palette. Preserve one clear idea per frame while varying scale and visual grammar: huge close-up object, wide establishing tableau, overhead tabletop, side-on cutaway, split comparison, paper map, causal flow, timeline, isolated silhouette, or a reveal through a torn window. Use foreground, middle ground, and background layers so the camera has depth to travel through. Turn abstract systems into physical paper objects and show cause before consequence. Alternate calm holds with purposeful reveals, paper folds, tracing paths, sliding pieces, and scale changes; every movement must explain the narration. Keep the visual identity original and do not imitate another publisher's exact identity. For war history, avoid graphic imagery and fake archival documents; focus on maps, logistics, decisions, and consequences.",
+  "muse": {
+    "url": "https://muse.ai/",
+    "generation_seconds": 10,
+    "workflow": "manual_copy_paste",
+    "prompt_shape": "one continuous 10-second shot; one focal action timed to matching narration; opening state, visible change, and payoff; choose one deliberate camera path and paper transformation; no unrelated imagery, generated labels, logos, or internal cuts",
+    "scene_plan": {
+      "min_unique_t2v_scenes": 50,
+      "max_unique_t2v_scenes": 120,
+      "unique_scene_seconds_guide": 15,
+      "timeline_placement_seconds": 10,
+      "reuse_placements_separate": true
+    },
+    "reuse_for_overflow": true,
+    "stills_in_final_timeline": false
+  },
+  "voice_studio": {
+    "base_url": "http://127.0.0.1:3900",
+    "model": "omnivoice",
+    "response_format": "wav",
+    "max_input_characters": 4096,
+    "default_speed": 0.8,
+    "num_step": 32
+  },
+  "renderer": {
+    "video_codec": "libx264",
+    "audio_codec": "aac",
+    "audio_bitrate": "192k",
+    "container": "mp4",
+    "captions": "scene_level_srt"
+  }
+}

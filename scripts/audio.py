@@ -22,6 +22,7 @@ import os
 import subprocess
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 
 # xai/tts-v1 is a clean, predictable multilingual TTS (named voices + language
@@ -56,8 +57,9 @@ def probe_dur(path: str) -> float:
 
 def run(project_dir: str):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     adir = os.path.join(project_dir, "audio")
     os.makedirs(adir, exist_ok=True)
 

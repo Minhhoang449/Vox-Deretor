@@ -34,6 +34,7 @@ import json
 import os
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import compose_collage_prompt, resolve_theme, image_params
 
@@ -93,8 +94,9 @@ def shots_of(beat):
 
 def run(project_dir):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     photo = doc["anchor_photo"]
     aspect = doc.get("aspect", "9:16")
     img_model = doc.get("image_model", EDIT_MODEL)

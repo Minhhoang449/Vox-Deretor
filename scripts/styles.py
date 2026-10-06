@@ -221,18 +221,23 @@ def resolve_video_aspect(project_aspect, model):
     return nearest, False
 
 
-def _headline(title_cn, title_en, style, type_style=None):
-    if title_cn:                                   # bilingual (CJK styles)
-        return (" " + TITLE_TREATMENT.format(title_cn=title_cn, title_en=title_en))
+def _headline(title_cn, title_en, style, type_style=None, headline_language=None):
     ts = f" in {type_style}" if type_style else ""
     seal = "a vermilion seal stamp" if style == "chinese-ink" else "a small paper sticker accent"
+    if headline_language and headline_language not in ("English", "Chinese"):
+        text = title_en or title_cn
+        return (f" Include a torn-paper banner with a big bold cut-out {headline_language} "
+                f"headline '{text}'{ts} and {seal}. Keep the headline crisp and legible.")
+    if title_cn:                                   # bilingual (CJK styles)
+        return (" " + TITLE_TREATMENT.format(title_cn=title_cn, title_en=title_en))
     return (f" Include a torn-paper banner with a big bold cut-out English headline "
             f"'{title_en}'{ts} and {seal}. Keep the headline crisp and legible.")
 
 
 def compose_collage_prompt(scene, title_cn, title_en, bg="warm ochre", aspect="16:9",
                            with_title=True, style=DEFAULT_STYLE,
-                           palette=None, type_style=None, finish=None):
+                           palette=None, type_style=None, finish=None,
+                           headline_language=None):
     """Paper-collage keyframe prompt. `style` = a STYLE_LIBRARY idiom name (or custom string).
     palette/type_style/finish come from the chosen THEME_PRESET (theme-layer) and sharpen the
     look. Culture/topic-matched. with_title=False for detail cut-in shots."""
@@ -241,7 +246,7 @@ def compose_collage_prompt(scene, title_cn, title_en, bg="warm ochre", aspect="1
     fin = f" Print finish: {finish}." if finish else ""
     block = f"{idiom}{pal} {COLLAGE_MECHANICS.format(bg=bg)}{fin}"
     if with_title:
-        title = _headline(title_cn, title_en, style, type_style)
+        title = _headline(title_cn, title_en, style, type_style, headline_language)
     else:
         title = " No big headline in this shot (a small accent only); it is a cut-in detail."
     return (f"{block} SCENE (as layered paper cut-outs): {scene}.{title} "

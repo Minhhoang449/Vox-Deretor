@@ -42,11 +42,71 @@ Everything hinges on the prompts. **Before writing any image or video prompt, re
 `references/prompt-guide.md`** — it has the exact prompt structures that make the difference
 between "a real Vox collage" and "a moving PowerPoint".
 
+## Local pipeline (this checkout)
+
+Do **not** call Atlas, `keyframes.py`, `clips.py`, `audio.py`, or `style_bakeoff.py`
+for images, video, or narration. Those scripts exit on purpose when
+`beats.json` has `"pipeline": "local"`.
+
+Stills are rendered by **Codex**. Motion is done by the user in **Muse.ai**, using
+the motion prompts this project already writes. Narration is **VoiceStudio** on
+localhost. Full steps: `references/local-pipeline.md`.
+
+1. Bind a channel from `config/channels.json` before the beat map:
+   `python scripts/channels.py bind <channel-id> <slug>`.
+   The episode directory is `D:\Vox-Video\<channel>\<slug>`. Pass that directory
+   to every later script. Do not use `out/`.
+   Research that episode before the beat map. The key is `YOUTUBE_API_KEY` in
+   `.env` (never print it). One channel, focused queries, report inside the episode:
+   `python scripts/research_youtube.py --channel <id> --query "<question>" --tag <slug> --output-dir "<episode>\research"`.
+   Use the scan to choose the question and the gap. Verify facts elsewhere.
+   `codex_prompts.py` will not write stills until `research/youtube-market-scan-*.md` exists.
+   Full rules: `references/topic-research.md`.
+   Then set the runtime inside 7–20 minutes:
+   `python scripts/plan_runtime.py "<episode>" --minutes 12`.
+   Muse T2V accepts each shot's own `dur` and cannot exceed 10 seconds.
+   The plan gives a working shot count at about 5 seconds per cut. Set each
+   shot's duration from 3 to 10 seconds so the durations add up to the target.
+   Do not set every shot to 10.
+   Write narration, headlines, and examples only inside that channel's
+   `promise`, `lanes`, and `avoid` list, in `channel.language`, in the tone of
+   `narration_direction`. VoiceStudio speaks with that channel's saved profile
+   id (`channel.voice`); do not send `narration_direction` as an instruct
+   string. Same approval gate as below.
+2. `python scripts/codex_prompts.py "<episode>" --bakeoff theme1,theme2,theme3`
+   Codex generates those stills. The user picks a theme.
+3. `python scripts/codex_prompts.py "<episode>"`
+   Codex generates every still into `keyframes/kf_<key>.png`, then
+   `python scripts/codex_prompts.py "<episode>" --register`.
+4. `python scripts/muse_pack.py "<episode>"`
+   The user uploads each still to Muse.ai and pastes `muse/<key>/prompt.txt`.
+   They save `clips/clip_<key>.mp4`, then
+   `python scripts/muse_pack.py "<episode>" --register`.
+5. `python scripts/voicestudio_tts.py "<episode>"`
+   VoiceStudio must be open. Optional music: drop `audio/bgm.mp3` in the episode folder.
+6. `python scripts/assemble.py "<episode>"`
+   This also writes `final.srt`: phrase cues timed from each narration WAV's
+   speech and pauses, placed on the final timeline.
+7. Research packaging before the upload package. After the question is locked:
+   `python scripts/research_packaging.py "<episode>" --query "<search phrase>"`.
+   The report compares public titles, description openings, thumbnail links, and
+   a Studio-tag pool. YouTube does not return other channels' tags. Open the
+   thumbnails, write one `packaging_research` observation, then fill
+   `youtube_metadata` (promise, 1–3 title/thumbnail candidates, description,
+   hashtags, studio tags). Rules: `references/packaging-research.md`.
+   Then `python scripts/export_youtube.py "<episode>"`.
+   Codex generates each thumbnail from `thumbnail-prompts.md` and saves it at
+   that candidate's `thumbnail_file`. After a file is chosen, set
+   `selected_candidate_id` and run the exporter again for `youtube-upload.txt`.
+
+The Atlas workflow under "Standard workflow" is the original path. It is not
+the path for this checkout.
+
 ## Prerequisites (check, don't skip)
 
-- `echo "${ATLASCLOUD_API_KEY:+set}"` — if empty, tell the user to set it (get one at
-  https://www.atlascloud.ai/console/api-keys) and stop.
-- `command -v ffmpeg ffprobe` — required for assembly (`brew install ffmpeg` on macOS).
+- VoiceStudio running, API on `http://localhost:3900` (`VOICESTUDIO_BASE_URL` /
+  `VOICESTUDIO_API_KEY` override the defaults).
+- `ffmpeg` + `ffprobe` — required for assembly.
 - `python3 -c "import PIL"` — Pillow, for captions/watermark overlays.
 
 ## Standard workflow (topic → film)

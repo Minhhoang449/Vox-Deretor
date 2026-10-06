@@ -4,7 +4,7 @@
 
 **Turn one topic into a finished Vox-style paper-collage explainer / ad video — script, collage keyframes, motion, voice-over, music and captions, all automated.**
 
-An **agent skill** that runs end to end on the [Atlas Cloud](https://www.atlascloud.ai/?utm_source=github&utm_campaign=vox_director) API + local `ffmpeg`, usable by any coding agent (Claude Code, Codex, etc.). You give it a one-line topic; it gives you an `mp4`.
+An **agent skill** that turns one topic into a Vox-style paper-collage video for one channel in [`config/channels.json`](config/channels.json). In this checkout, **Codex renders the stills**, you animate them in **Muse.ai** with the project's motion prompts, and **VoiceStudio** speaks in that channel's voice. `ffmpeg` assembles the film. Steps: [`references/local-pipeline.md`](references/local-pipeline.md).
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-black.svg) ![Powered by Atlas Cloud](https://img.shields.io/badge/powered%20by-Atlas%20Cloud-ff5a1f.svg) ![Agent Skill](https://img.shields.io/badge/Agent-Skill-d97757.svg)
 

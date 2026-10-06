@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "channels": [
+    {
+      "id": "hollis-ridge",
+      "display_name": "Hollis Ridge",
+      "language": "en",
+      "voice": "28bd9142",
+      "destination": "D:/Vox-Video/Hollis Ridge",
+      "promise": "Explain how money and economic systems move through everyday life, with concrete objects and flows.",
+      "lanes": [
+        "How payments, credit, insurance, and financial infrastructure work",
+        "How prices and supply chains are formed",
+        "The history behind everyday economic systems",
+        "Wartime economies, logistics, and the home front"
+      ],
+      "market_scope": "Use United States examples by default only when the episode says so; label country, product, and data scope. Explain concepts, not what viewers should buy.",
+      "youtube_research": {
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": [
+          "how money works explained finance",
+          "economic history documentary explained",
+          "World War II explained documentary economy"
+        ]
+      },
+      "avoid": [
+        "generic trivia lists",
+        "investment picks",
+        "unverified claims about fees, credit, or inflation"
+      ],
+      "pilot_topics": [
+        "What happens between tapping a card and the shop receiving the money?",
+        "How does a dollar of shelf price get divided across a product's supply chain?",
+        "What does insurance do with the premiums from many policyholders?",
+        "How did rationing change daily life on the U.S. home front during World War II?"
+      ],
+      "voice_profile_name": "Hollis Ridge",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Hollis Ridge/Hollis Ridge.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Hollis Ridge/Text.txt"
+      },
+      "narration_direction": "Warm, natural conversational English; tell the explanation as a clear little story in everyday words, with gentle situational wit; explain any necessary technical term simply, no announcer hype."
+    },
+    {
+      "id": "iria-canto",
+      "display_name": "Iria Canto",
+      "language": "es",
+      "voice": "9d61caa7",
+      "destination": "D:/Vox-Video/Iria Canto",
+      "promise": "Tell sourced economic-history stories and explain how money systems changed daily life across Spanish-speaking regions.",
+      "lanes": [
+        "Economic history through a documented regional turning point",
+        "How trade, money, and commodities connected places",
+        "What a change in prices or currency meant in daily life",
+        "Regional conflict history and its economic consequences"
+      ],
+      "region_rule": "Name the country or region in each brief. Do not treat Spain and Latin America as one undifferentiated market; localize examples, vocabulary, institutions, and source material.",
+      "youtube_research": {
+        "relevance_language": "es",
+        "region_code": "ES",
+        "queries": [
+          "finanzas personales explicadas",
+          "historia económica documental",
+          "Segunda Guerra Mundial explicada documental español"
+        ]
+      },
+      "avoid": [
+        "origin myths",
+        "present-day investment advice",
+        "mixing regional terminology or monetary history without explanation"
+      ],
+      "pilot_topics": [
+        "España: ¿Qué cambió en los pagos cotidianos cuando la peseta dio paso al euro?",
+        "México: ¿Cómo llegó el peso de plata novohispano a circular en el comercio internacional?",
+        "Chile: ¿Qué papel tuvo el salitre en la economía chilena del siglo XIX?",
+        "¿Por qué el suministro de alimentos y combustible fue decisivo en el norte de África durante la Segunda Guerra Mundial?"
+      ],
+      "voice_profile_name": "Iria Canto",
+      "voice_gender": "female",
+      "voice_market": "Spanish-speaking markets / Spanish",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Iria Canto/Iria Canto.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Iria Canto/Text.txt"
+      },
+      "narration_direction": "Narración en español natural, cálida y precisa, como quien cuenta una historia; usa palabras cotidianas y humor sutil ligado al tema, explica cualquier término necesario con sencillez y evita el tono de anuncio."
+    },
+    {
+      "id": "levi-solace",
+      "display_name": "Levi Solace",
+      "language": "en",
+      "voice": "4f71a047",
+      "destination": "D:/Vox-Video/Levi Solace",
+      "promise": "Explain the history of money and economic systems through one object, institution, or turning point.",
+      "lanes": [
+        "The history behind currencies, banks, trade, and debt",
+        "Economic turning points shown through one object or flow",
+        "How an institution or policy changed the rules of exchange",
+        "The World Wars through logistics, finance, decisions, and aftermath"
+      ],
+      "avoid": [
+        "hero worship",
+        "single-cause explanations of complex events",
+        "present-day financial advice",
+        "compressed timelines that hide uncertainty"
+      ],
+      "youtube_research": {
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": [
+          "history of money documentary explained",
+          "economic history documentary",
+          "World War II explained history documentary"
+        ]
+      },
+      "pilot_topics": [
+        "How did the shipping container change the cost of moving ordinary goods?",
+        "What problem was the Bretton Woods system designed to address after World War II?",
+        "How did paper banknotes change what people had to carry to trade?",
+        "How did fuel, shipping, and logistics shape the outcome of one World War II campaign?"
+      ],
+      "voice_profile_name": "Levi Solace",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Levi Solace/Levi Solace.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Levi Solace/Text.txt"
+      },
+      "narration_direction": "Natural conversational English history narration; tell a vivid, well-sourced story in plain words with dry, gentle situational humor; keep serious events respectful, no trailer voice or false drama."
+    },
+    {
+      "id": "moc-vy",
+      "display_name": "Mộc Vy",
+      "language": "vi",
+      "voice": "d2d51973",
+      "destination": "D:/Vox-Video/Mộc Vy",
+      "promise": "Make Vietnamese household finance and the wider economy understandable through familiar daily examples.",
+      "lanes": [
+        "How everyday money products work, without telling viewers what to buy",
+        "Vietnamese prices, work, housing, and supply chains",
+        "Economic history and the changes that shaped daily life in Vietnam",
+        "Vietnamese war history and its documented economic and social aftermath"
+      ],
+      "avoid": [
+        "personalized investment or borrowing advice",
+        "broad claims about all Vietnamese people",
+        "local anecdotes presented as nationwide data"
+      ],
+      "youtube_research": {
+        "relevance_language": "vi",
+        "region_code": "VN",
+        "queries": [
+          "kiến thức tài chính cá nhân giải thích",
+          "lịch sử kinh tế Việt Nam",
+          "giải thích Thế chiến thứ hai lịch sử"
+        ]
+      },
+      "pilot_topics": [
+        "Một khoản vay mua nhà được chia thành tiền gốc và tiền lãi như thế nào qua từng kỳ?",
+        "Từ ruộng lúa đến giá gạo bán lẻ có những chặng chi phí nào?",
+        "Đổi Mới đã thay đổi cách giá cả và hàng hóa vận hành ra sao?",
+        "Đường mòn Hồ Chí Minh vận hành như một hệ thống hậu cần chiến tranh như thế nào?"
+      ],
+      "voice_profile_name": "Mộc Vy",
+      "voice_gender": "female",
+      "voice_market": "Vietnam / Vietnamese",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Mộc Vy/moc-vy.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Mộc Vy/Text.txt"
+      },
+      "narration_direction": "Giọng kể tiếng Việt tự nhiên, gần gũi như đang kể chuyện; dùng từ đời thường, dí dỏm nhẹ nhàng từ chính tình huống, giải thích thuật ngữ bằng ví dụ dễ hình dung; không lên lớp, không đùa trên nỗi đau của người khác."
+    },
+    {
+      "id": "rei-asatsuki",
+      "display_name": "Rei Asatsuki",
+      "language": "ja",
+      "voice": "06cbd9d0",
+      "destination": "D:/Vox-Video/Rei Asatsuki",
+      "promise": "Explain Japan's economic history and industrial systems through the products and infrastructure people know.",
+      "lanes": [
+        "Economic history through one Japanese product or industry",
+        "How supply chains and industrial systems connect",
+        "How a policy or infrastructure choice changed daily life",
+        "The Pacific War and Japan's postwar economic transformation"
+      ],
+      "avoid": [
+        "exoticizing Japanese culture",
+        "unsupported claims about national uniqueness",
+        "current-market speculation",
+        "technical terms without plain-language glosses"
+      ],
+      "youtube_research": {
+        "relevance_language": "ja",
+        "region_code": "JP",
+        "queries": [
+          "お金の仕組み 解説 金融",
+          "日本経済史 解説",
+          "第二次世界大戦 解説 ドキュメンタリー"
+        ]
+      },
+      "pilot_topics": [
+        "戦後の日本で、自動車産業の部品網はどのように広がったの？",
+        "日本の現金中心の買い物は、どんな仕組みでキャッシュレスへ変わってきたの？",
+        "高度経済成長期に、輸出産業は暮らしをどう変えたの？",
+        "太平洋戦争では、海上輸送路と物資の補給が戦局や暮らしにどう関わったの？"
+      ],
+      "voice_profile_name": "Rei Asatsuki — 朝月レイ",
+      "voice_gender": "female",
+      "voice_market": "Japan / Japanese",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Rei Asatsuki/Rei-Asatsuki.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Rei Asatsuki/Text.txt"
+      },
+      "narration_direction": "自然な会話調で、身近な言葉を使って一つの物語として説明する。題材に沿った控えめなユーモアを添え、専門用語は簡単に言い換えるか説明する。戦争や被害は敬意を持って扱い、大げさな番組調は避ける。"
+    },
+    {
+      "id": "tavia-noelle",
+      "display_name": "Tavia Noelle",
+      "language": "en",
+      "voice": "3617639a",
+      "destination": "D:/Vox-Video/Tavia Noelle",
+      "promise": "Explain consumer finance products and the incentives behind money decisions, without giving personal financial advice.",
+      "lanes": [
+        "How credit, subscriptions, insurance, and buy-now-pay-later products work",
+        "How fees and repayment rules affect the flow of money",
+        "Behavioral economics explained with evidence and limits"
+      ],
+      "market_scope": "Use United States examples by default only when the episode says so; label jurisdiction and product terms. Never recommend a product or diagnose a viewer.",
+      "youtube_research": {
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": [
+          "personal finance explained credit debt",
+          "how insurance works explained",
+          "behavioral economics documentary explained"
+        ]
+      },
+      "avoid": [
+        "buy/sell recommendations",
+        "pop psychology labels",
+        "diagnosing viewers",
+        "claiming one study proves universal behavior"
+      ],
+      "pilot_topics": [
+        "How does a buy-now-pay-later purchase move money between the shopper, store, and provider?",
+        "Why can paying only a credit-card minimum keep a balance around for longer?",
+        "How do insurers use a large pool of premiums to pay a smaller number of claims?"
+      ],
+      "voice_profile_name": "Tavia Noelle",
+      "voice_gender": "female",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/Tavia Noelle/Tavia Noelle.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/Tavia Noelle/Text.txt"
+      },
+      "narration_direction": "Warm, direct conversational English; explain consumer choices through a relatable story and plain words, with light situational wit that never mocks people or their money worries; explain necessary terms simply, never preachy or diagnostic."
+    },
+    {
+      "id": "seoyun-ui",
+      "display_name": "서윤의",
+      "language": "ko",
+      "voice": "7220c71c",
+      "destination": "D:/Vox-Video/서윤의",
+      "promise": "Explain Korean household finance, housing, work, and economic change with clear local context.",
+      "lanes": [
+        "How Korean housing and household-finance systems work",
+        "Work, wages, and economic systems in everyday Korea",
+        "Korean economic history through a policy, industry, or object",
+        "The Korean War and modern history, with local context and primary sources"
+      ],
+      "avoid": [
+        "personalized investment advice",
+        "stereotypes about Korean society",
+        "sensationalized housing claims",
+        "confusing Seoul examples with nationwide patterns"
+      ],
+      "youtube_research": {
+        "relevance_language": "ko",
+        "region_code": "KR",
+        "queries": [
+          "금융 상식 쉽게 설명 대출 신용",
+          "한국 경제 성장 과정 설명",
+          "2차 세계대전 요약 역사"
+        ]
+      },
+      "pilot_topics": [
+        "전세 보증금은 집주인과 세입자 사이에서 어떤 역할을 할까?",
+        "한국의 반도체 수출은 어떤 공급망을 거쳐 세계 시장으로 갈까?",
+        "한국의 산업화 시기에 수출 중심 정책은 일자리와 생활을 어떻게 바꿨을까?",
+        "한국전쟁 이후 한국 경제는 어떤 변화를 거쳐 수출 제조업을 키웠을까?"
+      ],
+      "voice_profile_name": "서윤",
+      "voice_gender": "female",
+      "voice_market": "South Korea / Korean",
+      "voice_reference": {
+        "audio": "D:/Coder/VoiceStudio/list-voice/서윤/서윤.mp3",
+        "transcript": "D:/Coder/VoiceStudio/list-voice/서윤/Text.txt"
+      },
+      "narration_direction": "친근하고 자연스러운 대화체로 일상적인 말과 구체적인 이야기로 설명한다. 주제와 연결된 가벼운 재치를 쓰고 전문 용어는 쉬운 말로 풀어 준다. 전쟁과 피해를 존중하며 과장된 방송 톤은 피한다."
+    }
+  ]
+}

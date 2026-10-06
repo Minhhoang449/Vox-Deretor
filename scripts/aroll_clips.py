@@ -27,6 +27,7 @@ import os
 import subprocess
 import sys
 
+from local_guard import refuse_if_local
 from provider import get_provider, run_jobs
 from styles import resolve_theme, resolve_video_aspect
 
@@ -95,8 +96,9 @@ def video_params(model, video_url, aspect, dur):
 
 def run(project_dir, only=None):
     bpath = os.path.join(project_dir, "beats.json")
-    with open(bpath) as f:
+    with open(bpath, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    refuse_if_local(doc)
     if doc.get("mode") != "aroll":
         raise SystemExit("beats.json has no \"mode\": \"aroll\" -- run asr_beats.py first, "
                          "or use clips.py for a B-roll project.")

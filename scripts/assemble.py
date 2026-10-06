@@ -15,6 +15,7 @@ import subprocess
 import sys
 
 import text_overlay
+from local_guard import refuse_out_dir
 
 FPS, TAIL = 24, 0.5
 WATERMARK = "Made with Atlas Cloud · vox-director"
@@ -43,8 +44,10 @@ def shots_of(beat):
 
 
 def run(project_dir):
-    with open(os.path.join(project_dir, "beats.json")) as f:
+    with open(os.path.join(project_dir, "beats.json"), encoding="utf-8-sig") as f:
         doc = json.load(f)
+    if doc.get("pipeline") == "local":
+        refuse_out_dir(project_dir)
     beats = doc["beats"]
     W, H = RES.get(doc.get("aspect", "16:9"), (1920, 1080))
     wm_text = doc.get("watermark", WATERMARK)
@@ -130,8 +133,12 @@ def run(project_dir):
     narr_base = ncap + 2
     for bs in beat_spans:
         inputs += ["-i", bs["beat"]["narration_audio"]]   # narr inputs
+    has_bgm = bool(doc.get("bgm_path")) and os.path.exists(doc["bgm_path"])
     bgm_idx = narr_base + nb
-    inputs += ["-i", doc["bgm_path"]]
+    if has_bgm:
+        inputs += ["-i", doc["bgm_path"]]
+    else:
+        print("[assemble] no bgm — narration only")
 
     chain, prev = [], "[0:v]"
     for i, bs in enumerate(beat_spans[:ncap]):
@@ -151,16 +158,22 @@ def run(project_dir):
     # narration length and -shortest clips the tail (e.g. a silent payoff/ending beat).
     chain.append(f"{''.join(nlabels)}amix=inputs={nb}:normalize=0:duration=longest,volume={voice_vol},apad,atrim=0:{total}[narrmix]")
     # a filter-output label can only be consumed once -> split narration in two
-    chain.append("[narrmix]asplit=2[narrA][narrB]")
-    chain.append(f"[{bgm_idx}:a]atrim=0:{total},volume={music_vol},afade=t=out:st={max(total-2,0):.2f}:d=2[bgt]")
-    chain.append("[bgt][narrA]sidechaincompress=threshold=0.02:ratio=12:attack=5:release=350[bgd]")
-    chain.append(f"[narrB][bgd]amix=inputs=2:normalize=0:duration=longest,volume=1.4,atrim=0:{total}[a]")
+    if has_bgm:
+        chain.append("[narrmix]asplit=2[narrA][narrB]")
+        chain.append(f"[{bgm_idx}:a]atrim=0:{total},volume={music_vol},afade=t=out:st={max(total-2,0):.2f}:d=2[bgt]")
+        chain.append("[bgt][narrA]sidechaincompress=threshold=0.02:ratio=12:attack=5:release=350[bgd]")
+        chain.append(f"[narrB][bgd]amix=inputs=2:normalize=0:duration=longest,volume=1.4,atrim=0:{total}[a]")
+    else:
+        chain.append("[narrmix]anull[a]")
     filt = ";".join(chain)
 
     final = os.path.join(project_dir, "final.mp4")
     ff([*inputs, "-filter_complex", filt, "-map", "[v]", "-map", "[a]",
         "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", final])
     print("FINAL:", final, f"(~{total}s, {len(segs)} shots)")
+    if doc.get("pipeline") == "local":
+        from export_srt import run as write_srt
+        write_srt(project_dir)
 
 
 if __name__ == "__main__":
