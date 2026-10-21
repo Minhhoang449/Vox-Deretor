@@ -44,6 +44,9 @@ def load_archived_channels():
     relative = load_channel_config().get("archived_channels_file")
     if not relative:
         return []
+    path = os.path.join(ROOT, relative)
+    if not os.path.isfile(path):
+        return []  # archive not shipped in this checkout; active channels still resolve
     with open(os.path.join(ROOT, relative), encoding="utf-8-sig") as handle:
         profiles = json.load(handle).get("channels", [])
     return [dict(profile, profile_status="archived") for profile in profiles]
