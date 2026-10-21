@@ -226,7 +226,13 @@ def main():
                         help="Optional JSON list: line, quote, source_locator, support")
     parser.add_argument("--target-minutes", type=float,
                         help="Channel target from research_packaging target_length (minutes)")
+    parser.add_argument("--packaging", type=Path,
+                        help="research_packaging JSON; reads youtube_metadata.target_length.target_minutes")
     args = parser.parse_args()
+    if args.packaging and args.target_minutes is None:
+        pk = json.loads(args.packaging.read_text(encoding="utf-8-sig"))
+        args.target_minutes = (pk.get("youtube_metadata", {}).get("target_length", {})
+                               .get("target_minutes"))
     text = args.narration.read_text(encoding="utf-8-sig")
     evidence = (json.loads(args.evidence.read_text(encoding="utf-8-sig"))
                 if args.evidence else None)
