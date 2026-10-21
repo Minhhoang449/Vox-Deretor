@@ -24,6 +24,32 @@ def clean(value):
     return value.strip() if isinstance(value, str) else ""
 
 
+SHORT_TITLE_CAP = {"ja": 32}
+
+
+def validate_shorts(metadata, long_title, language):
+    """Studio Shorts rule: 0-3 Shorts, each cut from a named passage, ends by pointing to the long video."""
+    shorts = metadata.get("shorts") or []
+    if not isinstance(shorts, list) or len(shorts) > 3:
+        raise SystemExit("youtube_metadata.shorts must be a list of at most 3 Shorts.")
+    cap = SHORT_TITLE_CAP.get((language or "")[:2], 60)
+    seen = set()
+    for index, short in enumerate(shorts, start=1):
+        sid = clean(short.get("id")) or f"short-{index}"
+        for key in ("title", "source_passage", "hook", "closing_line"):
+            if not clean(short.get(key)):
+                raise SystemExit(f"Short {sid} needs {key} (closing_line must point to the long video).")
+        title = clean(short["title"])
+        if len(title) > cap:
+            raise SystemExit(f"Short {sid} title is {len(title)} characters; cap is {cap}.")
+        if long_title and title.casefold() == long_title.casefold():
+            raise SystemExit(f"Short {sid} title duplicates the long video title.")
+        if title.casefold() in seen:
+            raise SystemExit(f"Short {sid} title duplicates another Short.")
+        seen.add(title.casefold())
+    return shorts
+
+
 def run(project_dir):
     refuse_out_dir(project_dir)
     path = os.path.join(project_dir, "beats.json")
@@ -116,6 +142,8 @@ def run(project_dir):
     search_phrases = metadata.get("search_phrases") or []
     experiment = metadata.get("experiment") or {}
 
+    shorts = validate_shorts(metadata, clean(selected["title"]) if selected else "", language)
+
     if selected:
         thumbnail_text = clean(selected["thumbnail_text"])
         thumbnail_text_line = (
@@ -153,6 +181,19 @@ def run(project_dir):
         lines.extend(["", "6. PER-EPISODE SEARCH PHRASES"])
         lines.append("\n".join(f"- {item}" for item in search_phrases) or "(none recorded)")
         lines.extend(["", "7. PLAYLISTS", playlist_text(playlist_bundle)])
+        lines.extend(["", "8. SHORTS (prepared locally; publish only after owner approval)"])
+        if not shorts:
+            lines.append("(none recorded; Studio default is 2 Shorts per long video)")
+        for short in shorts:
+            lines.extend([
+                f"- {clean(short.get('id')) or 'short'}: {clean(short['title'])}",
+                f"  Cut from: {clean(short['source_passage'])}",
+                f"  Hook: {clean(short['hook'])}",
+                f"  Closing line: {clean(short['closing_line'])}",
+                f"  Related video: {clean(selected['title'])} (set in Studio after the long video is live)",
+            ])
+        if shorts:
+            lines.append("  Before upload, run each Short title through scripts/research_autocomplete.py (title gate).")
         upload = os.path.join(project_dir, "youtube-upload.txt")
         with open(upload, "w", encoding="utf-8") as f:
             f.write("\n".join(lines) + "\n")
@@ -226,6 +267,8 @@ def run(project_dir):
         print("Warning: more than three hashtags. YouTube may show only three above the title.")
     if not search_phrases:
         print("Warning: no search phrases recorded.")
+    if not shorts:
+        print("Warning: no Shorts recorded; Studio default is 2 Shorts per long video.")
 
 
 if __name__ == "__main__":
