@@ -27,6 +27,11 @@ def clean(value):
 SHORT_TITLE_CAP = {"ja": 32}
 
 
+def long_title_cap(title):
+    """Studio cap for long-video titles: 32 if the title has Japanese/CJK text, else 60."""
+    return 32 if any("\u3040" <= c <= "\u9fff" for c in title) else 60
+
+
 def validate_shorts(metadata, long_title, language, narration=""):
     """Studio Shorts rule: 0-3 Shorts, each cut from a named passage, ends by pointing to the long video."""
     shorts = metadata.get("shorts") or []
@@ -99,8 +104,7 @@ def run(project_dir):
         seen.add(candidate_id)
         if not title:
             raise SystemExit(f"Candidate {candidate_id} needs a title.")
-        cjk = any("\u3040" <= c <= "\u9fff" for c in title)
-        cap = 32 if cjk else 60
+        cap = long_title_cap(title)
         if len(title) > cap:
             raise SystemExit(f"Candidate {candidate_id} title is {len(title)} characters; Studio max is {cap}.")
         for key in ("thumbnail_concept", "thumbnail_prompt", "thumbnail_file"):
