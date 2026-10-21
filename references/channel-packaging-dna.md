@@ -26,7 +26,7 @@ People harvesting, selecting, grinding, cooking, preserving and exchanging food;
 
 ## Role of thumbnail text
 
-Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.
+Short exact localized number, true claim or everyday question: at most 3 words (Japanese at most 8 characters). Must not repeat any title phrase and must only promise what the video answers. See references/thumbnail-visual-direction.md (Studio rules take precedence).
 
 ## Opening promise
 
@@ -91,7 +91,7 @@ People making, testing, operating and teaching; material cutaways, workshop proc
 
 ## Role of thumbnail text
 
-Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.
+Short exact localized number, true claim or everyday question: at most 3 words (Japanese at most 8 characters). Must not repeat any title phrase and must only promise what the video answers. See references/thumbnail-visual-direction.md (Studio rules take precedence).
 
 ## Opening promise
 
@@ -156,7 +156,7 @@ Chibi people performing period-specific tasks in legible streets, homes and work
 
 ## Role of thumbnail text
 
-Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.
+Short exact localized number, true claim or everyday question: at most 3 words (Japanese at most 8 characters). Must not repeat any title phrase and must only promise what the video answers. See references/thumbnail-visual-direction.md (Studio rules take precedence).
 
 ## Opening promise
 
@@ -221,7 +221,7 @@ People encountering rules through transactions, queues, documents and institutio
 
 ## Role of thumbnail text
 
-Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.
+Short exact localized number, true claim or everyday question: at most 3 words (Japanese at most 8 characters). Must not repeat any title phrase and must only promise what the video answers. See references/thumbnail-visual-direction.md (Studio rules take precedence).
 
 ## Opening promise
 
@@ -351,7 +351,7 @@ Nhân vật Chibi sinh sống, mặc trang phục, xây dựng, làm việc và 
 
 ## Role of thumbnail text
 
-Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.
+Short exact localized number, true claim or everyday question: at most 3 words (Japanese at most 8 characters). Must not repeat any title phrase and must only promise what the video answers. See references/thumbnail-visual-direction.md (Studio rules take precedence).
 
 ## Opening promise
 

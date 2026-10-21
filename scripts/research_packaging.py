@@ -279,7 +279,7 @@ def render(channel, queries, orders, videos, language, region_code, skipped):
             f"{stats['count']} distinct videos. Title length: shortest {stats['shortest']}, "
             f"median {stats['median']}, longest {stats['longest']}. "
         f"{stats['questions']} titles contain a question mark. "
-            "The title limit is 100 characters. Keep titles accurate and concise, with the subject near the beginning. "
+            "Studio title limit is 60 characters (Japanese 32); the autocomplete-observed phrase sits in the first 40 characters (Japanese 20). Keep titles accurate. "
             "Make one candidate searchable and another curiosity-led while still naming the subject. "
             "The title, thumbnail, and opening must share one promise. Public view counts do not reveal audience preference."
         )

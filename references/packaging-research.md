@@ -18,7 +18,7 @@ python scripts/research_packaging.py "<episode>" --query "<localized episode que
 
 ### Title
 
-- Put the subject or important search phrase near the beginning. Keep the wording short enough to read in common placements; the hard limit remains 100 characters.
+- Put the autocomplete-observed search phrase in the first 40 characters (Japanese 20) and keep the title to 60 characters (Japanese 32); YouTube's hard cap is 100. Check with `scripts/research_autocomplete.py`.
 - Prepare distinct approaches: one clear searchable title and one curiosity-led title that still names the real subject or consequence.
 - Keep claims accurate. Avoid false urgency, vague clickbait, long episode labels, and all-caps styling.
 - Make the title and thumbnail work together: the title can name the question while the thumbnail shows the object, action, or consequence.

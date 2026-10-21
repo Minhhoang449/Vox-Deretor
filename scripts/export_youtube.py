@@ -5,7 +5,7 @@ Validate YouTube packaging on beats.json and export thumbnail prompts.
 The script writes thumbnail-prompts.md for generation with the Codex imagegen skill. After a
 selected candidate's image exists, a second run writes youtube-upload.txt.
 
-Rules: 1–3 candidates, title ≤ 100 characters, description + hashtags ≤ 5000,
+Rules: 1–3 candidates, title ≤ 60 characters (Japanese ≤ 32; YouTube hard cap 100); run research_autocomplete.py on the lead phrase, description + hashtags ≤ 5000,
 studio tags ≤ 500. Thumbnail prompts follow the episode's selected animation style.
 
 Usage: python export_youtube.py <episode_dir>
@@ -95,8 +95,10 @@ def run(project_dir):
         seen.add(candidate_id)
         if not title:
             raise SystemExit(f"Candidate {candidate_id} needs a title.")
-        if len(title) > 100:
-            raise SystemExit(f"Candidate {candidate_id} title is {len(title)} characters; max is 100.")
+        cjk = any("\u3040" <= c <= "\u9fff" for c in title)
+        cap = 32 if cjk else 60
+        if len(title) > cap:
+            raise SystemExit(f"Candidate {candidate_id} title is {len(title)} characters; Studio max is {cap}.")
         for key in ("thumbnail_concept", "thumbnail_prompt", "thumbnail_file"):
             if not clean(candidate.get(key)):
                 raise SystemExit(f"Candidate {candidate_id} needs {key}.")
