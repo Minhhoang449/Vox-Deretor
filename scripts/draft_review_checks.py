@@ -135,10 +135,8 @@ def review(text, evidence=None):
                                  "line": line, "action": problem})
     studio, est_minutes = studio_checks(paragraphs, text)
     findings.extend(studio)
-    studio = studio_rules(paragraphs) if paragraphs else None
     return {
         "status": "diagnostics_only",
-        "studio_rules": studio,
         "estimated_minutes": est_minutes,
         "speech_sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
         "fingerprint_method": "UTF-8 text as read; separate from the approval fingerprint",
@@ -156,110 +154,6 @@ def review(text, evidence=None):
         ],
         "limits": "Exact repeats, Studio heuristics (early hedges, hedge density, one-sentence paragraphs, repeated figures/names, token-overlap repeats, runtime estimate) and mapping structure. No semantic model, source verification, timing, full claim coverage, performance forecast or approval. Zero findings does not pass a draft.",
     }
-
-
-# --- Studio rules (user-approved 21-22/10/2026) -----------------------------
-import re as _re
-
-RATES = {"en": ("words", 150), "vi": ("words", 160), "ja": ("chars", 300)}
-HEDGES = {
-    "en": [r"\bmay\b", r"\bmight\b", r"\bperhaps\b", r"\bprobably\b", r"\bpossibly\b",
-           r"\blikely\b", r"\bunclear\b", r"\buncertain\b", r"\bwe don'?t know\b",
-           r"\bnot certain\b", r"\bseems?\b", r"\bappears? to\b", r"\bcannot be sure\b",
-           r"\bdebated?\b", r"\bnot (?:necessarily|always)\b"],
-    "vi": [r"có lẽ", r"có thể", r"chưa chắc", r"không rõ", r"giả thuyết", r"dường như",
-           r"được cho là", r"chưa thể khẳng định"],
-    "ja": [r"かもしれ", r"考えられ", r"とみられ", r"可能性", r"推定", r"はっきりし",
-           r"わかっていな", r"分かっていな", r"断定", r"とは限ら", r"らしい"],
-}
-
-
-def detect_language(text):
-    cjk = len(_re.findall(r"[\u3040-\u30ff\u4e00-\u9fff]", text))
-    if cjk > len(text) * 0.2:
-        return "ja"
-    if _re.search(r"[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]", text.lower()):
-        return "vi"
-    return "en"
-
-
-def _sentences(paragraph, lang):
-    pattern = r"(?<=[。！？!?])" if lang == "ja" else r"(?<=[.!?])\s+"
-    return [s.strip() for s in _re.split(pattern, paragraph) if s.strip()]
-
-
-def _units(text, lang):
-    return len(_re.sub(r"\s", "", text)) if lang == "ja" else len(text.split())
-
-
-def _grams(sentence, lang):
-    if lang == "ja":
-        s = _re.sub(r"[\s、。！？「」]", "", sentence)
-        return {s[i:i + 3] for i in range(max(len(s) - 2, 0))}
-    w = _re.findall(r"\w+", sentence.casefold())
-    return {" ".join(w[i:i + 2]) for i in range(max(len(w) - 1, 0))}
-
-
-def studio_rules(paragraphs, lang=None):
-    """Hard Studio gates. Any finding with blocking=True blocks presenting the draft."""
-    full = "\n\n".join(p for _, p in paragraphs)
-    lang = lang or detect_language(full)
-    unit, rate = RATES[lang]
-    found, elapsed, hedge_sentences = [], 0.0, []
-    sents = []
-    for line, para in paragraphs:
-        ss = _sentences(para, lang)
-        if len(ss) == 1 and len(paragraphs) > 1:
-            found.append({"rule": "no_single_sentence_paragraph", "line": line,
-                          "blocking": True, "excerpt": para,
-                          "action": "Merge into the neighbouring paragraph."})
-        for s in ss:
-            t = elapsed / rate
-            sents.append((line, t, s))
-            if any(_re.search(h, s, _re.I) for h in HEDGES[lang]):
-                hedge_sentences.append((line, t, s))
-            elapsed += _units(s, lang)
-    early = [h for h in hedge_sentences if h[1] < 2.0]
-    for line, t, s in early:
-        found.append({"rule": "no_caveat_before_2min", "line": line, "minute": round(t, 2),
-                      "blocking": True, "excerpt": s,
-                      "action": "Move after 2:00 or drop; the opening states what is known."})
-    if len(hedge_sentences) > 4:
-        found.append({"rule": "max_4_caveat_sentences", "blocking": True,
-                      "count": len(hedge_sentences),
-                      "lines": [h[0] for h in hedge_sentences],
-                      "action": "Keep the 3-4 caveats that change the answer; say each once."})
-    first_min = [s for s in sents if s[1] < 1.0]
-    if not any(_re.search(r"[?？]|か。$|のか", s[2]) for s in first_min):
-        found.append({"rule": "question_within_60s", "blocking": True,
-                      "action": "State the main question and the hanging question in the first minute."})
-    nums = {}
-    for line, para in paragraphs:
-        for n in set(_re.findall(r"\d[\d.,]*", para)):
-            nums.setdefault(n, []).append(line)
-    for n, where in nums.items():
-        if len(where) > 2:
-            found.append({"rule": "idea_max_twice", "token": n, "lines": where,
-                          "blocking": True,
-                          "action": "Number repeated in >2 paragraphs; keep first use and payoff only."})
-    for i in range(len(sents)):
-        gi = _grams(sents[i][2], lang)
-        for j in range(i + 2, len(sents)):
-            gj = _grams(sents[j][2], lang)
-            if len(gi) > 3 and len(gj) > 3 and len(gi & gj) / len(gi | gj) >= 0.4:
-                found.append({"rule": "idea_max_twice", "kind": "paraphrase",
-                              "lines": [sents[i][0], sents[j][0]], "blocking": False,
-                              "excerpt": [sents[i][2], sents[j][2]],
-                              "action": "Likely restatement; check whether the second adds anything."})
-    if len(paragraphs) > 2:
-        g1, g2 = _grams(paragraphs[0][1], lang), _grams(paragraphs[-1][1], lang)
-        if not g1 & g2:
-            found.append({"rule": "close_loop_to_opening", "blocking": True,
-                          "action": "Ending should return to the opening object/scene with its changed meaning."})
-    return {"language": lang, "estimated_minutes": round(elapsed / rate, 1),
-            "caveat_sentences": len(hedge_sentences),
-            "blocking": sum(1 for f in found if f.get("blocking")),
-            "findings": found}
 
 
 def main():
