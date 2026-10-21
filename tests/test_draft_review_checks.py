@@ -45,5 +45,14 @@ class DraftReviewChecksTests(unittest.TestCase):
             module.review("Claim.", {})
 
 
+    def test_studio_new_checks(self):
+        text = ("## Lời dẫn\nOne autumn the crew stopped. Why were the well fed workers hungry?\n\n"
+                "In 1, 2, 3 and 4 they counted grain. The scribe wrote it down.\n\n"
+                "## Notes\nBeer line NEEDS SOURCE.\n")
+        kinds = {f["kind"] for f in module.review(text, target_minutes=12)["findings"]}
+        for k in ("vague_time", "number_dense_paragraph", "missing_mid_rehook",
+                  "runtime_below_target", "unsourced_marker"):
+            self.assertIn(k, kinds)
+
 if __name__ == "__main__":
     unittest.main()

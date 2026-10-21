@@ -29,7 +29,10 @@ def _tokens(text):
     return {w for w in re.findall(r"[\w']+", text.casefold()) if len(w) > 3}
 
 
-def studio_checks(paragraphs, text):
+VAGUE_TIME = re.compile(r"\b(?:one|that) (?:autumn|spring|summer|winter|morning|evening|year)\b|\bone day\b", re.I)
+
+
+def studio_checks(paragraphs, text, target_minutes=None):
     """Studio Rules v1.0 heuristics (user-approved 2026-10-21). Flags, not verdicts."""
     out = []
     cjk = _is_cjk(text)
@@ -77,7 +80,42 @@ def studio_checks(paragraphs, text):
                 out.append({"kind": "semantic_repeat", "line": toks[j][0],
                             "related_line": toks[i][0], "similarity": round(sim, 2),
                             "action": "Same idea explained again? Keep one, cut or merge the other."})
+    # vague dating with no source date
+    for line, para in paragraphs:
+        m = VAGUE_TIME.search(para)
+        if m:
+            out.append({"kind": "vague_time", "line": line, "term": m.group(0),
+                        "action": "Use the dated wording from the source (e.g. the ancient calendar date) or cut it."})
+        n = len(re.findall(r"\b\d[\d,.]*\b", para))
+        if n > 3:
+            out.append({"kind": "number_dense_paragraph", "line": line, "count": n,
+                        "action": "Keep at most 3 figures per paragraph; put the rest on screen."})
+    # hanging question must be re-raised around 1/3 and 2/3 of the runtime
+    if paragraphs and not cjk:
+        sizes = [len(p.split()) for _, p in paragraphs]
+        total = sum(sizes) or 1
+        pos, q = 0, None
+        for (line, para), sz in zip(paragraphs, sizes):
+            if pos / total * elapsed <= 1.0 and "?" in para:
+                q = set().union(*(_tokens(x) for x in _sentences(para) if "?" in x))
+            pos += sz
+        if q and len(q) >= 2:
+            pos = 0
+            hits = set()
+            for (line, para), sz in zip(paragraphs, sizes):
+                frac = pos / total
+                if 0.2 <= frac <= 0.8 and len(q & _tokens(para)) >= 2:
+                    hits.add("first" if frac < 0.5 else "second")
+                pos += sz
+            for half in ("first", "second"):
+                if half not in hits:
+                    out.append({"kind": "missing_mid_rehook", "half": half,
+                                "action": "Re-raise the opening question in one line around "
+                                          + ("1/3" if half == "first" else "2/3") + " of the runtime."})
     est = round(elapsed, 1)
+    if est and target_minutes and est < target_minutes * 0.85:
+        out.append({"kind": "runtime_below_target", "minutes_estimate": est, "target": target_minutes,
+                    "action": "Below the channel's competitor-based target; add sourced material, no padding."})
     if est and not 8 <= est <= 16:
         out.append({"kind": "runtime_out_of_range", "minutes_estimate": est,
                     "action": "Target 8-16 min set by the evidence; do not pad."})
@@ -103,7 +141,8 @@ def narration_only(text):
     return "\n".join(out) if found else text
 
 
-def review(text, evidence=None):
+def review(text, evidence=None, target_minutes=None):
+    raw = text
     text = narration_only(text)
     lines = text.splitlines()
     paragraphs = []
@@ -153,8 +192,12 @@ def review(text, evidence=None):
             if problem:
                 findings.append({"kind": "evidence_mapping", "record": index,
                                  "line": line, "action": problem})
-    studio, est_minutes = studio_checks(paragraphs, text)
+    studio, est_minutes = studio_checks(paragraphs, text, target_minutes)
     findings.extend(studio)
+    for i, l in enumerate(raw.splitlines(), 1):
+        if re.search(r"NEEDS[ _]SOURCE|\bTODO\b|\[source\?\]", l, re.I):
+            findings.append({"kind": "unsourced_marker", "line": i, "excerpt": l.strip()[:80],
+                             "action": "Source the claim or cut it before review; no open markers."})
     return {
         "status": "diagnostics_only",
         "estimated_minutes": est_minutes,
@@ -172,7 +215,7 @@ def review(text, evidence=None):
             "Material uncertainty remains attached to affected claims",
             "Actual title/thumbnail/opening/middle/ending alignment and native voice",
         ],
-        "limits": "Exact repeats, Studio heuristics (early hedges, hedge density, one-sentence paragraphs, repeated figures/names, token-overlap repeats, runtime estimate) and mapping structure. No semantic model, source verification, timing, full claim coverage, performance forecast or approval. Zero findings does not pass a draft.",
+        "limits": "Exact repeats, Studio heuristics (early hedges, hedge density, one-sentence paragraphs, repeated figures/names, token-overlap repeats, vague dates, number-dense paragraphs, mid-video re-hooks, open source markers, runtime vs target) and mapping structure. No semantic model, source verification, timing, full claim coverage, performance forecast or approval. Zero findings does not pass a draft.",
     }
 
 
@@ -181,12 +224,14 @@ def main():
     parser.add_argument("narration", type=Path)
     parser.add_argument("--evidence", type=Path,
                         help="Optional JSON list: line, quote, source_locator, support")
+    parser.add_argument("--target-minutes", type=float,
+                        help="Channel target from research_packaging target_length (minutes)")
     args = parser.parse_args()
     text = args.narration.read_text(encoding="utf-8-sig")
     evidence = (json.loads(args.evidence.read_text(encoding="utf-8-sig"))
                 if args.evidence else None)
     try:
-        result = review(text, evidence)
+        result = review(text, evidence, args.target_minutes)
     except ValueError as error:
         parser.error(str(error))
     print(json.dumps(result, ensure_ascii=False, indent=2))
