@@ -47,6 +47,16 @@ Use 48-hour and seven-day post-publication checkpoints when actual data is suppl
 
 Open concretely with supported action, an object, habit, pleasure, need or contrast. A bounded community can carry a story when no individual is known. A real named person is useful when the evidence supports their role, never compulsory. Do not turn an anonymous archaeological find into a known cook's biography. Familiarity is an entry point, not a requirement for a modern second-person hook. Prefer an early relevant surprising detail when supported; do not manufacture disbelief or require one on a timer. Give the central question early enough to orient the opening; avoid a minute of setup before useful explanation. Retain uncertainty at the claim it changes, even in the first minute. End with the answer and its relevant consequence or limit, without stacked conclusions or a mandatory callback.
 
+## Source discipline in the narration (Studio rule)
+
+- Every transition sentence must be backed by a source. Do not add a cause-and-effect link the sources do not state (wrong: "Food also explains the absences" when the register lists illness first).
+- Check every direct quote word for word against the holding institution's page or the edition cited, and note the check date in the source table.
+- Keep dates in the source's own calendar ("second month of the flood season, day 10"). Do not convert them to seasons or months the source does not give.
+- At most one number the viewer has to picture per paragraph; spread wage lists and measures across paragraphs and put the full figures on screen.
+- Restate the hanging question once around one third and once around two thirds of the runtime, one sentence each, without answering it.
+- Reach the channel's target length with sourced material only (for example daily-life detail from excavation reports), never padding.
+- Packaging (thumbnail text, Shorts, description) may only name items that appear in the narration's source table.
+
 ## Evaluation of the supplied comparison
 
 Studio rules (user-approved 21–22/10/2026) take precedence over older guidance in this repository. Decisions on the pasted comparison:
