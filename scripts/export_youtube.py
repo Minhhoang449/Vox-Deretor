@@ -34,7 +34,7 @@ def long_title_cap(title):
 
 def check_seo_metadata(title, description, tags, search_phrases):
     """Studio SEO rules: 3-5 tags; a recorded search phrase must appear in the
-    title and in the first two sentences of the description. Returns problems."""
+    title and in the first sentence of the description. Returns problems."""
     import re
     problems = []
     tags = [t.strip() for t in tags if t.strip()]
@@ -42,11 +42,49 @@ def check_seo_metadata(title, description, tags, search_phrases):
         problems.append(f"studio_tags has {len(tags)} tags; use 3 to 5 close to the episode.")
     phrases = [str(p).strip().lower() for p in search_phrases if str(p).strip()]
     if phrases:
-        head = " ".join(re.split(r"(?<=[.!?。！？])\s*", description.strip())[:2]).lower()
+        head = " ".join(re.split(r"(?<=[.!?。！？])\s*", description.strip())[:1]).lower()
         if not any(p in title.lower() for p in phrases):
             problems.append("no recorded search phrase appears in the title.")
         if not any(p in head for p in phrases):
-            problems.append("no recorded search phrase appears in the first two sentences of the description.")
+            problems.append("no recorded search phrase appears in the first sentence of the description.")
+    return problems
+
+
+def _secs(stamp):
+    parts = [int(x) for x in stamp.split(":")]
+    total = 0
+    for part in parts:
+        total = total * 60 + part
+    return total
+
+
+def check_chapters(chapters, timing_source, duration_seconds=None):
+    """Chapters are optional. When given they must come from measured timing,
+    start at 00:00, have at least 3 entries, ascend, and be at least 10 s each."""
+    import re
+    if not chapters:
+        return []
+    problems = []
+    if timing_source != "measured":
+        return ["chapters need chapter_timing_source 'measured' (final edit timing); leave chapters empty until then."]
+    stamps = []
+    for ch in chapters:
+        t = str((ch or {}).get("time", "")).strip()
+        if not re.fullmatch(r"\d{1,2}:\d{2}(:\d{2})?", t) or not str(ch.get("title", "")).strip():
+            problems.append(f"chapter {ch!r} needs time like 00:00 and a title.")
+            continue
+        stamps.append(_secs(t))
+    if problems:
+        return problems
+    if len(stamps) < 3:
+        problems.append("chapters need at least 3 entries.")
+    if stamps and stamps[0] != 0:
+        problems.append("first chapter must start at 00:00.")
+    ends = stamps[1:] + ([duration_seconds] if duration_seconds else [])
+    for start, end in zip(stamps, ends):
+        if end - start < 10:
+            problems.append("each chapter must be at least 10 seconds and times must ascend.")
+            break
     return problems
 
 
@@ -176,8 +214,15 @@ def run(project_dir):
 
     seo_title = clean((selected or candidates[0]).get("title"))
     seo_problems = check_seo_metadata(seo_title, description, tags, metadata.get("search_phrases") or [])
+    chapters = metadata.get("chapters") or []
+    seo_problems += check_chapters(chapters, clean(metadata.get("chapter_timing_source")), metadata.get("duration_seconds"))
     if seo_problems:
         raise SystemExit("SEO check failed:\n- " + "\n- ".join(seo_problems))
+    if chapters:
+        chapter_text = "\n".join(f"{c['time'].strip()} {c['title'].strip()}" for c in chapters)
+        full_description = description + "\n\n" + chapter_text + ("\n\n" + hashtag_text if hashtag_text else "")
+        if len(full_description) > 5000:
+            raise SystemExit(f"Description plus chapters and hashtags is {len(full_description)} characters; max is 5000.")
 
     ratio = doc.get("aspect", "16:9")
     language = visual_profile["language"]

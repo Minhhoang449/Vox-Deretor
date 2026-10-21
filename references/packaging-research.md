@@ -51,7 +51,7 @@ For manual chapters, start at `00:00`, use at least three timestamps in ascendin
 - Use only episode-specific names and useful spelling, diacritic, transliteration, or abbreviation variants. Remove broad, duplicate, and speculative tags. The 500-character limit is a ceiling, not a target.
 - Use at most three relevant hashtags. Do not put a tag list into the description.
 - Use 3 to 5 Studio tags: the searched phrase(s) recorded in `search_phrases` plus episode-specific proper names from the source table. `export_youtube.py` blocks other counts.
-- A recorded search phrase must appear in the title and in the first two sentences of the description. `export_youtube.py` blocks the export otherwise.
+- A recorded search phrase must appear in the title and in the first sentence of the description. Chapters only from measured final timing (`chapter_timing_source: measured`): start 00:00, at least 3, each ≥ 10 s. `export_youtube.py` blocks the export otherwise.
 
 ### Playlists
 
