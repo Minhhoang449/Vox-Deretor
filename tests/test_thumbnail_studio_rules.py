@@ -27,6 +27,7 @@ CHANNEL_CASES = [
     ("terra-rewired", "en", "How Did Ancient People Make Rope?", "DOING NOTHING?",
      "He is doing nothing for an hour while the fibres soak.", True),
     ("battlefield-bearings", "en", AMARNA_TITLE, "NO WELL?!", "There was no well.", False),  # repeats "well"
+    ("battlefield-bearings", "en", AMARNA_TITLE, "EVERY DROP CARRIED", "Every drop was carried in by hand.", True),  # Amarna B
     ("battlefield-bearings", "en", "How Did Amarna Workers Get Water?", "NO WELL?!", "There was no well.", True),
     ("last-safe-minute", "en", "How Did Ice Age Hunters Cook Without Pots?", "BOILING WITH STONES",
      "They were boiling with stones dropped into hide bags.", True),
@@ -35,6 +36,17 @@ CHANNEL_CASES = [
     ("vi-sao-noi-nay", "vi", "Người Óc Eo sống trên nước bằng cách nào?", "NHÀ TRÊN CỌC",
      "Họ dựng nhà trên cọc gỗ cao hơn mức lũ.", True),
 ]
+
+
+
+def setUpModule():
+    import _archive_fixture
+    _archive_fixture.start()
+
+
+def tearDownModule():
+    import _archive_fixture
+    _archive_fixture.stop()
 
 
 class StudioThumbnailRules(unittest.TestCase):

@@ -63,6 +63,17 @@ def packaging_doc(channel_id, phrase):
     }
 
 
+
+def setUpModule():
+    import _archive_fixture
+    _archive_fixture.start()
+
+
+def tearDownModule():
+    import _archive_fixture
+    _archive_fixture.stop()
+
+
 class ThumbnailVisualDirectionTests(unittest.TestCase):
     def test_text_free_candidate_exports_without_typography_and_requires_reason(self):
         with test_workspace() as folder:
