@@ -27,7 +27,7 @@ def clean(value):
 SHORT_TITLE_CAP = {"ja": 32}
 
 
-def validate_shorts(metadata, long_title, language):
+def validate_shorts(metadata, long_title, language, narration=""):
     """Studio Shorts rule: 0-3 Shorts, each cut from a named passage, ends by pointing to the long video."""
     shorts = metadata.get("shorts") or []
     if not isinstance(shorts, list) or len(shorts) > 3:
@@ -47,6 +47,10 @@ def validate_shorts(metadata, long_title, language):
         if title.casefold() in seen:
             raise SystemExit(f"Short {sid} title duplicates another Short.")
         seen.add(title.casefold())
+        if narration:
+            norm = lambda t: " ".join(str(t).split()).casefold()
+            if norm(short["hook"]) not in norm(narration):
+                raise SystemExit(f"Short {sid} hook must be quoted verbatim from the long video's narration.")
     return shorts
 
 
@@ -155,7 +159,8 @@ def run(project_dir):
     search_phrases = metadata.get("search_phrases") or []
     experiment = metadata.get("experiment") or {}
 
-    shorts = validate_shorts(metadata, clean(selected["title"]) if selected else "", language)
+    all_narration = " ".join(str(b.get("narration", "")) for b in doc.get("beats") or [] if isinstance(b, dict))
+    shorts = validate_shorts(metadata, clean(selected["title"]) if selected else "", language, all_narration)
 
     if selected:
         thumbnail_text = clean(selected["thumbnail_text"])

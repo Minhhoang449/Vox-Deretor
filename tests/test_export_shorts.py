@@ -22,6 +22,11 @@ class ShortsTest(unittest.TestCase):
     def test_max_three(self):
         with self.assertRaises(SystemExit):
             validate_shorts({"shorts": [dict(OK, title=str(i)) for i in range(4)]}, "x", "en")
+    def test_hook_verbatim_ok(self):
+        self.assertEqual(len(validate_shorts({"shorts": [OK]}, "x", "en", "It had  no well. So how? Read on.")), 1)
+    def test_hook_not_in_narration(self):
+        with self.assertRaises(SystemExit):
+            validate_shorts({"shorts": [OK]}, "x", "en", "The village drew water from a cistern.")
 
 if __name__ == "__main__":
     unittest.main()
