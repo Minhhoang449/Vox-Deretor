@@ -14,10 +14,18 @@ class DraftReviewChecksTests(unittest.TestCase):
         finding = result["findings"][0]
         self.assertEqual((finding["line"], finding["related_line"]), (5, 1))
 
-    def test_multilingual_and_single_sentence_are_not_automatic_errors(self):
+    def test_multilingual_single_sentence_flagged_but_diagnostic_only(self):
         result = module.review("縄文人の食事です。\n\nMột câu ngắn.")
-        self.assertEqual(result["findings"], [])
+        kinds = {f["kind"] for f in result["findings"]}
+        self.assertIn("one_sentence_paragraph", kinds)
+        self.assertNotIn("exact_paragraph_repeat", kinds)
         self.assertEqual(result["status"], "diagnostics_only")
+
+    def test_studio_hedge_and_number_checks(self):
+        text = ("The jar is 1.2 km away. It may be old.\n\nPerhaps 1.2 km. Likely so. Probably.\n\n"
+                "Walk 1.2 km again. It might be true. Maybe.")
+        kinds = {f["kind"] for f in module.review(text)["findings"]}
+        self.assertTrue({"early_hedge", "hedge_density", "repeated_number"} <= kinds)
 
     def test_stale_quote_is_flagged(self):
         evidence = [{"line": 1, "quote": "standing", "source_locator": "dossier §2",
