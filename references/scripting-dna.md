@@ -79,7 +79,7 @@ Distinguish a sourced causal consequence, an explanatory prerequisite and the ne
 
 Treat curiosity as a clear, answerable gap in the viewer's understanding, not an excuse to hide a known fact. Confirm the title/thumbnail promise in the first image and first spoken line. Use the first 30 seconds as a practical check: has the viewer received orientation and a useful piece of verified progress? This matches YouTube's intro measurement window; it is not a universal hook length or a guarantee of retention.
 
-Map the central question and answerable subquestions before drafting. For each major passage, record the viewer's active question, the evidence or event change, what the viewer can now understand, and the next question or dependency that follows. Pay smaller questions as soon as evidence allows. A question can remain open while the episode genuinely advances it; do not repeat teasers, invent a suspense beat, or delay the supported answer only to keep a loop open.
+Map the central question and answerable subquestions before drafting. For each major passage, record the viewer's active question, the evidence or event change, what the viewer can now understand, and the next question or dependency that follows. Pay smaller questions as soon as evidence allows. A question can remain open while the episode genuinely advances it; do not repeat teasers or invent a suspense beat. The one Studio hanging question set in the first minute is answered near the end.
 
 Use meaningful changes of time, place, task, physical state or explanatory model to orient the viewer and form natural passage boundaries. Explain the practical job before technical terms, introduce one new relation at a time where possible, and keep numbers that help the viewer judge scale, threshold or outcome. The matching still, map or diagram should clarify the same relation. Use a new image when a sourced state, task, scale or model changes; pan/zoom, captions and pattern interrupts are not substitutes for explanation. Human relevance comes from documented consequences, not an invented private worry.
 
@@ -89,7 +89,7 @@ Review the middle for an actual change in understanding, not a scheduled percent
 
 Keep access logs, abstract-only reading status, tool limitations and instructions to the author in the dossier/review. Speak the uncertainty, date, jurisdiction, scope or assumption that changes the audience's interpretation at the affected claim. An investigative method belongs in narration when its finding changes the causal model. If an essential claim is unsupported, narrow it or research further; a disclaimer does not validate it.
 
-Close once the supported answer and relevant consequence or unresolved limit are clear. A callback is optional and useful when its meaning has changed; no compulsory 'Return to...' line, route recap, universal lesson or future/climate section. An optional discussion question comes after the payoff. Do not stack several conclusions.
+Close once the supported answer and relevant consequence or unresolved limit are clear. End by returning to the opening object with its changed meaning (required, once); no route recap, universal lesson or future/climate section. An optional discussion question comes after the payoff. Do not stack several conclusions.
 
 ### Channel fit, version and runtime
 
