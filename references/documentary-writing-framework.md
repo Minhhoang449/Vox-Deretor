@@ -42,6 +42,6 @@ External files are reference material, not automatically loaded authoring author
 
 Use the existing story-card and research/decision records; do not duplicate state in a new mandatory packet. Record which treatment was chosen and why, first useful answer, what the consequential middle adds, cuts and read-aloud findings. The story /16 and retention /10 reviews still apply to the exact current speech with its fingerprint. A writing pass cannot prove factual completeness, actual listening or audience performance by checking fields.
 
-No change to the 12–20-minute/default-15 target: sustain it with useful supported substance, not padding or stretched audio. Same question does not require the same structure across channels: food practices, material/tool transformations, lived routines, shared conventions, Japanese evidence-led history and Vietnamese geographical adaptation retain their own grammar.
+Target 8–16 minutes: sustain it with useful supported substance, not padding or stretched audio. Same question does not require the same structure across channels: food practices, material/tool transformations, lived routines, shared conventions, Japanese evidence-led history and Vietnamese geographical adaptation retain their own grammar.
 
 After publication, connect observations to the exact released version and comparable age/traffic context. Unknown demand and unavailable analytics stay unknown. This framework is an editorial method, not a success percentage.

@@ -33,6 +33,6 @@ Use the live writing_contract for each format. Earlier benchmark videos do not r
 
 ## What the result means
 
-Keep DNA readiness, script quality, image/prompt quality, synthesized-audio review and finished-video performance as separate statuses. A banner is not an episode thumbnail. A short benchmark is not an approved 12–20 minute episode (default 15). No completed new episode means full-video quality remains unassessed.
+Keep DNA readiness, script quality, image/prompt quality, synthesized-audio review and finished-video performance as separate statuses. A banner is not an episode thumbnail. A short benchmark is not an approved 8–16 minute episode. No completed new episode means full-video quality remains unassessed.
 
 Conclude with specific dimensions improved, remaining limitations and next measurable question. To claim better audience performance requires comparable published analytics, traffic context and a sufficient sample; public views and self-assigned scores are insufficient.

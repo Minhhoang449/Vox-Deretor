@@ -34,7 +34,7 @@ Decision memory searched / prior decisions and what changed / related-channel ov
 - Distinctive treatment without copying a publisher; strongest observed comparison and its limits:
 - Possible first image/action and brief opening premise; useful first answer:
 - Linked passage contributions / strongest reveal / earned answer or limit:
-- Visual feasibility / useful runtime 12–20 minutes and why; no padding:
+- Visual feasibility / useful runtime 8–16 minutes and why; no padding:
 - Market observation classification: direct signal, adjacent signal, weak/unusable scan, or unknown; not a performance forecast:
 - Disposition / reason / next specific evidence check:
 - Memory event/reference; decision source (Agent recommendation / actual user decision / documented history):

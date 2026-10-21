@@ -28,7 +28,7 @@ Make the daily task and the curious practical question immediately understandabl
 
 Favor an original Chibi 2D person visibly attempting or solving the actual task, with a readable situational expression and one explanatory object or relationship. An artifact, map or diagram can lead when clearer. No generic shock face, invented event presented as history, modern-prop anachronism or fixed composition. Exact short localized text is optional when the image already communicates the question. Deliver 1280x720 and inspect phone readability.
 
-The opening confirms the same question and starts paying it with supported progress by roughly 0:30. Do not delay the useful answer for a joke or tease. Keep connected speech, natural transitions and one earned ending; no fixed chapters, joke quotas or interruption schedules. New episodes remain 12–20 minutes, default 15, without padding.
+The opening confirms the same question and starts paying it with supported progress by roughly 0:30. Do not delay the useful answer for a joke or tease. Keep connected speech, natural transitions and one earned ending; no fixed chapters, joke quotas or interruption schedules. New episodes remain 8–16 minutes, without padding.
 
 ## Topic exclusions and research
 

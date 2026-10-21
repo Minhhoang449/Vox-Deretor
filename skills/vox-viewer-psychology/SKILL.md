@@ -41,4 +41,4 @@ Use natural passages, not a fixed number of sections. Every major passage should
 
 ## Evidence limits
 
-Read `../../references/viewer-guidance.md` for the sourced research and limits. Laboratory curiosity findings, narrative-engagement studies, event-segmentation research and multimedia-learning experiments can inform hypotheses about attention and comprehension. They do not establish a retention formula for our 12–20-minute episodes. Only the episode's published audience analytics can describe its measured retention; editorial scores, TTS impressions and public view counts are not substitutes.
+Read `../../references/viewer-guidance.md` for the sourced research and limits. Laboratory curiosity findings, narrative-engagement studies, event-segmentation research and multimedia-learning experiments can inform hypotheses about attention and comprehension. They do not establish a retention formula for our 8–16 minutes episodes. Only the episode's published audience analytics can describe its measured retention; editorial scores, TTS impressions and public view counts are not substitutes.

@@ -8,7 +8,7 @@ Read this file before choosing the next topic (see topic-research.md). A video t
 
 | Check | Threshold | Action |
 |---|---|---|
-| CTR (impressions click-through rate) | below 2% | Revise title and/or thumbnail; re-check the title's main phrase with autocomplete |
+| CTR (impressions click-through rate) | clearly below the channel's own average | Revise title and/or thumbnail; re-check the title's main phrase with autocomplete |
 | Viewers remaining at 0:30 | below 50% (more than half lost) | Revise the opening: start from something the viewer already knows |
 | Average view duration | below 30% of video length | Review the middle: repeated ideas, hedging, missing open question |
 

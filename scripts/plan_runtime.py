@@ -5,7 +5,7 @@ Plan a main or explicitly selected short-main film from researched narration and
 This script writes the timing budget. Imagegen creates stills; FFmpeg/NVENC
 adds camera movement and transitions by default (Revideo optional).
 
-  python scripts/plan_runtime.py <episode_dir> --minutes 15
+  python scripts/plan_runtime.py <episode_dir> --minutes 12
   python scripts/plan_runtime.py <episode_dir> --profile main_short --minutes 9
 """
 import json
