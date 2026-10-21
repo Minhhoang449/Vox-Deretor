@@ -47,3 +47,9 @@ Inside the video, use maps, timelines, artifacts and cross-sections when they ex
 ## Tone — every image (user decision 22/10/2026)
 
 Every image, thumbnail and video still, is cute, humorous and slightly mischievous Chibi: exaggerated, readable expressions (cheeky grin, comic strain, wide-eyed surprise) and playful body language. The humour comes from the character's reaction to a real, sourced situation. Never mock real people, ethnic groups or cultures, and never add a detail the sources do not support just to make a joke.
+
+
+## Đúng thời đại và đúng nguồn (bài học bữa trưa, 22/10/2026)
+
+- Không vẽ đồ hiện đại: giày thể thao, jeans, khóa kéo, nhựa, chai thủy tinh, điện thoại, đồng hồ, kính, nĩa kim loại. Mặc định để chân trần hoặc dép đúng thời đại.
+- Mỗi món ăn, đồ vật phải có trong lời dẫn hoặc bảng nguồn và vẽ đúng loại: hạt emmer/lúa mạch (không vẽ bông lúa mì hay ổ bánh mì hiện đại); hạt トチ có vết sẹo lớn màu nhạt (không vẽ quả sồi hay hạt dẻ). Nguồn chỉ ghi "ngũ cốc, rau, cá" thì không vẽ hành.

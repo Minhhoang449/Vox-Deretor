@@ -18,9 +18,30 @@ Tất cả thumbnail là Chibi 2D dễ thương, hài hước, hơi tinh nghịc
 
 Chọn khung Chibi tinh nghịch nhất trong ảnh của tập (biểu cảm phóng đại, một chi tiết tinh nghịch). Dọc 9:16, mặt nhân vật nằm trong vùng an toàn ở giữa. Chữ tối đa 3 từ, không lặp tiêu đề Short và không lặp chữ thumbnail của video dài. Khung phải thể hiện đúng chủ đề của chính Short đó.
 
+
+### Bài học từ bài thử bữa trưa (22/10/2026)
+
+- **Chữ và mọi đồ vật/món ăn được vẽ phải có trong lời dẫn hoặc bảng nguồn.** Ví dụ "ONIONS" bị loại vì nguồn chỉ ghi ngũ cốc, rau và cá. Ghi các thứ được vẽ trong `depicted_items`; nếu có thêm nguồn ngoài lời dẫn thì ghi vào `source_table`.
+- **Cấm đồ hiện đại** trong prompt và ảnh: giày thể thao, quần jeans, khóa kéo, nhựa, chai thủy tinh, điện thoại, đồng hồ đeo tay, kính, nĩa kim loại.
+- **Vẽ đúng loại hiện vật/thức ăn:** hạt lúa mì emmer hoặc lúa mạch (không vẽ bông lúa mì hiện đại hay ổ bánh mì); hạt トチ (dẻ ngựa Nhật) có vết sẹo lớn màu nhạt (không vẽ quả sồi hay hạt dẻ).
+- Cảm xúc phải gắn với tình huống trong tập (đã kiểm tra từ trước).
+
+### Kiểm tra 160 px thật
+
+Khi candidate có `thumbnail_path`, `check_thumbnail_image` thu ảnh về 160×90 (Pillow, LANCZOS), lưu bản xem trước `<tên>.160px.png` cạnh ảnh gốc, rồi chặn nếu:
+- toàn ảnh quá nhạt (độ lệch chuẩn độ sáng < 32);
+- vùng chữ khai báo ở `text_position` có độ chênh sáng (phân vị 95 trừ phân vị 5) < 90.
+
+Khi không có `thumbnail_path`, vẫn bắt buộc `expression_readable_160px: true`.
+
+**Giới hạn:** phép kiểm tra cho cùng kết quả mỗi lần chạy, nhưng nó không đọc được chữ, không nhận ra khuôn mặt và không đánh giá được biểu cảm. Nó chỉ loại những ảnh rõ ràng quá phẳng để đọc ở 160 px, nên người vẫn phải xem bản xem trước. Kiểm tra từ trong chữ là heuristic:
+- Mọi từ không phải từ chức năng, số hay đơn vị đều được coi là danh từ cụ thể, và phải có trong lời dẫn hoặc `source_table` (khớp số ít/số nhiều đơn giản).
+- Chỉ áp dụng cho chữ Latin; chữ Nhật không được kiểm tra.
+- Chỉ chạy khi có lời dẫn.
+
 ## Trường candidate bắt buộc
 
-`thumbnail_text`, `text_source_line`, `character` (`{description, position: "center"}`), `emotion`, `character_count`, `subject_area_ratio`, `expression_readable_160px`, `main_colors`, `text_position`, `variants [{label: "A"|"B", thumbnail_text, emotion}]`, `details [{detail, source}]`, và `museum_images [{licence, licence_url}]` nếu có dùng.
+`thumbnail_text`, `text_source_line`, `character` (`{description, position: "center"}`), `emotion`, `character_count`, `subject_area_ratio`, `expression_readable_160px`, `main_colors`, `text_position`, `variants [{label: "A"|"B", thumbnail_text, emotion}]`, `thumbnail_path` (khuyến nghị; thay cho `expression_readable_160px`), `depicted_items`, `source_table` (tùy chọn), `details [{detail, source}]`, và `museum_images [{licence, licence_url}]` nếu có dùng.
 
 Chạy: `python scripts/thumbnail_visual_direction.py candidates.json --language en`.
 

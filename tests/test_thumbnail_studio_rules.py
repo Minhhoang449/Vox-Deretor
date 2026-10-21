@@ -119,7 +119,7 @@ class StudioThumbnailRules(unittest.TestCase):
 
     def test_text_must_be_in_narration_and_numbers_sourced(self):
         c = cand("1.2 KM WALK", AMARNA_TITLE, AMARNA_LINE)
-        self.assertEqual(t.check_thumbnail_candidate(c, "en", narration="Intro. " + AMARNA_LINE), [])
+        self.assertEqual(t.check_thumbnail_candidate(c, "en", narration="Intro: a long walk. " + AMARNA_LINE), [])
         self.assertTrue(any("narration" in e for e in t.check_thumbnail_candidate(c, "en", narration="Something else.")))
         c = cand("3 KM WALK", AMARNA_TITLE, AMARNA_LINE)
         self.assertTrue(any("number 3" in e for e in t.check_thumbnail_candidate(c, "en")))
@@ -150,6 +150,100 @@ class StudioThumbnailRules(unittest.TestCase):
             self.assertIn("No diagrams, arrows", prompt)
             self.assertNotIn("photorealistic", prompt.lower())
 
+
+
+REAL_SAMPLE = ("/home/box/agent-data/agents/a8e09c0d-b606-4b6b-98b8-471110404b5e/assets/"
+               "4edbb96f322fef532153129d7a87033868982dd2b7a5249180fc86dae1eeae02.jpg")
+
+
+class Thumbnail160pxAndSourcingRules(unittest.TestCase):
+    def setUp(self):
+        import tempfile
+        self.tmp = tempfile.mkdtemp()
+
+    def tearDown(self):
+        import shutil
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _img(self, name, draw):
+        from PIL import Image, ImageDraw
+        im = Image.new("RGB", (1280, 720), (200, 160, 90))
+        draw(ImageDraw.Draw(im))
+        path = os.path.join(self.tmp, name)
+        im.save(path)
+        return path
+
+    def _good(self, d):
+        d.rectangle((40, 40, 600, 300), fill=(20, 20, 20))
+        for i in range(6):
+            d.rectangle((70 + i * 85, 110, 120 + i * 85, 230), fill=(255, 255, 255))
+        d.ellipse((440, 200, 840, 640), fill=(250, 220, 190), outline=(0, 0, 0), width=12)
+
+    def test_good_image_passes_and_saves_preview(self):
+        path = self._img("good.png", self._good)
+        self.assertEqual(t.check_thumbnail_image(path, "top-left"), [])
+        from PIL import Image
+        with Image.open(os.path.join(self.tmp, "good.160px.png")) as p:
+            self.assertEqual(p.size, (160, 90))
+
+    def test_flat_image_fails(self):
+        path = self._img("flat.png", lambda d: d.rectangle((0, 0, 1280, 720), fill=(180, 170, 160)))
+        errs = t.check_thumbnail_image(path, "top-left")
+        self.assertTrue(any("low-contrast" in e for e in errs))
+        self.assertTrue(any("text area" in e for e in errs))
+
+    def test_text_area_without_contrast_fails(self):
+        path = self._img("t.png", self._good)
+        self.assertTrue(any("text area 'top-right'" in e for e in t.check_thumbnail_image(path, "top-right")))
+
+    def test_deterministic(self):
+        path = self._img("d.png", self._good)
+        self.assertEqual(t.check_thumbnail_image(path, "right"), t.check_thumbnail_image(path, "right"))
+
+    def test_unreadable_file(self):
+        bad = os.path.join(self.tmp, "x.jpg")
+        open(bad, "w").write("nope")
+        self.assertTrue(any("cannot be opened" in e for e in t.check_thumbnail_image(bad)))
+
+    def test_candidate_uses_image_instead_of_flag(self):
+        path = self._img("c.png", self._good)
+        c = cand("BOILING STONES", "T", "boiling stones", thumbnail_path=path, expression_readable_160px=None)
+        self.assertEqual(t.check_thumbnail_candidate(c, "en"), [])
+        c = cand("BOILING STONES", "T", "boiling stones", expression_readable_160px=None)
+        self.assertTrue(any("expression_readable_160px" in e for e in t.check_thumbnail_candidate(c, "en")))
+
+    @unittest.skipUnless(os.path.exists(REAL_SAMPLE), "studio sample image not on this machine")
+    def test_real_paid_in_grain_sample_passes(self):
+        import shutil
+        path = os.path.join(self.tmp, "sample.jpg")
+        shutil.copy(REAL_SAMPLE, path)
+        self.assertEqual(t.check_thumbnail_image(path, "top-left"), [])
+
+    def test_onions_rejected_when_sources_list_grain_vegetables_fish(self):
+        narration = "Workers were paid in grain, with vegetables and fish."
+        errs = t.check_thumbnail_candidate(cand("ONIONS?", "Lunch at Deir el-Medina", "with vegetables and fish."), "en",
+                                           narration=narration)
+        self.assertTrue(any("'onions'" in e for e in errs))
+        self.assertEqual(t.check_sourced_words("PAID IN GRAIN", narration), [])
+        self.assertEqual(t.check_sourced_words("ONIONS", narration, source_table=["onions: ostracon O.123"]), [])
+        self.assertEqual(t.check_sourced_words("苦すぎる木の実", "別の文"), [])  # Japanese is not checked
+
+    def test_depicted_items_must_be_sourced(self):
+        narration = "Workers were paid in emmer and barley kernels, with vegetables and fish."
+        c = cand("PAID IN GRAIN", "T", "paid in grain", depicted_items=["emmer kernels", "onion"])
+        errs = t.check_thumbnail_candidate(c, "en", narration=narration + " paid in grain")
+        self.assertTrue(any("'onion'" in e for e in errs))
+        self.assertFalse(any("emmer" in e for e in errs))
+
+    def test_prompt_forbids_modern_items(self):
+        c = cand("BOILING STONES", "T", "boiling stones", thumbnail_prompt="Chibi villager in the centre wearing sneakers")
+        self.assertTrue(any("sneakers" in e for e in t.check_thumbnail_candidate(c, "en")))
+        c["thumbnail_prompt"] = "Chibi villager in the centre, barefoot, no sneakers or plastic"
+        self.assertEqual(t.check_thumbnail_candidate(c, "en"), [])
+        p = t.thumbnail_visual_prompt({**t.THUMBNAIL_PROFILE, "language": "en"})
+        self.assertIn("no modern items", p)
+        self.assertIn("emmer or barley", p)
+        self.assertIn("large pale scar", p)
 
 if __name__ == "__main__":
     unittest.main()

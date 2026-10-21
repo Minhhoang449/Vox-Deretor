@@ -30,3 +30,10 @@ Choose framing for the information needed: orient the place, expose a hidden rel
 ## Tone — every image (user decision 22/10/2026)
 
 Every image, thumbnail and video still, is cute, humorous and slightly mischievous Chibi: exaggerated, readable expressions (cheeky grin, comic strain, wide-eyed surprise) and playful body language. The humour comes from the character's reaction to a real, sourced situation. Never mock real people, ethnic groups or cultures, and never add a detail the sources do not support just to make a joke.
+
+
+## Thumbnail: 160 px and sourcing checks
+
+- Give each candidate a `thumbnail_path` once the image exists. The checker then saves `<name>.160px.png` and blocks flat images or a low-contrast text area. Always look at the preview yourself, because the checker can't judge the expression.
+- List every food or object you draw in `depicted_items`. Each must be named in the narration or `source_table`, and the thumbnail text words must be too ("ONIONS" fails when the sources list only grain, vegetables and fish).
+- Prompts must not ask for modern items such as sneakers. Draw the right kind of each artifact: emmer or barley kernels, and a tochi nut with its large pale scar.

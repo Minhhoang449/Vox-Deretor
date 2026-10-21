@@ -76,6 +76,8 @@ def thumbnail_visual_prompt(profile):
         f"Render at most {profile['max_text_lines']} lines of the supplied exact phrase, preserving all {profile['language']} glyphs and diacritics.",
         f"Keep essential content {profile['safe_margin_percent']}% inside the edges. Leave the bottom-right 15% width by 16% height clear for the YouTube duration badge.",
         "No extra lettering, channel name, logo, watermark, torn-paper collage or fake archival documents.",
+        MODERN_ITEMS_RULE,
+        SOURCED_OBJECTS_RULE,
     ]
     identity = profile.get('channel_identity') or {}
     for key in ("palette", "setting", "layout"):
@@ -93,6 +95,107 @@ def thumbnail_visual_prompt(profile):
             'Do not render these guidance notes as extra lettering.',
         ])
     return "\n".join(lines)
+
+
+MODERN_ITEMS_RULE = ("Period-accurate only: no modern items such as sneakers, trainers, jeans, zips, "
+                     "plastic, glass bottles, phones, wristwatches, glasses, metal cutlery or printed fabric.")
+SOURCED_OBJECTS_RULE = ("Draw every food and object as the right kind named in the sources (e.g. emmer or barley "
+                        "kernels, not wheat ears or bread loaves; a tochi horse-chestnut with its large pale scar, "
+                        "not an acorn or chestnut). Draw nothing the narration or source table does not name.")
+MODERN_WORDS = re.compile(r"\b(sneakers?|trainers?|jeans|zips?|zippers?|plastic|glass bottles?|phones?|smartphones?|"
+                          r"wristwatch(?:es)?|watch(?:es)?|eyeglasses|glasses|sunglasses|forks?|t-shirts?|baseball caps?|"
+                          r"tin cans?|cans?|bicycles?|cars?|electric|lightbulbs?)\b", re.I)
+NEGATION = re.compile(r"\b(no|without|never|not|avoid|forbid|forbidden)\b[^.;]*", re.I)
+UNIT_WORDS = {"km", "m", "cm", "kg", "g", "l", "ml", "hour", "hours", "day", "days", "min", "minutes", "year", "years",
+              "every", "all", "each", "only", "away", "here", "there", "nothing", "something", "too", "very", "much",
+              "many", "more", "less", "free", "monthly", "daily", "carried", "doing"}
+
+
+def _stem(word):
+    w = word.lower().strip(".,?!'’")
+    for suf in ("ies", "es", "s"):
+        if len(w) > 3 and w.endswith(suf):
+            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    return w
+
+
+def check_sourced_words(text, narration, source_table=None):
+    """Lunch-test lesson: every content word of the thumbnail text (nouns such as ONIONS)
+    must appear in the narration or source table. Heuristic: there is no part-of-speech
+    tagger, so every non-stopword, non-number word is treated as a possible concrete noun,
+    with a small allowlist of units and common non-nouns. Latin-script text only."""
+    if not narration or not text or CJK.search(text):
+        return []
+    support = " ".join([narration] + [str(x) for x in (source_table or [])])
+    supported = {_stem(w) for w in re.findall(r"[\w'’]+", support.lower())}
+    missing = []
+    for w in _words(text):
+        w = w.strip(".?!")
+        if not w or w in STOPWORDS or w in UNIT_WORDS or re.fullmatch(r"[\d.,%]+", w):
+            continue
+        if _stem(w) not in supported:
+            missing.append(w)
+    return [f"thumbnail_text word '{w}' is not in the narration or source table; draw and write only what the sources name."
+            for w in missing]
+
+
+def check_depicted_items(candidate, narration):
+    """Every listed depicted food/object must be named in the narration or source_table,
+    and the prompt may not ask for modern items."""
+    errors = []
+    support = " ".join([narration or ""] + [str(x) for x in (candidate.get("source_table") or [])]).lower()
+    supported = {_stem(w) for w in re.findall(r"[\w'’-]+", support)}
+    items = candidate.get("depicted_items")
+    if items is not None and (narration or candidate.get("source_table")):
+        for item in items if isinstance(items, list) else [items]:
+            words = [_stem(w) for w in re.findall(r"[\w'’-]+", str(item).lower()) if w not in STOPWORDS]
+            if not words or not all(w in supported for w in words):
+                errors.append(f"depicted item '{item}' is not in the narration or source table.")
+    prompt = " ".join(str(candidate.get(k, "")) for k in ("thumbnail_prompt", "thumbnail_concept"))
+    for m in MODERN_WORDS.finditer(NEGATION.sub(" ", prompt)):
+        errors.append(f"prompt asks for a modern item ('{m.group(0)}'); keep everything period-accurate.")
+    return errors
+
+
+def check_thumbnail_image(path, text_position=None, preview_path=None):
+    """Real 160 px check. Downsizes to 160x90 (Pillow, LANCZOS), saves the preview next to
+    the image as <name>.160px.png, and applies two deterministic heuristics:
+      - whole image: luminance standard deviation >= 32 (not washed out / low contrast);
+      - declared text area: luminance spread (95th minus 5th percentile) >= 90, so
+        lettering can separate from its background.
+    Limits: this cannot read the text, recognise a face or judge an expression; it only
+    rejects images that are clearly too flat to read at 160 px. A human still looks at
+    the preview."""
+    import os
+    from PIL import Image, ImageStat
+    errors = []
+    try:
+        with Image.open(path) as im:
+            small = im.convert("RGB").resize((160, 90), Image.LANCZOS)
+    except (OSError, ValueError) as exc:
+        return [f"thumbnail image cannot be opened: {exc}"]
+    root, _ = os.path.splitext(path)
+    preview_path = preview_path or root + ".160px.png"
+    small.save(preview_path)
+    gray = small.convert("L")
+    if ImageStat.Stat(gray).stddev[0] < 32:
+        errors.append("thumbnail is low-contrast overall at 160 px (luminance stddev < 32).")
+    box = TEXT_REGIONS.get(str(text_position or "").strip().lower().replace(" ", "-").replace("_", "-"))
+    if box:
+        hist = sorted(gray.crop(box).getdata())
+        lo, hi = hist[int(len(hist) * 0.05)], hist[int(len(hist) * 0.95) - 1]
+        if hi - lo < 90:
+            errors.append(f"text area '{text_position}' has too little contrast at 160 px (spread {hi - lo} < 90).")
+    return errors
+
+
+# 160x90 boxes (left, top, right, bottom) for declared text positions.
+TEXT_REGIONS = {
+    "top-left": (0, 0, 80, 45), "top": (0, 0, 160, 45), "top-center": (40, 0, 120, 45), "top-centre": (40, 0, 120, 45),
+    "top-right": (80, 0, 160, 45), "left": (0, 0, 80, 90), "right": (80, 0, 160, 90),
+    "center": (40, 22, 120, 68), "centre": (40, 22, 120, 68), "bottom-left": (0, 45, 80, 90),
+    "bottom": (0, 45, 160, 90), "bottom-center": (40, 45, 120, 90), "bottom-centre": (40, 45, 120, 90),
+}
 
 
 QUESTION_WORDS = re.compile(r"^(how|why|what|which|who|where|when|did|does|do|is|are|can|could)\b|^(vì sao|tại sao|sao|thế nào|làm sao)|^¿|なぜ|どう|何|か[?？]?$", re.I)
@@ -172,6 +275,8 @@ def check_thumbnail_candidate(candidate, language, title=None, narration=None):
             if not (isinstance(d, dict) and str(d.get("detail", "")).strip() and str(d.get("source", "")).strip()):
                 errors.append(f"details[{i}] needs both detail and source.")
     errors.extend(check_museum_images(candidate.get("museum_images") or []))
+    errors.extend(check_sourced_words(candidate.get("thumbnail_text"), narration, candidate.get("source_table")))
+    errors.extend(check_depicted_items(candidate, narration))
     errors.extend(check_layout_metadata(candidate))
     errors.extend(check_variants(candidate, language, title or candidate.get("title", "")))
     return errors
@@ -199,7 +304,9 @@ def check_layout_metadata(candidate):
         errors.append("subject_area_ratio is missing; the character must fill about 40-60% of the frame.")
     elif ratio is None or not lo <= ratio <= hi:
         errors.append(f"subject_area_ratio {candidate.get('subject_area_ratio')!r} is outside {lo:.2f}-{hi:.2f}.")
-    if candidate.get("expression_readable_160px") is not True:
+    if candidate.get("thumbnail_path"):
+        errors.extend(check_thumbnail_image(candidate["thumbnail_path"], candidate.get("text_position")))
+    elif candidate.get("expression_readable_160px") is not True:
         errors.append("expression_readable_160px must be true; check the exaggerated expression at 160 px.")
     colors = candidate.get("main_colors")
     if not isinstance(colors, list) or not colors or not all(str(c).strip() for c in colors):
