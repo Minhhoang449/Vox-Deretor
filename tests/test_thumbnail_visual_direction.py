@@ -51,6 +51,13 @@ def packaging_doc(channel_id, phrase):
                 "text_source_line": phrase,
                 "thumbnail_file": "thumbnails/map-led.png",
                 "thumbnail_text": phrase,
+                "character_count": 1,
+                "subject_area_ratio": 0.5,
+                "expression_readable_160px": True,
+                "main_colors": ["navy", "white", "orange"],
+                "text_position": "top-left",
+                "variants": [{"label": "A", "thumbnail_text": phrase, "emotion": "worried"},
+                             {"label": "B", "thumbnail_text": phrase, "emotion": "gleeful"}],
             }],
         },
     }
@@ -146,7 +153,8 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
 
     def test_export_rejects_studio_rule_violations(self):
         cases = [
-            ({"thumbnail_text": "COULD WE SAVE TITANIC?", "text_source_line": "COULD WE SAVE TITANIC?"}, "question"),
+            ({"variants": []}, "variants"),
+            ({"text_position": "bottom-right"}, "bottom-right"),
             ({"emotion": ""}, "needs emotion"),
             ({"text_source_line": ""}, "text_source_line"),
             ({"thumbnail_prompt": "A route map with arrows to the iceberg."}, "diagram"),

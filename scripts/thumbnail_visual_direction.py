@@ -2,7 +2,7 @@
 
 Studio rules (user decision 2026-10-21): every channel uses Chibi 2D; channels are
 told apart by palette, setting and layout; one emotional character sits in the
-centre; text is a short surprising true claim that does not repeat the title;
+centre; text is a short number or everyday question the video answers, not repeating the title;
 no diagrams/arrows on thumbnails; every drawn detail has a source; museum images
 need a recorded licence.
 """
@@ -25,6 +25,12 @@ THUMBNAIL_PROFILE = {
     "max_text_lines": 2,
     "max_text_words": 3,
     "max_text_chars_cjk": 8,
+    "subject_area_ratio": (0.40, 0.60),
+    "max_main_colors": 3,
+    "forbidden_text_positions": ("bottom-right", "bottom_right", "lower-right", "lower_right"),
+    "variant_labels": ("A", "B"),
+    "ctr_review_hours": 48,
+    "ctr_rule": "clearly below the channel's own average CTR at 48h -> change thumbnail and title first; replace with a measured number after ~5 videos in references/post-publish-tracking.md",
     "minimum_text_height_pixels": 64,
 }
 
@@ -41,7 +47,7 @@ NO_DIAGRAM_RULE = "No diagrams, arrows, route maps or cutaways on the thumbnail;
 DIAGRAM_WORDS = re.compile(r"\b(diagram|diagrams|arrow|arrows|cutaway|cross-section|schematic|route map|flowchart|infographic)\b|矢印|図解|断面図|sơ đồ|mũi tên", re.I)
 HUMAN_WORDS = re.compile(r"\b(person|people|man|woman|child|worker|villager|maker|farmer|hunter|cook|baker|citizen|trader|priest|scribe|potter|fisher|mother|father|elder|herder|builder|girl|boy|character|he|she|lookout|sailor|soldier|guard|merchant|monk|shepherd|carrier|labourer|laborer|weaver|smith)\b|人|子ども|男|女|người|nhân vật", re.I)
 CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
-STOPWORDS = {"trên", "dưới", "của", "và", "là", "có", "cho", "với", "những", "các", "một", "ở", "trong", "bằng", "a", "an", "the", "of", "to", "in", "on", "for", "and", "or", "is", "it", "did", "do", "how", "why", "what"}
+STOPWORDS = {"trên", "dưới", "của", "và", "là", "có", "cho", "với", "những", "các", "một", "ở", "trong", "bằng", "a", "an", "the", "of", "to", "in", "on", "for", "and", "or", "is", "it", "did", "do", "how", "why", "what", "no", "not", "with", "at", "by", "from", "he", "she", "they", "we", "you", "i", "was", "were", "are", "be", "this", "that", "his", "her", "their", "does", "so", "up"}
 JA_PARTICLES = set("のはをがにでとも")
 CJK_LANGS = {"ja", "zh", "ko"}
 
@@ -102,14 +108,13 @@ def _words(text):
 
 
 def check_thumbnail_text(text, title, language):
-    """Hard checks: <=3 words (<=8 chars CJK), a statement not a question, and it must not
-    repeat any content word of the title."""
+    """Hard checks: <=3 words (<=8 chars Japanese) and it must not repeat any content word
+    of the title. Everyday questions ("NO WELL?!") are allowed; short function words such
+    as "no" do not count as repetition."""
     errors = []
     text = (text or "").strip()
     if not text:
-        return ["thumbnail_text is empty; the studio rule needs a short surprising true claim."]
-    if text.endswith(("?", "？")) or QUESTION_WORDS.search(text):
-        errors.append("thumbnail_text is a question; use a surprising true claim from the script.")
+        return ["thumbnail_text is empty; the studio rule needs a short number or everyday question the video answers."]
     if language in CJK_LANGS or CJK.search(text):
         chars = re.sub(r"[\s「」『』、。！？!?・…]", "", text)
         if len(chars) > THUMBNAIL_PROFILE["max_text_chars_cjk"]:
@@ -167,6 +172,73 @@ def check_thumbnail_candidate(candidate, language, title=None, narration=None):
             if not (isinstance(d, dict) and str(d.get("detail", "")).strip() and str(d.get("source", "")).strip()):
                 errors.append(f"details[{i}] needs both detail and source.")
     errors.extend(check_museum_images(candidate.get("museum_images") or []))
+    errors.extend(check_layout_metadata(candidate))
+    errors.extend(check_variants(candidate, language, title or candidate.get("title", "")))
+    return errors
+
+
+def _num(value):
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def check_layout_metadata(candidate):
+    """Team rules 1 and 5: one centred Chibi at 40-60% of frame, <=3 main colours,
+    no text in the bottom-right (duration overlay)."""
+    errors = []
+    count = candidate.get("character_count")
+    if count is None:
+        errors.append("character_count is missing; rule 1 needs exactly one Chibi character.")
+    elif count != 1 or isinstance(count, bool):
+        errors.append(f"character_count is {count!r}; rule 1 needs exactly one Chibi character.")
+    lo, hi = THUMBNAIL_PROFILE["subject_area_ratio"]
+    ratio = _num(candidate.get("subject_area_ratio"))
+    if candidate.get("subject_area_ratio") is None:
+        errors.append("subject_area_ratio is missing; the character must fill about 40-60% of the frame.")
+    elif ratio is None or not lo <= ratio <= hi:
+        errors.append(f"subject_area_ratio {candidate.get('subject_area_ratio')!r} is outside {lo:.2f}-{hi:.2f}.")
+    if candidate.get("expression_readable_160px") is not True:
+        errors.append("expression_readable_160px must be true; check the exaggerated expression at 160 px.")
+    colors = candidate.get("main_colors")
+    if not isinstance(colors, list) or not colors or not all(str(c).strip() for c in colors):
+        errors.append("main_colors is missing or invalid; list 1-3 main colours.")
+    elif len(colors) > THUMBNAIL_PROFILE["max_main_colors"]:
+        errors.append(f"main_colors has {len(colors)} colours; max {THUMBNAIL_PROFILE['max_main_colors']}.")
+    pos = str(candidate.get("text_position") or "").strip().lower().replace(" ", "-")
+    if (candidate.get("thumbnail_text") or "").strip():
+        if not pos:
+            errors.append("text_position is missing; text may not sit bottom-right (duration overlay).")
+        elif pos in THUMBNAIL_PROFILE["forbidden_text_positions"]:
+            errors.append("text_position is bottom-right; the duration overlay covers it.")
+    return errors
+
+
+def check_variants(candidate, language, title):
+    """Team rule 6: A and B variants that differ only in text or expression; both pass the text rules."""
+    variants = candidate.get("variants")
+    if not isinstance(variants, list) or len(variants) != 2:
+        return ["variants must list exactly two thumbnails, A and B, for the 48-hour CTR comparison."]
+    errors = []
+    labels = [str((v or {}).get("label", "")).strip().upper() if isinstance(v, dict) else "" for v in variants]
+    if sorted(labels) != list(THUMBNAIL_PROFILE["variant_labels"]):
+        errors.append(f"variants labels are {labels}; use A and B.")
+    if not all(isinstance(v, dict) for v in variants):
+        return errors + ["each variant must be an object."]
+    a, b = variants
+    for v, lab in zip(variants, labels):
+        if not (v.get("thumbnail_text") or "").strip():
+            continue  # text-free variant; the candidate's thumbnail_text_reason covers it
+        for e in check_thumbnail_text(v.get("thumbnail_text"), title, language):
+            errors.append(f"variant {lab or '?'}: {e}")
+    differs = [k for k in ("thumbnail_text", "emotion") if (a.get(k) or "") != (b.get(k) or "")]
+    if not differs:
+        errors.append("variants A and B are identical; change the text or the expression.")
+    other = (set(a) | set(b)) - {"label", "thumbnail_text", "emotion", "text_source_line", "text_position"}
+    changed = sorted(k for k in other if a.get(k) != b.get(k))
+    if changed:
+        errors.append("variants may differ only in text or expression; also changed: " + ", ".join(changed) + ".")
     return errors
 
 

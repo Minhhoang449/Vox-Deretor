@@ -222,7 +222,7 @@
           "Supported wild and cultivated forms beside a person selecting or harvesting; keep scale truthful.",
           "People preparing or sharing a meal in a researched setting; make the featured food practice legible."
         ],
-        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A concrete number or everyday question the video answers, quoted from the script (record text_source_line); it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -462,7 +462,7 @@
           "A person attempting the practical task with a supported earlier and later tool; no invented superiority.",
           "One emotional Chibi person centred, reacting to the surprising supported fact of the episode."
         ],
-        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A concrete number or everyday question the video answers, quoted from the script (record text_source_line); it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -700,7 +700,7 @@
           "A person interacting with the period-specific object that makes the daily experience understandable.",
           "A supported difference in homes, clothing or routine between bounded groups; make social position clear."
         ],
-        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A concrete number or everyday question the video answers, quoted from the script (record text_source_line); it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -936,7 +936,7 @@
           "A supported change in a rule and what people can do under it; use a simple comparison rather than invented conflict.",
           "One emotional Chibi person centred, reacting to the surprising supported fact of the episode."
         ],
-        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A concrete number or everyday question the video answers, quoted from the script (record text_source_line); it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -1209,7 +1209,7 @@
           "中央の人物が食べ物や素材の変化に反応する場面。",
           "中央の人物が遺物を手に取り、読み取れる感情を見せる場面（損傷・推定部分はそのとおりに描く）。"
         ],
-        "text_role": "最大8文字。台本にある意外な事実の短い断定（text_source_line に該当行を記録）。物についての疑問文にしない。タイトルの言葉を繰り返さない。文字なしの場合は thumbnail_text を空文字にし、thumbnail_text_reason に理由を記録する。",
+        "text_role": "最大8文字。動画が答える具体的な数字か日常の疑問（text_source_line に該当行を記録）。タイトルの言葉を繰り返さない。文字なしの場合は thumbnail_text を空文字にし、thumbnail_text_reason に理由を記録する。",
         "opening_contract": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。 Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "証拠の範囲を越えて人類全体の行動や起源を断定すること。",
@@ -1436,7 +1436,7 @@
           "Ngôi nhà, trang phục hoặc phương tiện gắn với một hành động thích nghi có bằng chứng.",
           "Một nhân vật Chibi ở giữa khung, biểu cảm rõ, phản ứng với sự thật bất ngờ có nguồn của tập."
         ],
-        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A concrete number or everyday question the video answers, quoted from the script (record text_source_line); it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",

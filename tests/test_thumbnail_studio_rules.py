@@ -7,6 +7,10 @@ def cand(text, title, source, character="a villager", emotion="strained", **kw):
     c = {"thumbnail_text": text, "title": title, "text_source_line": source,
          "character": character, "emotion": emotion,
          "thumbnail_prompt": "One Chibi character in the centre, no diagrams or arrows"}
+    c.update({"character_count": 1, "subject_area_ratio": 0.5, "expression_readable_160px": True,
+              "main_colors": ["ochre", "blue", "cream"], "text_position": "top-left",
+              "variants": [{"label": "A", "thumbnail_text": text, "emotion": emotion},
+                           {"label": "B", "thumbnail_text": text, "emotion": "gleeful"}]})
     c.update(kw)
     return c
 
@@ -20,8 +24,10 @@ CHANNEL_CASES = [
      "栃の実はそのままでは苦すぎる木の実だった。", True),
     ("battlefield-bearings", "en", AMARNA_TITLE, "1.2 KM FOR WATER", AMARNA_LINE, False),  # 4 words + repeats "water"
     ("battlefield-bearings", "en", AMARNA_TITLE, "NO WELL HERE", "There was no well here.", False),
-    ("terra-rewired", "en", "How Did Ancient People Make Rope?", "HE DOES NOTHING?",
-     "He does nothing for an hour while the fibres soak.", False),
+    ("terra-rewired", "en", "How Did Ancient People Make Rope?", "DOING NOTHING?",
+     "He is doing nothing for an hour while the fibres soak.", True),
+    ("battlefield-bearings", "en", AMARNA_TITLE, "NO WELL?!", "There was no well.", False),  # repeats "well"
+    ("battlefield-bearings", "en", "How Did Amarna Workers Get Water?", "NO WELL?!", "There was no well.", True),
     ("last-safe-minute", "en", "How Did Ice Age Hunters Cook Without Pots?", "BOILING WITH STONES",
      "They were boiling with stones dropped into hide bags.", True),
     ("status-and-systems", "en", "Why Did Ancient Romans Queue for Bread?", "FREE GRAIN, MONTHLY",
@@ -52,9 +58,39 @@ class StudioThumbnailRules(unittest.TestCase):
         self.assertIn("slightly mischievous", p)
         self.assertIn("Never mock real people", p)
 
-    def test_rope_question_reason(self):
-        errs = t.check_thumbnail_candidate(cand("HE DOES NOTHING?", "Rope", "He does nothing."), "en")
-        self.assertTrue(any("question" in e for e in errs))
+    def test_everyday_questions_allowed_and_no_is_not_a_repeat(self):
+        self.assertEqual(t.check_thumbnail_text("DOING NOTHING?", "How Did Ancient People Make Rope?", "en"), [])
+        self.assertEqual(t.check_thumbnail_text("NO WELL?!", "No Water Nearby", "en"), [])
+
+    def test_japanese_limit_is_8(self):
+        self.assertEqual(t.THUMBNAIL_PROFILE["max_text_chars_cjk"], 8)
+        self.assertEqual(t.check_thumbnail_text("あいうえおかきく", "題", "ja"), [])
+        self.assertTrue(any("9 characters" in e for e in t.check_thumbnail_text("あいうえおかきくけ", "題", "ja")))
+
+    def test_rule1_character_count_and_area(self):
+        base = lambda **kw: t.check_thumbnail_candidate(cand("BOILING STONES", "T", "boiling stones", **kw), "en")
+        self.assertTrue(any("character_count" in e for e in base(character_count=2)))
+        self.assertTrue(any("character_count" in e for e in base(character_count=None)))
+        self.assertTrue(any("subject_area_ratio" in e for e in base(subject_area_ratio=0.3)))
+        self.assertTrue(any("subject_area_ratio" in e for e in base(subject_area_ratio="big")))
+        self.assertTrue(any("160" in e for e in base(expression_readable_160px=False)))
+
+    def test_rule5_colours_and_text_position(self):
+        base = lambda **kw: t.check_thumbnail_candidate(cand("BOILING STONES", "T", "boiling stones", **kw), "en")
+        self.assertTrue(any("4 colours" in e for e in base(main_colors=["a", "b", "c", "d"])))
+        self.assertTrue(any("main_colors" in e for e in base(main_colors=None)))
+        self.assertTrue(any("bottom-right" in e for e in base(text_position="bottom right")))
+        self.assertTrue(any("text_position" in e for e in base(text_position="")))
+
+    def test_rule6_variants(self):
+        base = lambda v: t.check_thumbnail_candidate(cand("BOILING STONES", "T", "boiling stones", variants=v), "en")
+        self.assertTrue(any("exactly two" in e for e in base(None)))
+        self.assertTrue(any("exactly two" in e for e in base([{"label": "A"}])))
+        same = {"label": "A", "thumbnail_text": "X Y", "emotion": "glee"}
+        self.assertTrue(any("identical" in e for e in base([same, {**same, "label": "B"}])))
+        self.assertTrue(any("A and B" in e for e in base([same, {**same, "label": "C", "emotion": "sly"}])))
+        self.assertTrue(any("only in text" in e for e in base([same, {**same, "label": "B", "emotion": "sly", "background": "red"}])))
+        self.assertTrue(any("variant B" in e for e in base([same, {**same, "label": "B", "thumbnail_text": "ONE TWO THREE FOUR"}])))
 
     def test_word_and_char_limits(self):
         self.assertTrue(any("words" in e for e in t.check_thumbnail_text("FOUR WORDS RIGHT HERE", "X", "en")))

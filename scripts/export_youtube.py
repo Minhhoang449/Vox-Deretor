@@ -223,7 +223,7 @@ def run(project_dir):
         "All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout.",
         "Vary candidate visual hypotheses, subject scale, camera angle, action or focal scene enough to test a different idea, not merely a minor color or expression change.",
         "Keep curiosity accurate: do not imply a counterfactual outcome is certain or promise what the episode does not deliver.",
-        "Lettering: at most 3 words (about 8 Japanese characters), a surprising true claim from the script that does not repeat the title; never a question about an object. A text-free candidate needs an explicit editorial reason.",
+        "Lettering: at most 3 words (about 8 Japanese characters), a concrete number or everyday question the video answers, quoted from the script, that does not repeat the title. A text-free candidate needs an explicit editorial reason.",
         "When thumbnail_text is supplied, render it exactly in the channel language; do not paraphrase, translate, or add lettering.",
         "Use the Codex imagegen skill to generate each image and save it at the path below.",
         "",

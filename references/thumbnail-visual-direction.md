@@ -2,18 +2,25 @@
 
 Revision: `studio-chibi-thumbnail-v4`, cập nhật 22/10/2026 theo quyết định của người dùng ngày 21/10/2026. Kiểm tra cứng nằm ở `scripts/thumbnail_visual_direction.py` (`check_thumbnail_candidate`). Hướng biên tập: [everyday ancient curiosity](everyday-ancient-curiosity.md).
 
-## Luật bắt buộc
+## Luật bắt buộc (bộ nguyên tắc chung cho cả 6 kênh, chốt 22/10/2026)
 
-1. **Chibi 2D cho cả 6 kênh.** Kênh phân biệt nhau bằng bảng màu, bối cảnh và bố cục thumbnail lấy từ `packaging_direction.thumbnail_identity` trong `config/channels.json`, không bằng phong cách vẽ khác. Không dùng tranh tường, washi, bản vẽ kỹ thuật hay ảnh hiện thực cho thumbnail mới.
-2. **Một nhân vật có cảm xúc ở giữa khung.** Nhân vật Chibi đang làm hoặc phản ứng với đúng việc có nguồn trong tập. Thumbnail không bao giờ chỉ là đồ vật, bản đồ hay sơ đồ. Nhân vật không được kéo theo chi tiết không có nguồn.
-3. **Chữ ≤3 từ (số và đơn vị tính 2 từ; tiếng Nhật ≤8 ký tự),** là một khẳng định thật gây bất ngờ lấy từ kịch bản, ghi `text_source_line` (câu lời dẫn chứa nó; con số phải có trong câu đó). Không phải câu hỏi về đồ vật. Không lặp bất kỳ từ nội dung nào của tiêu đề (tiếng Nhật: cụm 2 ký tự kanji/kana).
-4. **Không vẽ chi tiết nguồn không hỗ trợ.** Mỗi chi tiết nhìn thấy được ghi trong `details` kèm `source`. Phần hiện vật hỏng hoặc chỉ là diễn giải phải vẽ đúng là hỏng/diễn giải. Lỗi cũ không lặp lại: kéo đá, khăn nemes trên người lao động, giá bình trông như miệng giếng, con lừa chỉ là khả năng.
-5. **Không sơ đồ, mũi tên, bản đồ tuyến hay mặt cắt trên thumbnail.** Sơ đồ chỉ dùng cho một cơ chế cốt lõi, trong video.
-6. **Ảnh bảo tàng** chỉ được dùng khi có trường `licence` (Open Access đã kiểm tra) và `licence_url`/`source_url`.
+Tất cả thumbnail là Chibi 2D dễ thương, hài hước, hơi tinh nghịch. Kênh phân biệt nhau bằng bảng màu, bối cảnh và bố cục trong `packaging_direction.thumbnail_identity` (`config/channels.json`).
+
+1. **Một nhân vật Chibi ở giữa khung, chiếm khoảng 40–60% ảnh.** Nét mặt phóng đại, tinh nghịch, đọc ra cảm xúc ngay cả khi ảnh thu nhỏ còn 160 px. *(Chặn tự động: `character_count == 1`, `subject_area_ratio` 0.40–0.60, `character.position = center`, `expression_readable_160px: true`.)*
+2. **Một đồ vật chính, đúng hiện vật trong video.** Nhân vật làm một hành động với đồ vật, không chỉ đứng cạnh.
+3. **Chữ tối đa 3 từ (tiếng Nhật tối đa 8 ký tự),** không lặp cụm nào của tiêu đề, chỉ bổ sung cho tiêu đề. Từ chức năng ngắn (no, the, of…) không tính là lặp. Câu hỏi đời thường được phép. *(Chặn tự động.)*
+4. **Chỉ hứa điều video trả lời,** thường là con số hoặc câu hỏi chính của video; ưu tiên số cụ thể hoặc câu hỏi đời thường ("1.2 KM AWAY", 「苦すぎる木の実」, "NO WELL?!"). Ghi `text_source_line`; con số phải có trong câu đó.
+5. **Tối đa 3 màu chính, nền đơn giản,** nhân vật nổi trên nền. Không đặt chữ ở góc dưới bên phải (nhãn thời lượng che). *(Chặn tự động: `main_colors` 1–3 màu, `text_position` khác bottom-right.)*
+6. **Mỗi video có 2 phương án A và B,** chỉ khác chữ hoặc biểu cảm, cả hai cùng qua luật 3. So CTR ở mốc 48 giờ; bản cao hơn rõ thì giữ. Nếu CTR sau 48 giờ thấp rõ so với CTR trung bình của chính kênh đó, đổi thumbnail và tiêu đề trước, chưa sửa nội dung. Ngưỡng này sẽ được thay bằng con số đo được sau khoảng 5 video, ghi trong [post-publish-tracking.md](post-publish-tracking.md); mọi lần thử A/B cũng ghi vào file đó. *(Chặn tự động: `variants` đúng 2 mục nhãn A/B.)*
+7. **Không chế giễu người thật, không thêm chi tiết nguồn không có.** Mỗi chi tiết nhìn thấy được ghi trong `details` kèm `source`. Không sơ đồ, mũi tên, bản đồ tuyến hay mặt cắt trên thumbnail. Ảnh bảo tàng chỉ dùng khi có `licence` (Open Access) và `licence_url`/`source_url`.
+
+### Ảnh bìa Shorts
+
+Chọn khung Chibi tinh nghịch nhất trong ảnh của tập (biểu cảm phóng đại, một chi tiết tinh nghịch). Dọc 9:16, mặt nhân vật nằm trong vùng an toàn ở giữa. Chữ tối đa 3 từ, không lặp tiêu đề Short và không lặp chữ thumbnail của video dài. Khung phải thể hiện đúng chủ đề của chính Short đó.
 
 ## Trường candidate bắt buộc
 
-`thumbnail_text`, `text_source_line`, `character` (mô tả hoặc `{description, position: "center"}`), `emotion`, `details [{detail, source}]`, và `museum_images [{licence, licence_url}]` nếu có dùng.
+`thumbnail_text`, `text_source_line`, `character` (`{description, position: "center"}`), `emotion`, `character_count`, `subject_area_ratio`, `expression_readable_160px`, `main_colors`, `text_position`, `variants [{label: "A"|"B", thumbnail_text, emotion}]`, `details [{detail, source}]`, và `museum_images [{licence, licence_url}]` nếu có dùng.
 
 Chạy: `python scripts/thumbnail_visual_direction.py candidates.json --language en`.
 

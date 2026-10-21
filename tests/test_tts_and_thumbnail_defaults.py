@@ -141,7 +141,11 @@ def packaging_doc(channel_id, phrase):
                             'thumbnail_concept': 'A practical obstacle.',
                             'thumbnail_prompt': 'One cheeky Chibi villager in the centre hauls a heavy jar.',
                             'character': 'a villager', 'emotion': 'comic strain', 'text_source_line': phrase,
-                            'thumbnail_file': 'thumbnails/scene.png', 'thumbnail_text': phrase}],
+                            'thumbnail_file': 'thumbnails/scene.png', 'thumbnail_text': phrase,
+                            'character_count': 1, 'subject_area_ratio': 0.5, 'expression_readable_160px': True,
+                            'main_colors': ['ochre', 'blue', 'cream'], 'text_position': 'top-left',
+                            'variants': [{'label': 'A', 'thumbnail_text': phrase, 'emotion': 'comic strain'},
+                                         {'label': 'B', 'thumbnail_text': phrase, 'emotion': 'sly grin'}]}],
         },
     }
 
