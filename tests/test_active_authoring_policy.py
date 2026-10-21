@@ -31,9 +31,9 @@ class ActiveAuthoringPolicyTests(unittest.TestCase):
         for channel in channels.load_channels():
             cid = channel["id"]
             self.assertEqual(resolve_thumbnail_profile(cid)["revision"],
-                             "human-history-thumbnail-v2")
+                             "studio-chibi-thumbnail-v4")
             saved = resolve_thumbnail_profile(cid, {"animation_style": "documentary-realistic"})
-            self.assertEqual(saved["revision"], "documentary-thumbnail-v2-realistic")
+            self.assertEqual(saved["revision"], "studio-chibi-thumbnail-v4")  # no realistic thumbnail branch
 
     def test_retired_launch_source_is_outside_active_configuration(self):
         self.assertFalse((ROOT / "config/channel-launch-2026-10-15.json").exists())

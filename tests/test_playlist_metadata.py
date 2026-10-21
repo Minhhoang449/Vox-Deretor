@@ -74,8 +74,8 @@ class PlaylistExportTests(unittest.TestCase):
         for channel in channels.load_channels():
             with self.subTest(channel=channel['id']), test_workspace() as folder:
                 catalog = playlists.channel_playlists(channel['id'])
-                doc = packaging_doc(channel['id'], {'en':'A historical question', 'vi':'CÂU HỎI LỊCH SỬ',
-                                                   'es':'Una pregunta histórica', 'ja':'歴史の問い', 'ko':'역사의 질문'}[channel['language']])
+                doc = packaging_doc(channel['id'], {'en':'BREAD WAS PAY', 'vi':'BÁNH LÀ LƯƠNG',
+                                                   'es':'PAN COMO PAGA', 'ja':'パンが給料', 'ko':'빵이 월급'}[channel['language']])
                 doc['youtube_metadata']['playlists'] = {'primary_id':catalog[0]['id'],
                     'additional_ids':[catalog[1]['id']], 'selection_reason':'The central story fits these scopes.'}
                 doc['youtube_metadata']['selected_candidate_id'] = 'scene'

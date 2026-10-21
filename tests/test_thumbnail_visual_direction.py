@@ -44,8 +44,11 @@ def packaging_doc(channel_id, phrase):
             "candidates": [{
                 "id": "map-led",
                 "title": "Could we save the Titanic?",
-                "thumbnail_concept": "A map and the iceberg reveal the collision geometry.",
-                "thumbnail_prompt": "An illustrated map shows the Titanic and iceberg without characters.",
+                "thumbnail_concept": "A worried lookout in the centre spots the iceberg.",
+                "thumbnail_prompt": "One worried Chibi lookout in the centre spots the iceberg ahead.",
+                "character": "a ship's lookout",
+                "emotion": "worried",
+                "text_source_line": phrase,
                 "thumbnail_file": "thumbnails/map-led.png",
                 "thumbnail_text": phrase,
             }],
@@ -71,7 +74,7 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
             save()
             with self.assertRaisesRegex(SystemExit, 'thumbnail_text_reason'):
                 export_youtube.run(folder)
-            candidate['thumbnail_text_reason'] = 'The cutaway makes the relationship clear.'
+            candidate['thumbnail_text_reason'] = 'The lookout\'s face carries the moment.'
             os.makedirs(os.path.join(folder, 'thumbnails'))
             # Export checks existence, not image quality.
             with open(os.path.join(folder, candidate['thumbnail_file']), 'wb') as handle:
@@ -94,11 +97,11 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
 
     def test_all_six_export_live_editorial_angle_and_exact_phrase_without_brand_template(self):
         phrases = {
-            "en": "Could it be saved?",
-            "es": "¿Se podía salvar?",
-            "vi": "CỨU ĐƯỢC KHÔNG?",
-            "ja": "救えたのか？",
-            "ko": "구할 수 있었을까?",
+            "en": "37 SECONDS WARNING",
+            "es": "37 SEGUNDOS",
+            "vi": "37 GIÂY BÁO",
+            "ja": "37秒の警告",
+            "ko": "37초 경고",
         }
         for channel in channels.load_channels():
             with self.subTest(channel=channel["id"]), test_workspace() as folder:
@@ -119,10 +122,12 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
                 with open(os.path.join(folder, "thumbnail-prompts.md"), encoding="utf-8") as handle:
                     prompt = handle.read()
                 self.assertIn(profile["revision"], prompt)
-                self.assertIn("photorealistic documentary reconstruction", prompt)
-                self.assertIn("A person is optional", prompt)
-                self.assertIn("no per-channel visual template is required", prompt)
-                self.assertIn("An illustrated map shows the Titanic and iceberg without characters.", prompt)
+                self.assertIn("All channels use Chibi 2D", prompt)
+                self.assertIn("one emotional Chibi 2D character in the centre", prompt)
+                self.assertIn("Channel palette: " + profile["channel_identity"]["palette"], prompt)
+                self.assertIn("No diagrams or arrows on the thumbnail", prompt)
+                self.assertNotIn("photorealistic documentary reconstruction", prompt)
+                self.assertIn("One worried Chibi lookout in the centre spots the iceberg ahead.", prompt)
                 self.assertNotIn(f"Channel: {channel['id']}", prompt)
                 self.assertNotIn("text_left_subject_right", prompt)
                 self.assertNotIn("#176A56", prompt)
@@ -138,6 +143,25 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
                 for pattern in rules['title_patterns']:
                     self.assertIn(pattern, title_guide)
                 self.assertFalse(os.path.exists(os.path.join(folder, "youtube-upload.txt")))
+
+    def test_export_rejects_studio_rule_violations(self):
+        cases = [
+            ({"thumbnail_text": "COULD WE SAVE TITANIC?", "text_source_line": "COULD WE SAVE TITANIC?"}, "question"),
+            ({"emotion": ""}, "needs emotion"),
+            ({"text_source_line": ""}, "text_source_line"),
+            ({"thumbnail_prompt": "A route map with arrows to the iceberg."}, "diagram"),
+        ]
+        for change, message in cases:
+            with self.subTest(message=message), test_workspace() as folder:
+                os.makedirs(os.path.join(folder, 'research'))
+                with open(os.path.join(folder, 'research', 'packaging-test.md'), 'w', encoding='utf-8') as handle:
+                    handle.write('Discovery snapshot')
+                doc = packaging_doc('terra-rewired', '37 SECONDS WARNING')
+                doc['youtube_metadata']['candidates'][0].update(change)
+                with open(os.path.join(folder, 'beats.json'), 'w', encoding='utf-8') as handle:
+                    json.dump(doc, handle)
+                with self.assertRaisesRegex(SystemExit, message):
+                    export_youtube.run(folder)
 
     def test_bind_and_show_do_not_seed_channel_thumbnail_branding(self):
         with test_workspace() as folder:

@@ -38,6 +38,22 @@ def require_date(value, key):
     except (TypeError, ValueError):
         raise SystemExit(f"[{key}] accessed_on must be an actual YYYY-MM-DD access date.")
 
+OPEN_LICENCES = ("open access", "cc0", "public domain", "cc by", "cc-by")
+
+
+def check_museum_image(record, key):
+    """Museum photos (as footage, still or drawing reference) need Open Access or a written licence."""
+    for item in [record] + list(record.get("references") or []):
+        if not isinstance(item, dict) or not (item.get("museum") or item.get("source_type") == "museum_image"):
+            continue
+        licence = str(item.get("licence") or item.get("license") or "").strip()
+        if not licence:
+            raise SystemExit(f"[{key}] museum image needs licence: Open Access (CC0/public domain/CC BY) or a written licence.")
+        if not any(tag in licence.lower() for tag in OPEN_LICENCES) and not str(item.get("licence_url") or "").strip():
+            raise SystemExit(f"[{key}] museum image licence '{licence}' is not Open Access; record licence_url for the granted licence.")
+        if item.get("rights_status") != "verified":
+            raise SystemExit(f"[{key}] museum image rights_status must be verified after checking the item page.")
+
 
 def validate_source_plan(project_dir, doc):
     """Gate only the new workflow; historical productions retain their rules."""
@@ -73,6 +89,7 @@ def validate_source_plan(project_dir, doc):
                 require_fields(search, ["cross_language_note"], key)
         if not any(search["query_language"] == doc.get("language") for search in searches):
             raise SystemExit(f"[{key}] record a primary audience-language footage search; cross-language archive queries are supplemental.")
+        check_museum_image(record, key)
         if decision == "ai_reconstruction":
             require_fields(record, ["source_url", "accessed_on"], key)
             require_date(record["accessed_on"], key)
@@ -103,7 +120,7 @@ def export_requests(project_dir, doc):
         "Preserve record URLs, access dates, item-level rights and source in/out points. Metadata matching alone does not verify the depicted place, date, event or action.",
         "Use primary audience-language queries first; source-native archive terms may be supplemental and must record their language and reason.",
         "Do not run Montage's script, TTS or image stages. Fill each shot's visual_source with actual results. Return local clips into this episode's footage folder.",
-        "Only then create photorealistic reconstruction or sourced explanatory graphics for the remaining gaps. Do not add visible AI/illustration disclosure labels to generated images or video; retain factual role and provenance in internal records.", "",
+        "Only then create original Chibi 2D reconstruction stills or sourced explanatory graphics for the remaining gaps. Do not add visible AI/illustration disclosure labels to generated images or video; retain factual role and provenance in internal records.", "",
     ]
     for beat, shot, key in shot_rows(doc):
         lines += [f"## {key}", "", f"Narration: {beat.get('narration', '')}",

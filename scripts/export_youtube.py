@@ -15,7 +15,7 @@ import os
 import sys
 
 from local_guard import refuse_out_dir
-from thumbnail_visual_direction import resolve_thumbnail_profile, thumbnail_visual_prompt
+from thumbnail_visual_direction import resolve_thumbnail_profile, thumbnail_visual_prompt, check_thumbnail_candidate
 from playlists import episode_playlists, export_episode_playlists, playlist_text
 from channel_packaging import packaging_guide
 
@@ -83,7 +83,8 @@ def run(project_dir):
     if not isinstance(candidates, list) or not 1 <= len(candidates) <= 3:
         raise SystemExit(
             "youtube_metadata.candidates needs 1 to 3 packages. "
-            "Each needs id, title, thumbnail_concept, thumbnail_prompt, thumbnail_file, and thumbnail_text."
+            "Each needs id, title, thumbnail_concept, thumbnail_prompt, thumbnail_file, thumbnail_text, "
+            "character, emotion and text_source_line."
         )
     seen = set()
     for index, candidate in enumerate(candidates, start=1):
@@ -103,6 +104,16 @@ def run(project_dir):
             raise SystemExit(f"Candidate {candidate_id} needs thumbnail_text (a phrase or an explicit empty string).")
         if not clean(candidate["thumbnail_text"]) and not clean(candidate.get("thumbnail_text_reason")):
             raise SystemExit(f"Candidate {candidate_id} needs thumbnail_text_reason explaining why the image works without lettering.")
+        for key in ("character", "emotion"):
+            if not clean(candidate.get(key)) and not (key == "character" and isinstance(candidate.get(key), dict)):
+                raise SystemExit(f"Candidate {candidate_id} needs {key} (one emotional Chibi character in the centre).")
+        if clean(candidate["thumbnail_text"]) and not clean(candidate.get("text_source_line")):
+            raise SystemExit(f"Candidate {candidate_id} needs text_source_line: the script line that makes the thumbnail text true.")
+        narration = " ".join(str(b.get("narration", "")) for b in doc.get("beats") or [] if isinstance(b, dict))
+        problems = [p for p in check_thumbnail_candidate(candidate, visual_profile["language"], title, narration or None)
+                    if not (p.startswith("thumbnail_text is empty") or p.startswith("text_source_line is missing"))]
+        if problems:
+            raise SystemExit(f"Candidate {candidate_id} thumbnail check failed:\n- " + "\n- ".join(problems))
         image_rel = clean(candidate["thumbnail_file"]).replace("\\", "/")
         if image_rel.startswith("/") or ".." in image_rel.split("/"):
             raise SystemExit(f"Candidate {candidate_id} thumbnail_file must stay inside the episode folder.")
@@ -207,12 +218,12 @@ def run(project_dir):
         f"Output language: {language} | Target ratio: {visual_profile['aspect']}",
         f"Shared thumbnail visual DNA: {visual_profile['revision']}",
         "The title and the thumbnail make one promise. Each candidate must show this episode's real subject.",
-        "Choose the focal subject from the actual story: a person is optional; a place, map, structure, vessel, mechanism, ecosystem, natural process or consequence may lead.",
-        "Show one clear subject and one story-relevant question, action, scale, mechanism or consequence; do not add the protagonist just to fill the frame.",
-        "Choose palette, typography, text placement and composition for each episode and concept; no per-channel visual template is required.",
+        "Put one emotional Chibi 2D character in the centre doing or reacting to the supported task; never only an object, map or diagram. Draw only sourced details.",
+        "No diagrams or arrows on the thumbnail; the core mechanism diagram stays inside the video.",
+        "All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout.",
         "Vary candidate visual hypotheses, subject scale, camera angle, action or focal scene enough to test a different idea, not merely a minor color or expression change.",
         "Keep curiosity accurate: do not imply a counterfactual outcome is certain or promise what the episode does not deliver.",
-        "Lettering is optional when the image communicates the question; a text-free candidate needs an explicit editorial reason.",
+        "Lettering: at most 3 words (about 8 Japanese characters), a surprising true claim from the script that does not repeat the title; never a question about an object. A text-free candidate needs an explicit editorial reason.",
         "When thumbnail_text is supplied, render it exactly in the channel language; do not paraphrase, translate, or add lettering.",
         "Use the Codex imagegen skill to generate each image and save it at the path below.",
         "",
@@ -242,7 +253,7 @@ def run(project_dir):
             clean(candidate["thumbnail_prompt"]),
             visual_prompt,
             f"Create a YouTube thumbnail at {visual_profile['aspect']} using this episode's resolved visual style. "
-            "Let the episode's real subject lead. A person is optional: use a person only when their action, emotion or viewpoint helps explain the story; otherwise make the place, map, structure, vessel, mechanism, ecosystem, natural process or consequence the focal subject. "
+            "Centre one emotional Chibi 2D character doing or reacting to the episode's supported task; no diagrams, arrows or route maps on the thumbnail. "
             "Use one dominant subject or relationship, a readable silhouette, strong contrast, "
             "a restrained background, and safe margins. Make the image clear at phone size. Show the "
             "episode's real subject and claim without implying an uncertain or hypothetical result is guaranteed. "

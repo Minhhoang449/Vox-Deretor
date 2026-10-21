@@ -27,7 +27,7 @@ def packaging_guide(channel_name, language, rules):
     lines.extend([
         '## Episode review', '',
         'Research current examples in the target language after story lock. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.', '',
-        'Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.', '',
+        'All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.', '',
         'A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.', '',
     ])
     metadata = rules.get('metadata_direction') or {}

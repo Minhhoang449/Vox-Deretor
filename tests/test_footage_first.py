@@ -145,9 +145,10 @@ class FootageFirstTests(unittest.TestCase):
     def test_thumbnail_uses_episode_style_and_preserves_legacy(self):
         new = resolve_thumbnail_profile("last-safe-minute", {"animation_style": REALISTIC_STYLE})
         old = resolve_thumbnail_profile("last-safe-minute", {"animation_style": "chibi-2d"})
-        self.assertIn("photorealistic", new["style"])
+        # Studio rule 2026-10-21: every thumbnail is Chibi 2D, even for legacy realistic episodes.
+        self.assertIn("Chibi", new["style"])
         self.assertIn("Chibi", old["style"])
-        self.assertNotEqual(new["revision"], old["revision"])
+        self.assertEqual(new["revision"], old["revision"])
 
     def test_hybrid_reuse_counts_video_slots_and_real_sequence_distance(self):
         with tempfile.TemporaryDirectory() as folder:

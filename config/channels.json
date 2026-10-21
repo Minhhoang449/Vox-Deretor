@@ -216,13 +216,13 @@
           "Why Did [ancient community] [specific everyday habit]?",
           "How Did [ancient community] Deal with [ordinary inconvenience]?"
         ],
-        "thumbnail_direction": "People harvesting, selecting, grinding, cooking, preserving and exchanging food; plant comparisons and process diagrams. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "Thumbnail: exactly one emotional Original Chibi 2D character in the centre, doing or reacting to the researched everyday task, with one supported object. No diagrams, arrows, route maps or cutaways on the thumbnail; the one core mechanism diagram stays inside the video. Draw only sourced details. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Setting: a prehistoric or ancient kitchen, hearth or field. Tone: cute, humorous, slightly mischievous, exaggerated expression; never mock real people.",
         "thumbnail_approaches": [
           "A Chibi person grinding, cooking or preserving the featured food; show the material change clearly.",
           "Supported wild and cultivated forms beside a person selecting or harvesting; keep scale truthful.",
           "People preparing or sharing a meal in a researched setting; make the featured food practice legible."
         ],
-        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -243,7 +243,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "warm hearth ochre, wheat gold and charcoal",
+          "setting": "a prehistoric or ancient kitchen, hearth or field",
+          "layout": "character centred over the food, text top-left"
+        }
       },
       "voice_engine": "omnivoice",
       "writing_contract": {
@@ -451,13 +456,13 @@
           "Why Did [ancient community] [specific everyday habit]?",
           "How Did [ancient community] Deal with [ordinary inconvenience]?"
         ],
-        "thumbnail_direction": "People making, testing, operating and teaching; material cutaways, workshop processes and supply maps. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "Thumbnail: exactly one emotional Original Chibi 2D character in the centre, doing or reacting to the researched everyday task, with one supported object. No diagrams, arrows, route maps or cutaways on the thumbnail; the one core mechanism diagram stays inside the video. Draw only sourced details. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Setting: an ancient workshop or work site with the featured tool. Tone: cute, humorous, slightly mischievous, exaggerated expression; never mock real people.",
         "thumbnail_approaches": [
           "A Chibi maker performing the decisive making step; enlarge the tool or material when needed for clarity.",
-          "A material cutaway beside its supported making or use; show the property that answers the title.",
-          "A person attempting the practical task with a supported earlier and later tool; no invented superiority."
+          "A person attempting the practical task with a supported earlier and later tool; no invented superiority.",
+          "One emotional Chibi person centred, reacting to the surprising supported fact of the episode."
         ],
-        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -478,7 +483,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "workshop amber, clay red and slate blue",
+          "setting": "an ancient workshop or work site with the featured tool",
+          "layout": "character centred gripping the tool close to camera, text top-right"
+        }
       },
       "voice_engine": "omnivoice",
       "writing_contract": {
@@ -684,13 +694,13 @@
           "Why Did [ancient community] [specific everyday habit]?",
           "How Did [ancient community] Deal with [ordinary inconvenience]?"
         ],
-        "thumbnail_direction": "Chibi people performing period-specific tasks in legible streets, homes and workplaces; objects and floor plans clarify constraints. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "Thumbnail: exactly one emotional Original Chibi 2D character in the centre, doing or reacting to the researched everyday task, with one supported object. No diagrams, arrows, route maps or cutaways on the thumbnail; the one core mechanism diagram stays inside the video. Draw only sourced details. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Setting: the researched street, home or village wall. Tone: cute, humorous, slightly mischievous, exaggerated expression; never mock real people.",
         "thumbnail_approaches": [
           "A Chibi person carrying out the featured daily task in a researched room, street or workplace.",
           "A person interacting with the period-specific object that makes the daily experience understandable.",
           "A supported difference in homes, clothing or routine between bounded groups; make social position clear."
         ],
-        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -711,7 +721,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "sun-baked sand, mud-brick terracotta and Nile turquoise",
+          "setting": "the researched street, home or village wall",
+          "layout": "character centred mid-task, setting behind, text top band"
+        }
       },
       "voice_engine": "omnivoice",
       "writing_contract": {
@@ -915,13 +930,13 @@
           "Why Did [ancient community] [specific everyday habit]?",
           "How Did [ancient community] Deal with [ordinary inconvenience]?"
         ],
-        "thumbnail_direction": "People encountering rules through transactions, queues, documents and institutions; diagrams distinguish categories, rights and consequences. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "Thumbnail: exactly one emotional Original Chibi 2D character in the centre, doing or reacting to the researched everyday task, with one supported object. No diagrams, arrows, route maps or cutaways on the thumbnail; the one core mechanism diagram stays inside the video. Draw only sourced details. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Setting: a market, queue, office or ceremony where the rule applies. Tone: cute, humorous, slightly mischievous, exaggerated expression; never mock real people.",
         "thumbnail_approaches": [
           "Chibi people applying the featured convention through a readable transaction, queue, document or ceremony.",
-          "One familiar classification or symbol beside the dated practice that gives it meaning.",
-          "A supported change in a rule and what people can do under it; use a simple comparison rather than invented conflict."
+          "A supported change in a rule and what people can do under it; use a simple comparison rather than invented conflict.",
+          "One emotional Chibi person centred, reacting to the surprising supported fact of the episode."
         ],
-        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -942,7 +957,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "parchment cream, seal red and deep indigo",
+          "setting": "a market, queue, office or ceremony where the rule applies",
+          "layout": "character centred reacting to the rule, text top-left"
+        }
       },
       "voice_engine": "omnivoice",
       "writing_contract": {
@@ -1183,13 +1203,13 @@
           "[古代の人々]は、なぜ[具体的な習慣]をしていた？",
           "[先史時代の暮らし]で、[身近な困り事]はどう解決していた？"
         ],
-        "thumbnail_direction": "オリジナルの2Dちびキャラクター、明瞭な輪郭、整理された背景、限定した配色で、語っている関係を読み取りやすくする。人物は時代・地域に合う作業や状況を示し、道具、遺物、地図、比較図、工程図も説明の主役にする。一つの場面で伝える関係を明確にし、数量や規模は正確な図解と短い日本語ラベルで補う。人物の固定比率や一定間隔の画面変更は設けない。実在人物の心理・証言として扱わず、他者の棒人間や固定レイアウトはコピーしない。画像は説明であって証拠ではない。静止画のカメラ移動では身体や物の動作は生まれず、変わる動作・状態には別のキーフレームが必要。 人が作る、使う、教える、移動する場面を説明に役立つ形で積極的に計画する。固定の人物比率は設けない。 Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "サムネイル：感情が読み取れるオリジナルの2Dちびキャラクター1人を中央に置き、調べた日常の作業をしている、または反応している場面にする。図解・矢印・ルート図はサムネイルに入れず、核心の仕組みの図解は動画内だけで使う。出典のある細部だけを描く。 設定：縄文などの集落、森、水場。かわいく、少しいたずらっぽいユーモア、誇張した表情。",
         "thumbnail_approaches": [
-          "一つの先史時代の道具と、その用途を示す簡潔な場面。",
-          "人間の行動や環境条件を対比する、読みやすい2D図解。",
-          "遺物や痕跡から過去の暮らしをたどる、証拠と解釈の関係図。"
+          "中央のちびキャラクターが先史時代の道具を使い、結果に驚く場面。",
+          "中央の人物が食べ物や素材の変化に反応する場面。",
+          "中央の人物が遺物を手に取り、読み取れる感情を見せる場面（損傷・推定部分はそのとおりに描く）。"
         ],
-        "text_role": "短い自然な日本語で疑問の焦点を示す。漢字を詰め込まず、スマートフォンでの読みやすさを確認する。 画像だけで問いが伝わる場合は文字なしでもよい。その場合は thumbnail_text を空文字にし、thumbnail_text_reason に理由を記録する。",
+        "text_role": "最大8文字。台本にある意外な事実の短い断定（text_source_line に該当行を記録）。物についての疑問文にしない。タイトルの言葉を繰り返さない。文字なしの場合は thumbnail_text を空文字にし、thumbnail_text_reason に理由を記録する。",
         "opening_contract": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。 Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "証拠の範囲を越えて人類全体の行動や起源を断定すること。",
@@ -1210,7 +1230,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "forest moss green, earthen brown and soft washi white",
+          "setting": "縄文などの集落、森、水場",
+          "layout": "人物を中央、文字は上部に縦か横で1行"
+        }
       },
       "voice_engine": "omnivoice",
       "writing_contract": {
@@ -1405,13 +1430,13 @@
           "Sống giữa [điều kiện địa lý thời xưa], họ [việc cụ thể] thế nào?",
           "Vì sao người [cộng đồng cổ] lại [thói quen thích nghi cụ thể]?"
         ],
-        "thumbnail_direction": "Nhân vật Chibi sinh sống, mặc trang phục, xây dựng, làm việc và di chuyển trong môi trường xác định; bản đồ và mặt cắt giải thích điều kiện. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_direction": "Thumbnail: exactly one emotional Original Chibi 2D character in the centre, doing or reacting to the researched everyday task, with one supported object. No diagrams, arrows, route maps or cutaways on the thumbnail; the one core mechanism diagram stays inside the video. Draw only sourced details. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Setting: the specific landscape (river, mountain, coast) the community adapted to. Tone: cute, humorous, slightly mischievous, exaggerated expression; never mock real people.",
         "thumbnail_approaches": [
           "Nhân vật Chibi đang cư trú, làm việc hoặc di chuyển; cho thấy rõ điều kiện địa lý liên quan.",
           "Ngôi nhà, trang phục hoặc phương tiện gắn với một hành động thích nghi có bằng chứng.",
-          "Bản đồ hoặc mặt cắt đơn giản kết nối nơi chốn với cách sinh sống; thêm người khi giúp hiểu quan hệ."
+          "Một nhân vật Chibi ở giữa khung, biểu cảm rõ, phản ứng với sự thật bất ngờ có nguồn của tập."
         ],
-        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "text_role": "At most 3 words (a number and its unit count as two), one line if possible. A surprising true claim quoted from the script (record text_source_line), never a question about an object, and it must not repeat the title. A text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
         "opening_contract": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
         "avoid": [
           "Copied creator characters, poses or layouts.",
@@ -1432,7 +1457,12 @@
           "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
           "publication_policy": "Local configuration only; no upload, publication or account rename."
         },
-        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "thumbnail_identity": {
+          "palette": "river teal, rice-field green and laterite orange",
+          "setting": "the specific landscape (river, mountain, coast) the community adapted to",
+          "layout": "character centred in the landscape, text bottom-left above the safe margin"
+        }
       },
       "voice_engine": "vieneu-v3-turbo",
       "writing_contract": {

@@ -9,6 +9,10 @@ Use after the narration is approved, or for an explicitly authorized non-product
 For each natural scene, record whichever items matter:
 
 - Narration span and scene objective.
+- **Required columns — `image / source` and `rights_status`:** every scene lists the image and the source for each drawn detail (URL/page); `rights_status` is `verified`, `own_generated` or `pending`. Museum photos need Open Access (CC0/public domain/CC BY) or a recorded `licence` + `licence_url`; `visual_sources.py --check` blocks them otherwise. Damaged or interpreted parts of an artifact are drawn as damaged/interpreted.
+
+  | Scene | Image | Source | rights_status |
+  |---|---|---|---|
 - Primary subject; reason for this representation, distance/viewpoint and detail density.
 - People: absent, listed cast or contextual inhabitants; action/emotion/viewpoint/story value if present.
 - The visible state/relationship and what the image lets the viewer understand.

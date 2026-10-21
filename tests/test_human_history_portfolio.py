@@ -16,7 +16,7 @@ class HumanHistoryPortfolioTests(unittest.TestCase):
                 self.assertEqual(channels.load_channel_visual_workflow(c)['generated_still_style'],'chibi-2d')
                 self.assertEqual(thumbnails.resolve_thumbnail_profile(c['id'])['style'],ANIMATION_STYLES['chibi-2d'])
                 saved={'animation_style':'documentary-realistic'}
-                self.assertEqual(thumbnails.resolve_thumbnail_profile(c['id'],saved)['style'],ANIMATION_STYLES['documentary-realistic'])
+                self.assertEqual(thumbnails.resolve_thumbnail_profile(c['id'],saved)['style'],ANIMATION_STYLES['chibi-2d'])  # Studio rule: thumbnails are always Chibi 2D
 
     def test_old_names_do_not_restore_old_story_formats(self):
         expected={'last-safe-minute':'food_origin_process_history','terra-rewired':'invention_material_process_history',

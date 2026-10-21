@@ -22,7 +22,7 @@ Name one everyday task, habit or inconvenience and its supported early setting. 
 
 ## Thumbnail direction
 
-People harvesting, selecting, grinding, cooking, preserving and exchanging food; plant comparisons and process diagrams. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.
+People harvesting, selecting, grinding, cooking, preserving and exchanging food; plant comparisons and process diagrams (inside the video only). Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.
 
 ## Role of thumbnail text
 
@@ -55,7 +55,7 @@ Open on a supported food action, ingredient, meal habit, pleasure, need or contr
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 
@@ -120,7 +120,7 @@ Open on a supported object, material, making or use action, habit, need or contr
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 
@@ -185,7 +185,7 @@ Open on a supported daily action, object, habit, pleasure, need or contrast in a
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 
@@ -250,7 +250,7 @@ Open on a supported everyday act, custom, obligation, exchange or contrast that 
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 
@@ -315,7 +315,7 @@ Name one everyday task, habit or inconvenience and its supported early setting. 
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 
@@ -380,7 +380,7 @@ Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặ
 
 Research current examples in the target language before long narration to compare title/thumbnail/opening concepts; recheck and finalize those concepts after story lock under script-packaging-coordination.md. Name the actual subject, scope and supported claim. The thumbnail supplies one visible relationship; the title supplies the useful question or specificity; the opening begins delivering it.
 
-Choose palette, camera, typography and text position for the episode. New episodes use original Chibi 2D people, objects and explanatory graphics. People clarify supported actions and experiences; no fixed cast ratio. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
+All channels use Chibi 2D; channels differ by palette, setting and thumbnail layout. The thumbnail centres one emotional Chibi character; text is at most 3 words (about 8 Japanese characters), a surprising sourced claim that does not repeat the title; no diagrams or arrows on the thumbnail; every drawn detail has a source; museum images need a licence field. Preserve existing recorded styles. Keep 1280x720 delivery, exact localized text and phone-size readability. Do not copy publisher characters or present illustrations as archival evidence.
 
 A draft image prompt or title pattern is not an actual thumbnail review or evidence of clicks/retention. Review generated images and the finished opening; after publication compare watch time, source-specific CTR and retention.
 

@@ -139,7 +139,8 @@ def packaging_doc(channel_id, phrase):
             'search_phrases': ['historical household'],
             'candidates': [{'id': 'scene', 'title': 'One historical question',
                             'thumbnail_concept': 'A practical obstacle.',
-                            'thumbnail_prompt': 'An illustrated map shows a river and supply bottleneck without characters.',
+                            'thumbnail_prompt': 'One cheeky Chibi villager in the centre hauls a heavy jar.',
+                            'character': 'a villager', 'emotion': 'comic strain', 'text_source_line': phrase,
                             'thumbnail_file': 'thumbnails/scene.png', 'thumbnail_text': phrase}],
         },
     }
