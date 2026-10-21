@@ -1,59 +1,38 @@
-# Voice roster — `xai/tts-v1` (pick a `voice_id` per film)
+# Channel voices and narration delivery
 
-Set `voice.voice_id` in beats.json. **Pick by the film's LANGUAGE first, then match gender/tone
-to the topic** — don't just leave the default.
+Use the bound channel's clone reference and language from `config/channels.json`. The active routes are local VieNeu for Vietnamese and OmniVoice for the other configured languages.
 
-- **Multilingual** voices (`ara eve leo rex sal`) speak ANY language — safe for English/Chinese/mixed.
-- **Native** voices are optimized for their own language (more natural accent) and auto-cascade the
-  `language` field.
-- Skill default: **`leo`** (male, multilingual, documentary-ish). Override per film.
+```text
+python scripts/channels.py voices
+python scripts/channels.py show <channel-id>
+```
 
-## Multilingual (any language)
-| id | name | gender |
+`voices` lists the configured clone sources. `show` returns the current channel profile and shared `narration_dna` for authoring. Bind a new episode through `channels.py bind` as described in `local-pipeline.md`; an existing episode's approved voice configuration remains its production input.
+
+## Writing versus audio delivery
+
+- Write with `scripting-dna.md` and the selected channel's current `narration_direction`: food origins, inventions, past daily life, social conventions, Japanese human history or Vietnamese human geography. Let the supported task, finding and human consequence carry curiosity and tone. No universal deadpan or satire requirement applies.
+- These are editorial instructions. The local cloned-voice runners use reference audio/transcript; they do not send `narration_direction` as a TTS style instruction. Putting “documentary narrator” or another persona into `voice.instruct` does not implement the active voice direction.
+- Let wording and the researched situation carry the tone. Use natural rhythm, selective emphasis and useful pauses; keep sensitive scenes sober.
+- Preserve the selected voice and approved synthesis/quality settings. Measure narration before visuals and listen to the resulting audio before claiming it sounds natural.
+
+## Synthesis defaults — 2026-10-12
+
+`config/pipeline.json` is the runtime source of truth:
+
+| Engine | Synthesis speed | Inserted silence after a full stop |
 |---|---|---|
-| `leo` | Leo | M — default |
-| `rex` | Rex | M |
-| `sal` | Sal | M |
-| `ara` | Ara | F |
-| `eve` | Eve | F |
+| OmniVoice | 0.9 | 0.8 seconds |
+| VieNeu v3 Turbo | 1.0 (native output) | 0.8 seconds |
 
-## Native voices by language  (name · gender · id)
-- **en** — Daniel · M · `96819d0bd28d` · James · M · `78a495fdbb39` · Grace · F · `f8cf5c2c78d4` · Claire · F · `79f3a8b96d43`
-- **zh-CN** — Jian · M · `jpi39icg` · Hao · F · `d18jlf6v` · Xia · F · `33g9t0jl`
-- **ja** — Ren · M · `b1a7441b97a1` · Sakura · F · `d0cb9ff07d95`
-- **ko** — Jun-seo · M · `bf9fe5b5f981` · Min-jun · M · `b5ae17439907` · Ji-yeon · F · `23be42535a45` · Seo-yeon · F · `a0401c9101f8`
-- **es** — Manuel · M · `yis75yfp` · Javier · M · `ekhwx401` · Andres · M · `0hhfxxqq` · Diego · `jupvcf34`
-- **fr** — Remi · M · `0p0rt7o1` · Hugo · `hbxkrnwm` · Camille · F · `69smp8rm`
-- **de** — Moritz · M · `41321eb41295` · Niklas · M · `40f31906b23d` · Clara · F · `458705c07139` · Lena · F · `3a7889066fa2`
-- **it** — Enzo · M · `x7avnu1k` · Matteo · M · `bcs7l2c3` · Alessandro · M · `h27ltdnz` · Luca · F · `hqxr4yub`
-- **pt** — Mateus · M · `abfbdf26f115` · Rafael · M · `3d030bc92a87` · Beatriz · F · `6da5baee46d0`
-- **ru** — Dmitri · M · `wy0m9l5w` · Andrei · M · `dr8gqysu` · Pavel · M · `26w6ihxi` · Irina · F · `om17cury`
-- **hi** — Karan · M · `89q2pnko` · Ananya · F · `73xd5dum`
-- **ar** — Khalid · M · `70013edeb8e8` · Tariq · M · `23468361b4ef` · Layla · F · `35c8d7f60dc8`
-- **tr** — Emre · M · `670a0c3ac005` · Kaan · M · `182a91893636` · Aylin · F · `d634b6da3d3b`
-- **vi** — Duc · M · `fc7de6afcf6c` · Minh · M · `7a9ee820b342` · Mai · F · `0895a5b8ce5c`
-- **th** — Aroon · M · `4ff93971bfdc` · Krit · M · `908c4626660f`
-- **nl** — Thijs · M · `a13662ba951c` · Ruben · M · `244e27b39200` · Femke · F · `58d27475085e` · Noor · F · `247783ebdd51`
-- **pl** — Jakub · M · `2badb5f46b1e` · Mateusz · M · `37329fd8895a` · Aleksandra · F · `1b12d5daee6b` · Katarzyna · F · `97fabd54445f`
-- **sv-SE** — Axel · M · `e22152e06fd8` · Erik · M · `1f046a033914` · Saga · F · `490ea3be50b1`
-- **da** — Kasper · M · `0ih5oi34` · Lars · M · `gwnexu6y` · Ida · F · `97zmdc6s`
-- **fi** — Eero · M · `83c6f4fea98e` · Valtteri · M · `dfe7b9e7d217` · Elina · F · `34fd4dce1ba3` · Helmi · F · `c3a2c594479e`
+OmniVoice retains `num_step: 32`. The shared runner uses `default_speed` and `pause_after_period_seconds` from the relevant engine block. Existing `tts_speed` and `tts_pause_after_period_seconds` in an episode remain explicit overrides. VieNeu v3 Turbo has no native speed control: 1.0 uses the unchanged generated speech, and another requested speed stops with an explanation rather than being silently ignored or applied with time-stretch.
 
-## How to pick (per scenario)
-1. **Language** — match the film's `language`. For a non-English film, prefer that language's native
-   voice for the best accent (e.g. Chinese history → `Jian`/`Hao`); or use a multilingual voice and
-   set `language` explicitly.
-2. **Gender + energy to the topic** — documentary/authoritative → `leo`/`rex`; warm/inviting → `sal`/`ara`;
-   bright/female lead → `eve` or native `Grace`.
-3. Keep ONE voice for the whole film (consistency). Set it once in `voice.voice_id`.
+Both routes synthesize full-stop-delimited sentences and join them with a sample-counted silence segment, including after a final full stop. Western `.` and Japanese `。` / full-width `．` are supported; decimals, common titles/initials and ellipses are not treated as sentence boundaries. Other punctuation keeps the engine's natural rhythm. Negligible model silence at joined edges is trimmed with a short guard around speech; the configured 0.8 seconds describes the inserted segment, and natural speech release may add a small amount.
 
-Example: `"voice": {"voice_id": "grace", "language": "en", "speed": 1.0}` → wait, use the id:
-`"voice": {"voice_id": "f8cf5c2c78d4", "language": "en", "speed": 1.0}` (Grace, native English female).
+Here and in the production guides, “native-speed timing” means measuring generated narration at the approved engine settings, including these pauses, without post-generation tempo changes or runtime padding. If timing misses the agreed runtime, revise and reapprove narration. As of 2026-10-16 all six active channels have separate male clones from the user-supplied samples in D:\Coder\Voice. Profiles are saved in D:\Coder\Voice\profiles\2026-10-16: Vietnamese uses VieNeu v3 Turbo; the four English voices and Japanese use OmniVoice. config/channel-voice-overrides.json preserves these routes if the relaunch generator is used again. The former female Vietnamese calibration is retired; use only the matching provisional male-voice measurement described below. Clone files have been created, but long-form listening quality is not established merely by enrollment.
 
-## Voice cloning (seed-audio)
+The current male clones now have a provisional single-episode calibration in the live profiles, measured on 2026-10-17. Use it only when voice, language and synthesis settings match; it does not establish listening quality or guarantee another script's runtime.
 
-To narrate in a real person's own voice, set `"voice": {"clone_ref": "path/to/sample.mp3",
-"language": "en", "persona": "YouTube tutorial creator"}` — narration switches from xai/tts-v1
-to `bytedance/seed-audio-1.0` with the sample pinned as @audio1 (template in `audio.py`;
-timing validated beat-stable). A clean 20–60s solo-voice sample works best. `persona` tunes
-delivery (e.g. "calm documentary narrator", "luxury brand voice-over").
+The effective speed, pause and pause implementation are included in the audio cache fingerprint. Under narration-review.md, TTS first checks the recorded approved speech, then reuses matching audio or regenerates mismatched audio and updates beat durations. New caches include speech and WAV content receipts, and a listening copy is exported automatically before images. Changing config alone does not edit an existing episode. Recheck visual coverage and caption alignment against the new WAV before rebuilding a final video.
+
+The former Atlas voice roster, `leo` default, and seed-audio persona recipes have been removed from this guide. Atlas compatibility code remains for legacy projects; it is not the voice-selection or writing path for new episodes.

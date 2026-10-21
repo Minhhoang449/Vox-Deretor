@@ -1,0 +1,461 @@
+{
+  "schema_version": 1,
+  "revision": "human-history-portfolio-v2-2026-10-20",
+  "updated_on": "2026-10-20",
+  "policy": {
+    "primary_per_episode": 1,
+    "maximum_additional": 2,
+    "editorial_title_limit": 100,
+    "editorial_description_limit": 1200,
+    "note": "New six-channel documentary catalog authorized in the relaunch. Natural topic descriptions, not measured keyword volumes or ranking guarantees. Publish only when relevant videos exist; local keys are not platform IDs.",
+    "new_episode_scope_reference": "config/channels.json -> narration_dna.topic_scope; everyday-ancient-curiosity-v1-2026-10-21. Existing playlist keys do not widen the new-topic scope."
+  },
+  "channels": [
+    {
+      "channel_id": "last-safe-minute",
+      "playlists": [
+        {
+          "id": "last-safe-minute-crops",
+          "title": "Crop Origins & Domestication",
+          "description": "Evidence-led stories about how people selected, cultivated, and spread food crops in specific regions and periods.",
+          "label_vi": "Crop Origins & Domestication",
+          "kind": "core",
+          "include_when": "Select when central to: Crop Origins & Domestication",
+          "keywords": [
+            "Crop Origins & Domestication"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "last-safe-minute-cooking",
+          "title": "Cooking & Preservation",
+          "description": "How people cooked, fermented, dried, salted, and stored food, and what each method made possible.",
+          "label_vi": "Cooking & Preservation",
+          "kind": "core",
+          "include_when": "Select when central to: Cooking & Preservation",
+          "keywords": [
+            "Cooking & Preservation"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "last-safe-minute-ingredients",
+          "title": "Everyday Ingredients",
+          "description": "The histories of familiar ingredients: where they came from, how they were produced, and how they entered everyday meals.",
+          "label_vi": "Everyday Ingredients",
+          "kind": "core",
+          "include_when": "Select when central to: Everyday Ingredients",
+          "keywords": [
+            "Everyday Ingredients"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "last-safe-minute-meals",
+          "title": "Meals & Food Habits",
+          "description": "How meal patterns and food practices developed, and how they varied between communities and over time.",
+          "label_vi": "Meals & Food Habits",
+          "kind": "core",
+          "include_when": "Select when central to: Meals & Food Habits",
+          "keywords": [
+            "Meals & Food Habits"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "last-safe-minute-exchange",
+          "title": "Food & Exchange",
+          "description": "How food moved between households and regions through trade, exchange, and shared production.",
+          "label_vi": "Food & Exchange",
+          "kind": "specialist",
+          "include_when": "Select when central to: Food & Exchange",
+          "keywords": [
+            "Food & Exchange"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "channel_id": "terra-rewired",
+      "playlists": [
+        {
+          "id": "terra-rewired-materials",
+          "title": "Materials & Metals",
+          "description": "How people sourced and transformed materials such as stone, clay, glass, and metal, and the skills each process required.",
+          "label_vi": "Materials & Metals",
+          "kind": "core",
+          "include_when": "Select when central to: Materials & Metals",
+          "keywords": [
+            "Materials & Metals"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "terra-rewired-tools",
+          "title": "Tools & Inventions",
+          "description": "The origins of tools and inventions: the task they addressed, how they worked, and how their use changed.",
+          "label_vi": "Tools & Inventions",
+          "kind": "core",
+          "include_when": "Select when central to: Tools & Inventions",
+          "keywords": [
+            "Tools & Inventions"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "terra-rewired-writing",
+          "title": "Writing & Knowledge",
+          "description": "The tools and practices people used to record, preserve, and share knowledge in specific historical settings.",
+          "label_vi": "Writing & Knowledge",
+          "kind": "core",
+          "include_when": "Select when central to: Writing & Knowledge",
+          "keywords": [
+            "Writing & Knowledge"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "terra-rewired-machines",
+          "title": "Machines & Energy",
+          "description": "How machines harnessed human, animal, water, wind, or fuel power, and the conditions that made them useful.",
+          "label_vi": "Machines & Energy",
+          "kind": "core",
+          "include_when": "Select when central to: Machines & Energy",
+          "keywords": [
+            "Machines & Energy"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "terra-rewired-craft",
+          "title": "Craft & Production",
+          "description": "How craftspeople organized skill, labor, materials, and production across workshops and communities.",
+          "label_vi": "Craft & Production",
+          "kind": "specialist",
+          "include_when": "Select when central to: Craft & Production",
+          "keywords": [
+            "Craft & Production"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "channel_id": "battlefield-bearings",
+      "playlists": [
+        {
+          "id": "battlefield-bearings-homes",
+          "title": "Homes & Households",
+          "description": "Homes, household tasks, space, and daily needs in specific societies and periods.",
+          "label_vi": "Homes & Households",
+          "kind": "core",
+          "include_when": "Select when central to: Homes & Households",
+          "keywords": [
+            "Homes & Households"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "battlefield-bearings-work",
+          "title": "Work & Livelihoods",
+          "description": "The kinds of work people did, the tools and skills involved, and how livelihoods differed by place and social position.",
+          "label_vi": "Work & Livelihoods",
+          "kind": "core",
+          "include_when": "Select when central to: Work & Livelihoods",
+          "keywords": [
+            "Work & Livelihoods"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "battlefield-bearings-cities",
+          "title": "Streets & Markets",
+          "description": "How streets, markets, and public spaces supported exchange and movement in past communities.",
+          "label_vi": "Streets & Markets",
+          "kind": "core",
+          "include_when": "Select when central to: Streets & Markets",
+          "keywords": [
+            "Streets & Markets"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "battlefield-bearings-daily-needs",
+          "title": "Food, Clothing & Daily Needs",
+          "description": "Food, clothing, sanitation, and other practical needs of everyday life, grounded in specific settings.",
+          "label_vi": "Food, Clothing & Daily Needs",
+          "kind": "core",
+          "include_when": "Select when central to: Food, Clothing & Daily Needs",
+          "keywords": [
+            "Food, Clothing & Daily Needs"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "battlefield-bearings-leisure",
+          "title": "Leisure & Community",
+          "description": "How people spent free time and built community through gatherings, games, festivals, and shared spaces.",
+          "label_vi": "Leisure & Community",
+          "kind": "specialist",
+          "include_when": "Select when central to: Leisure & Community",
+          "keywords": [
+            "Leisure & Community"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "channel_id": "status-and-systems",
+      "playlists": [
+        {
+          "id": "status-and-systems-status",
+          "title": "Status & Social Categories",
+          "description": "How societies named and organized social groups, and what rights or expectations those categories carried.",
+          "label_vi": "Status & Social Categories",
+          "kind": "core",
+          "include_when": "Select when central to: Status & Social Categories",
+          "keywords": [
+            "Status & Social Categories"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "status-and-systems-money",
+          "title": "Money & Property",
+          "description": "How rules of money, ownership, and exchange developed in specific societies and jurisdictions.",
+          "label_vi": "Money & Property",
+          "kind": "core",
+          "include_when": "Select when central to: Money & Property",
+          "keywords": [
+            "Money & Property"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "status-and-systems-rules",
+          "title": "Rules & Institutions",
+          "description": "The origins and changes of institutions and rules, including how they were justified, applied, and challenged.",
+          "label_vi": "Rules & Institutions",
+          "kind": "core",
+          "include_when": "Select when central to: Rules & Institutions",
+          "keywords": [
+            "Rules & Institutions"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "status-and-systems-time",
+          "title": "Time & Conventions",
+          "description": "How calendars, clocks, schedules, and shared conventions emerged and shaped coordinated life.",
+          "label_vi": "Time & Conventions",
+          "kind": "core",
+          "include_when": "Select when central to: Time & Conventions",
+          "keywords": [
+            "Time & Conventions"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        },
+        {
+          "id": "status-and-systems-change",
+          "title": "Ideas & Social Change",
+          "description": "How social ideas changed through debate, conflict, and everyday choices, as shown by specific cases.",
+          "label_vi": "Ideas & Social Change",
+          "kind": "specialist",
+          "include_when": "Select when central to: Ideas & Social Change",
+          "keywords": [
+            "Ideas & Social Change"
+          ],
+          "youtube_playlist_id": "",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "channel_id": "chikyu-shikumi",
+      "playlists": [
+        {
+          "id": "chikyu-shikumi-human-origins",
+          "title": "人類はどこから来たのか",
+          "description": "化石・遺伝学・考古学の証拠を手がかりに、人類の進化と各地に生きた人類集団の歴史をたどります。分かっていることと未確定の点を区別します。",
+          "label_vi": "Nguồn gốc và tiến hóa loài người",
+          "kind": "core",
+          "include_when": "人類の進化や複数の人類集団が中心の動画。",
+          "keywords": [
+            "人類史",
+            "人類の進化",
+            "化石",
+            "ネアンデルタール人"
+          ],
+          "youtube_playlist_id": ""
+        },
+        {
+          "id": "chikyu-shikumi-prehistoric-life",
+          "title": "先史時代の暮らし",
+          "description": "先史時代の食事、衣服、住まい、病気や気候への対応を、遺物と研究記録から読み解きます。",
+          "label_vi": "Đời sống thời tiền sử",
+          "kind": "core",
+          "include_when": "先史時代の日々の暮らしや生存の工夫が中心の動画。",
+          "keywords": [
+            "先史時代",
+            "古代の暮らし",
+            "狩猟採集",
+            "縄文"
+          ],
+          "youtube_playlist_id": ""
+        },
+        {
+          "id": "chikyu-shikumi-origins-of-technology",
+          "title": "道具と習慣の起源",
+          "description": "火、道具、衣服、発酵や移動の技術と習慣が、どの証拠から知られているのかを説明します。",
+          "label_vi": "Nguồn gốc công cụ và tập quán",
+          "kind": "core",
+          "include_when": "道具や日常習慣の始まりと発展が中心の動画。",
+          "keywords": [
+            "道具",
+            "発明",
+            "火",
+            "衣服",
+            "酒の歴史"
+          ],
+          "youtube_playlist_id": ""
+        },
+        {
+          "id": "chikyu-shikumi-human-behavior",
+          "title": "人間の行動を科学する",
+          "description": "人間の社会行動や身近な心理を、人類学・考古学・生物学・心理学の研究に基づいて考えます。",
+          "label_vi": "Khoa học về hành vi con người",
+          "kind": "core",
+          "include_when": "人間の行動や心理の仕組みが、信頼できる研究に基づいて中心テーマになる動画。",
+          "keywords": [
+            "人間の行動",
+            "人類学",
+            "心理",
+            "脳のしくみ"
+          ],
+          "youtube_playlist_id": ""
+        },
+        {
+          "id": "chikyu-shikumi-archaeology",
+          "title": "遺物から読む過去",
+          "description": "遺跡、道具、骨や環境の痕跡から過去の暮らしを再構成します。直接観察できる証拠と研究者の解釈を分けて紹介します。",
+          "label_vi": "Đọc quá khứ qua khảo cổ",
+          "kind": "specialist",
+          "include_when": "考古学的な発見や遺物の解釈が物語の中心になる動画。",
+          "keywords": [
+            "考古学",
+            "遺跡",
+            "遺物",
+            "発掘"
+          ],
+          "youtube_playlist_id": ""
+        }
+      ]
+    },
+    {
+      "channel_id": "vi-sao-noi-nay",
+      "playlists": [
+        {
+          "id": "vi-sao-noi-nay-climate",
+          "title": "Khí hậu và cách sống",
+          "description": "Khám phá khí hậu và điều kiện tự nhiên ảnh hưởng đến nơi ở, sinh kế, việc đi lại và nhịp sống ra sao, dựa trên từng địa điểm cụ thể.",
+          "label_vi": "Khí hậu và cách sống",
+          "kind": "core",
+          "include_when": "Chọn khi nội dung trung tâm thuộc: Khí hậu và cách sống",
+          "keywords": [
+            "Khí hậu và cách sống"
+          ],
+          "youtube_playlist_id": "",
+          "language": "vi"
+        },
+        {
+          "id": "vi-sao-noi-nay-homes",
+          "title": "Nhà ở và trang phục",
+          "description": "Tìm hiểu cách nhà ở và trang phục đáp ứng khí hậu, vật liệu sẵn có, tập quán và nhu cầu sinh hoạt ở từng vùng.",
+          "label_vi": "Nhà ở và trang phục",
+          "kind": "core",
+          "include_when": "Chọn khi nội dung trung tâm thuộc: Nhà ở và trang phục",
+          "keywords": [
+            "Nhà ở và trang phục"
+          ],
+          "youtube_playlist_id": "",
+          "language": "vi"
+        },
+        {
+          "id": "vi-sao-noi-nay-settlement",
+          "title": "Cư trú và đường đi",
+          "description": "Theo dấu cách con người chọn nơi định cư, mở đường và kết nối cộng đồng qua địa hình, sông ngòi và lịch sử địa phương.",
+          "label_vi": "Cư trú và đường đi",
+          "kind": "core",
+          "include_when": "Chọn khi nội dung trung tâm thuộc: Cư trú và đường đi",
+          "keywords": [
+            "Cư trú và đường đi"
+          ],
+          "youtube_playlist_id": "",
+          "language": "vi"
+        },
+        {
+          "id": "vi-sao-noi-nay-resources",
+          "title": "Tài nguyên và sinh kế",
+          "description": "Giải thích cách tài nguyên và môi trường tạo điều kiện cho sinh kế, đồng thời vai trò của kỹ năng, trao đổi và lựa chọn con người.",
+          "label_vi": "Tài nguyên và sinh kế",
+          "kind": "core",
+          "include_when": "Chọn khi nội dung trung tâm thuộc: Tài nguyên và sinh kế",
+          "keywords": [
+            "Tài nguyên và sinh kế"
+          ],
+          "youtube_playlist_id": "",
+          "language": "vi"
+        },
+        {
+          "id": "vi-sao-noi-nay-differences",
+          "title": "Khác biệt giữa các nơi",
+          "description": "So sánh cách các cộng đồng tổ chức cuộc sống trong những môi trường khác nhau, chú ý cả điều kiện địa lý lẫn lịch sử và quyết định xã hội.",
+          "label_vi": "Khác biệt giữa các nơi",
+          "kind": "specialist",
+          "include_when": "Chọn khi nội dung trung tâm thuộc: Khác biệt giữa các nơi",
+          "keywords": [
+            "Khác biệt giữa các nơi"
+          ],
+          "youtube_playlist_id": "",
+          "language": "vi"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "YouTube search: relevance, engagement and quality",
+      "url": "https://support.google.com/youtube/answer/16090438"
+    },
+    {
+      "title": "Edit playlists",
+      "url": "https://support.google.com/youtube/answer/6083634"
+    },
+    {
+      "title": "YouTube Data API: playlists resource",
+      "url": "https://developers.google.com/youtube/v3/docs/playlists"
+    }
+  ],
+  "archived_catalog_file": "config/archive/pre-relaunch-2026-10-15/config/playlists.json"
+}

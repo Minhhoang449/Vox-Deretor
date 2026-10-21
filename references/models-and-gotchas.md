@@ -1,7 +1,6 @@
 # Models & Gotchas
 
-Everything here was learned the hard way while building this pipeline. Read it before
-debugging — most failures are already solved below.
+> **Archived Atlas/model notes.** Model choices, voice defaults, timing recipes, and costs below belong to the former pipeline and may be stale. Use this only for relevant legacy code. Current defaults are in `local-pipeline.md`, `render-defaults.md`, and `voices.md`; narrator style is in `scripting-dna.md`.
 
 ## Model selection (verify IDs live first)
 

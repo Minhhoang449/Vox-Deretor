@@ -1,0 +1,105 @@
+{
+  "revision": "male-local-clones-2026-10-16",
+  "channels": {
+    "last-safe-minute": {
+      "voice": "last-safe-minute-male-v1",
+      "voice_profile_name": "Last Safe Minute — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/reference.txt",
+        "original_audio": "D:/Coder/Voice/Last Safe Minute.mp3",
+        "source_sha256": "fc61d462375a193afc53acd9712ab7938817dc53149f932760dd409cc18bfc6c",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/voice.pt"
+      },
+      "voice_route_source_profile": "last-safe-minute-male-v1",
+      "voice_engine": "omnivoice"
+    },
+    "terra-rewired": {
+      "voice": "terra-rewired-male-v1",
+      "voice_profile_name": "Terra Rewired — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/reference.txt",
+        "original_audio": "D:/Coder/Voice/Terra Rewired.mp3",
+        "source_sha256": "0a96c7e05173d3841e0b19bff6c036a76cea21a086299dffd3cbfb672b6d10e7",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/voice.pt"
+      },
+      "voice_route_source_profile": "terra-rewired-male-v1",
+      "voice_engine": "omnivoice"
+    },
+    "battlefield-bearings": {
+      "voice": "battlefield-bearings-male-v1",
+      "voice_profile_name": "Battlefield Bearings — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/reference.txt",
+        "original_audio": "D:/Coder/Voice/Battlefield Bearings.mp3",
+        "source_sha256": "9c89cfef73549abad89304007bd02c569bdd17375bb9ddfeba4cbb2a15ffb112",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/voice.pt"
+      },
+      "voice_route_source_profile": "battlefield-bearings-male-v1",
+      "voice_engine": "omnivoice"
+    },
+    "status-and-systems": {
+      "voice": "status-and-systems-male-v1",
+      "voice_profile_name": "Status & Systems — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/reference.txt",
+        "original_audio": "D:/Coder/Voice/Status & Systems.mp3",
+        "source_sha256": "054c723838581bc65f57456880ad419dc918fcc91f820d8e165c7c77ed3e4a12",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/voice.pt"
+      },
+      "voice_route_source_profile": "status-and-systems-male-v1",
+      "voice_engine": "omnivoice"
+    },
+    "chikyu-shikumi": {
+      "voice": "chikyu-shikumi-male-v1",
+      "voice_profile_name": "地球のしくみ帳 — Male v1",
+      "voice_gender": "male",
+      "voice_market": "Japan / Japanese",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/reference.txt",
+        "original_audio": "D:/Coder/Voice/地球のしくみ帳.mp3",
+        "source_sha256": "585411933a77c74bff4fc8716d738a0f64211410afad1591302a8a64001c4a7f",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/voice.pt"
+      },
+      "voice_route_source_profile": "chikyu-shikumi-male-v1",
+      "voice_engine": "omnivoice"
+    },
+    "vi-sao-noi-nay": {
+      "voice": "vi-sao-noi-nay-male-v1",
+      "voice_profile_name": "Vì Sao Nơi Này — Male v1",
+      "voice_gender": "male",
+      "voice_market": "Vietnam / Vietnamese",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/reference.txt",
+        "original_audio": "D:/Coder/Voice/Vì Sao Nơi Này.mp3",
+        "source_sha256": "8298a03f3ed7ef245628fb157448b1043773dd66a63e57356a633211bd41ac87",
+        "enrolled_on": "2026-10-16",
+        "vieneu_voice": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/vieneu-voice.json"
+      },
+      "voice_route_source_profile": "vi-sao-noi-nay-male-v1",
+      "voice_engine": "vieneu-v3-turbo",
+      "narration_calibration": {
+        "status": "not_measured_for_new_male_voice",
+        "guidance": "Measure generated audio with current speed and pause defaults; do not reuse the previous female-voice calibration."
+      }
+    }
+  }
+}

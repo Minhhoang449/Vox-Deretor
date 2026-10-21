@@ -1,10 +1,8 @@
 {
   "schema_version": 1,
   "editorial_pillars": [
-    "finance mechanics and products",
-    "economic systems and everyday life",
-    "economic history",
-    "war and conflict history through causes, logistics, decisions, and consequences"
+    "Research-led documentaries and explainers with six distinct subject lanes and channel-specific narrative grammars.",
+    "Use concrete events, places, real flows, tactical action or human-system comparisons to answer an evidence-grounded question; scenarios are optional."
   ],
   "formats": {
     "short": {
@@ -16,51 +14,206 @@
       "target_seconds_max": 90,
       "scene_seconds_min": 4,
       "scene_seconds_max": 10,
-      "visual_beats_target": "6-9"
+      "scene_seconds_typical": 6,
+      "visual_beats_min": 6,
+      "visual_beats_max": 9
     },
     "main": {
       "aspect_ratio": "16:9",
       "width": 1920,
       "height": 1080,
       "fps": 30,
-      "target_seconds_min": 420,
+      "target_seconds_min": 720,
       "target_seconds_max": 1200,
-      "target_seconds_default": 600,
+      "target_seconds_default": 900,
       "scene_seconds_min": 3,
       "scene_seconds_max": 10,
-      "visual_beats_target": "7-20 minute films. Each Muse clip uses that shot's own duration, the same way the API path passed shot.dur. 10 seconds is the maximum, not a fixed length. Plan about one shot per 5 seconds, then set each dur from 3 to 10 so the durations add up to the target."
+      "scene_seconds_typical": 5,
+      "target_runtime_tolerance_percent": 5
+    },
+    "main_short": {
+      "aspect_ratio": "16:9",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "target_seconds_min": 420,
+      "target_seconds_max": 600,
+      "target_seconds_default": 540,
+      "scene_seconds_min": 3,
+      "scene_seconds_max": 10,
+      "scene_seconds_typical": 5,
+      "target_runtime_tolerance_percent": 5
     }
   },
   "default_format": "main",
-  "visual_direction": "Original editorial explainer collage built from tactile torn and cut paper: visible fibers, imperfect torn edges, stacked layers, soft cast shadows, bold simple shapes, and a restrained topic-specific palette. Preserve one clear idea per frame while varying scale and visual grammar: huge close-up object, wide establishing tableau, overhead tabletop, side-on cutaway, split comparison, paper map, causal flow, timeline, isolated silhouette, or a reveal through a torn window. Use foreground, middle ground, and background layers so the camera has depth to travel through. Turn abstract systems into physical paper objects and show cause before consequence. Alternate calm holds with purposeful reveals, paper folds, tracing paths, sliding pieces, and scale changes; every movement must explain the narration. Keep the visual identity original and do not imitate another publisher's exact identity. For war history, avoid graphic imagery and fake archival documents; focus on maps, logistics, decisions, and consequences.",
-  "muse": {
-    "url": "https://muse.ai/",
-    "generation_seconds": 10,
-    "workflow": "manual_copy_paste",
-    "prompt_shape": "one continuous 10-second shot; one focal action timed to matching narration; opening state, visible change, and payoff; choose one deliberate camera path and paper transformation; no unrelated imagery, generated labels, logos, or internal cuts",
-    "scene_plan": {
-      "min_unique_t2v_scenes": 50,
-      "max_unique_t2v_scenes": 120,
-      "unique_scene_seconds_guide": 15,
-      "timeline_placement_seconds": 10,
-      "reuse_placements_separate": true
-    },
-    "reuse_for_overflow": true,
-    "stills_in_final_timeline": false
+  "image_text_policy": "contextual",
+  "research": {
+    "youtube_market_scan_max_age_days": 90
   },
-  "voice_studio": {
-    "base_url": "http://127.0.0.1:3900",
-    "model": "omnivoice",
-    "response_format": "wav",
-    "max_input_characters": 4096,
-    "default_speed": 0.8,
-    "num_step": 32
+  "visual_direction": "Follow references/visual-dna.md and the selected channel's visual_grammar. Use the shared original hand-drawn Chibi 2D educational illustration prompt for all six channels: friendly expressive compact characters when useful, bold clean dark outlines, warm luminous colors, gentle painterly texture, restrained cel shading, clear staging and readable forms. Apply the same finish to people, objects, environments, maps and explanatory diagrams; choose palette, period details and composition from verified episode evidence rather than copying a sample scene. Generate stills with Codex imagegen after narration approval and audio review. Do not retrieve video or use video montage. An illustration explains but does not prove an event. Preserve geography, time and visible state; use full-image reuse caps, exact localized text, spelling and phone/crop QA. Keep provenance internal. FFmpeg/NVENC adds camera movement only, not missing physical action. Episode thumbnails follow the subject/promise in this same Chibi 2D look and remain 1280x720.",
+  "revideo": {
+    "root": "D:/Coder/Revideo",
+    "gpu_acceleration": true,
+    "workers": 2,
+    "ffmpeg_path": "ffmpeg",
+    "ffprobe_path": "ffprobe",
+    "video_codec": "h264_nvenc",
+    "video_preset": "p4",
+    "video_cq": 20,
+    "transition_seconds": 0.46,
+    "beat_transition_seconds": 0.68,
+    "stills_in_final_timeline": true
+  },
+  "omnivoice": {
+    "root": "D:/Coder/Omivoice",
+    "model": "D:/Coder/Omivoice/weights",
+    "sample_rate": 24000,
+    "default_speed": 0.9,
+    "pause_after_period_seconds": 0.8,
+    "num_step": 32,
+    "dtype": "float16"
+  },
+  "vieneu": {
+    "root": "D:/Coder/VieNeu-TTS",
+    "python": "D:/Coder/VieNeu-TTS/.venv/Scripts/python.exe",
+    "model": "D:/Coder/VieNeu-TTS/weights/VieNeu-TTS-v3-Turbo",
+    "model_subfolder": "update",
+    "moss_tokenizer": "D:/Coder/VieNeu-TTS/weights/MOSS-Audio-Tokenizer-Nano",
+    "sample_rate": 48000,
+    "default_speed": 1.0,
+    "pause_after_period_seconds": 0.8,
+    "languages": [
+      "vi"
+    ]
   },
   "renderer": {
-    "video_codec": "libx264",
+    "stills_renderer": "ffmpeg",
+    "stills_camera_policy": "balanced",
+    "stills_incoming_zoom": 0.0,
+    "video_codec": "h264_nvenc",
+    "video_preset": "p4",
+    "video_crf": 20,
+    "video_cq": 20,
     "audio_codec": "aac",
     "audio_bitrate": "192k",
+    "faststart": true,
     "container": "mp4",
-    "captions": "scene_level_srt"
+    "captions": "static_phrase_ass_with_phrase_level_srt_sidecar"
+  },
+  "caption_alignment": {
+    "enabled": true,
+    "backend": "whisperx_forced_alignment",
+    "device": "cuda",
+    "align_model": null,
+    "minimum_available_memory_gb": 3.0,
+    "min_exact_match_ratio": 0.95
+  },
+  "music_library": {
+    "path": "D:/Music",
+    "selection": "Choose a track to fit the episode and set its path as bgm_path in beats.json",
+    "loop_short_tracks": true
+  },
+  "caption_render": {
+    "display_mode": "static",
+    "font": "Arial",
+    "font_file": "C:/Windows/Fonts/arial.ttf",
+    "font_size": 50,
+    "max_chars_per_line": 42,
+    "max_lines": 2,
+    "margin_v": 78,
+    "margin_h": 84,
+    "outline": 2,
+    "shadow": 1.2,
+    "primary_color": "&H00FFFFFF",
+    "outline_color": "&H00000000",
+    "position": "bottom",
+    "pop_scale": 116,
+    "pop_ms": 135
+  },
+  "caption_policy": {
+    "revision": "netflix-inspired-native-v2-50px",
+    "reference_scope": "Readability for same-language narration, informed by Netflix SDH guides; not a Netflix delivery-compliance claim.",
+    "checked_on": "2026-10-19",
+    "min_duration_seconds": 0.8333333333,
+    "max_duration_seconds": 7.0,
+    "linger_seconds": 0.2,
+    "max_hold_after_speech_seconds": 0.65,
+    "minimum_gap_frames": 2,
+    "target_phrase_characters": 64,
+    "languages": {
+      "en": {
+        "max_chars_per_line": 42,
+        "target_cps": 17,
+        "max_cps": 20,
+        "counting": "characters",
+        "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/217350977-English-USA-Timed-Text-Style-Guide"
+      },
+      "vi": {
+        "max_chars_per_line": 42,
+        "target_cps": 17,
+        "max_cps": 20,
+        "counting": "characters",
+        "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/220447048-Vietnamese-Timed-Text-Style-Guide"
+      },
+      "es": {
+        "max_chars_per_line": 42,
+        "target_cps": 15,
+        "max_cps": 17,
+        "counting": "characters",
+        "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/217349997-Spanish-Latin-America-Spain-Timed-Text-Style-Guide"
+      },
+      "ja": {
+        "max_chars_per_line": 16,
+        "target_cps": 6,
+        "max_cps": 7,
+        "counting": "full_width_equivalent",
+        "font": "Yu Gothic",
+        "font_file": "C:/Windows/Fonts/YuGothR.ttc",
+        "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/215767517-Japanese-Timed-Text-Style-Guide"
+      },
+      "ko": {
+        "max_chars_per_line": 16,
+        "target_cps": 12,
+        "max_cps": 14,
+        "counting": "hangul_equivalent",
+        "font": "Malgun Gothic",
+        "font_file": "C:/Windows/Fonts/malgun.ttf",
+        "source": "https://partnerhelp.netflixstudios.com/hc/en-us/articles/216001127-Korean-Timed-Text-Style-Guide"
+      }
+    }
+  },
+  "caption_quality": {
+    "fail_on_errors": true,
+    "minimum_speech_coverage": 0.95,
+    "speech_edge_tolerance_seconds": 0.15,
+    "maximum_uncovered_speech_seconds": 0.4,
+    "fallback_requires_review": true
+  },
+  "visual_dna": {
+    "revision": "human-history-chibi-v3-reference-look",
+    "reference": "references/chibi-historical-visual-dna.md",
+    "default_style": "chibi-2d",
+    "style_name": "Original hand-drawn Chibi 2D educational illustration",
+    "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+    "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+    "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly texture, restrained cel shading, readable silhouettes and clear staging; preserve researched period/place details.",
+    "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+    "prompt_policy": "Codex imagegen keyframes after narration approval and audio review. Distinct frames for changed action, expression, setting or fact. Internal provenance only.",
+    "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+    "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+  },
+  "episode_root": "D:/Video",
+  "visual_workflow": {
+    "revision": "human-history-chibi-stills-v2",
+    "reference": "references/imagegen-stills.md",
+    "source_order": "imagegen_stills",
+    "retrieval_tool": "Codex imagegen",
+    "providers": [
+      "Codex imagegen"
+    ],
+    "default_visual_mode": "revideo_stills",
+    "generated_still_style": "chibi-2d",
+    "source_plan_required": false,
+    "existing_episode_policy": "Keep recorded media/style unless the user requests a revision; no automatic migration."
   }
 }

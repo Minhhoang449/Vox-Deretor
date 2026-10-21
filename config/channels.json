@@ -1,304 +1,1638 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "revision": "channel-documentary-relaunch-v1",
+  "updated_on": "2026-10-21",
+  "narration_dna": {
+    "revision": "research-led-documentary-v1",
+    "reference": "references/scripting-dna.md",
+    "writing_framework": {
+      "revision": "documentary-writing-framework-v1-2026-10-21",
+      "reference": "references/documentary-writing-framework.md",
+      "spine_reference": "references/templates/story-card.md#adapted-episode-spine",
+      "scope": "New writing and requested revisions across all six channels; preserve approved production.",
+      "sequence": [
+        "earn_the_question",
+        "establish_the_answer",
+        "compare_two_title_thumbnail_opening_treatments",
+        "native_market_intent_check",
+        "complete_adapted_episode_spine",
+        "continuous_narration_with_distinct_progression",
+        "joint_actual_speech_package_review",
+        "earned_ending_and_native_read_aloud"
+      ],
+      "policy": "Use script_packaging_coordination and references/script-packaging-coordination.md as the unified development sequence. Complete the existing story card's adapted episode spine before continuous narration; treat its opening, early progress, evidence chain, consequential middle, supported implication and earned answer as diagnostic stages, not compulsory sections or fixed order. Adapt the carrier to the live channel format and evidence; combine or omit stages that do not advance the central question. Compare title/thumbnail/opening concepts before long narration; review actual speech and package together before approval. No compulsory delayed payoff, cliffhanger, chapter count, interrupt timer or performance guarantee. Retain exact narration approval."
+    },
+    "script_packaging_coordination": {
+      "draft_diagnostics_command": "python scripts/draft_review_checks.py <narration.md> [--evidence <claim-mappings.json>]",
+      "draft_diagnostics_policy": "Exact repeats and mapping structure only; manually check semantic repetition, hook truth, changed scene details, science and source strength. Include title, one-line thumbnail concept and passage-level visual/source feasibility notes. No automatic factual verification, production or approval.",
+      "revision": "script-packaging-coordination-v1-2026-10-21",
+      "reference": "references/script-packaging-coordination.md",
+      "sequence": [
+        "resolve_scope_and_history",
+        "evidence_backed_answer",
+        "two_provisional_title_thumbnail_opening_pairs",
+        "native_market_intent_check",
+        "continuous_narration",
+        "joint_actual_speech_package_review",
+        "narration_approval",
+        "audio_review_then_final_artwork_and_export"
+      ],
+      "policy": "Use existing shortlist/story/marketing records. Develop package concepts before long narration; recheck actual speech before approval. No mandatory named protagonist, danger, myth, surprise timer, autocomplete gate or view/subscriber threshold. Preserve live scope, runtime, Chibi style and approved production."
+    },
+    "default_format": "channel_documentary",
+    "persona": "A curious, clear documentary storyteller whose tone, structure and visual carrier follow the selected channel and researched question.",
+    "opening": "Open on a supported action, object, habit, pleasure, need or contrast that earns the question. A practical difficulty is optional; do not invent deprivation or danger to fit an opening template.",
+    "premise": "Answer an evidence-grounded question in the channel's own subject lane. Documentary reconstruction, process explanation, place-led journeys and human-system comparisons are normal formats.",
+    "story_progression": "concrete question -> evidence-led progression using the channel's narrative grammar -> supported answer -> relevant implications or unresolved limits",
+    "story_requirements": [
+      "a selected topic that fits this channel's focus and audience",
+      "one accurate central question and a matching title/opening/payoff promise",
+      "primary or authoritative evidence for important facts and mechanisms",
+      "progression through event states, flows, thresholds or decisions, as the channel requires",
+      "clear geography, time, scale, definitions and material uncertainty",
+      "supported reconstruction and explicitly marked illustrative or hypothetical material",
+      "an earned answer and relevant consequences or limits"
+    ],
+    "spoken_style": "Idiomatic spoken language, concrete nouns, active verbs and varied rhythm. Attach explanation to the action, process or comparison it clarifies. Humor is optional and sensitive passages may be sober. Do not invent real-person testimony or private thoughts. Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+    "review_requirement": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+    "research_scope": "YouTube is dated audience/format discovery, not claim evidence or retention analytics. Verify historical, scientific, economic and institutional claims independently with dates and jurisdiction where relevant.",
+    "scenario_policy": "A what-if, intervention mission or alternate timeline is optional only when selected for this episode. Mark divergence and assumptions; do not impose a mission, traveler, success criterion or fictional aftermath on a documented explainer.",
+    "runtime_revision": "Develop supported events, mechanisms, comparisons or consequences; do not pad or slow audio. Approved narration revisions require fresh approval.",
+    "authoring_source": "Active six-channel config and scripting-dna.md supersede all earlier mission/traveler defaults. Archived profiles are for legacy production lookup only.",
+    "topic_continuity": "Never infer a new episode topic from old pilots, approved assets or retired channel profiles.",
+    "benchmark_reference": "references/channel-benchmarking.md",
+    "benchmark_policy": "Compare actual passages with dated, classified reference evidence; report self-review separately from measured audience results.",
+    "narration_boundary": "Keep access logs, abstract-only reading status, tool limitations and instructions to the author in the dossier/review. Speak consequential uncertainty, scope and assumptions naturally at the claim. Narrate investigative methods when a finding changes the causal explanation; narrow or research an unsupported claim rather than excuse it with a disclaimer.",
+    "premise_isolation": "Reuse plot fields only when saved DNA revision, editorial revision and channel format match, or an explicit episode format exception exists. Preserve incompatible recorded premises as production history; only period/place orient the fresh scaffold.",
+    "passage_progression": "Identify what the viewer can now explain, distinguish or predict that was unavailable before this passage, and the evidence or explanatory step that supplies it. A new study, term, qualification or paraphrase of the same answer is not progress by itself. Keep useful general mechanism and orientation, but merge passages whose removal loses no distinct understanding or necessary scope.",
+    "concrete_payoff": "Show the supported outcome and its local or everyday consequence; a promise to follow a flow or comparison must be visible in the actual text. Do not fill an evidence gap with invented people, motives or outcomes.",
+    "spoken_information_order": "Establish the job or constraint before technical names. Use numbers for a meaningful scale, threshold or difference; retain material date, jurisdiction and definitions at the affected claim rather than narrating an unusable data comparison.",
+    "ending_test": "Close once the supported answer and relevant consequence or uncertainty are clear. A callback is optional and useful only when its meaning has changed; do not re-tour the route or stack several conclusions. A discussion question is optional after the payoff, not a substitute for it.",
+    "execution_revision": "documentary-story-execution-v4",
+    "execution_updated_on": "2026-10-17",
+    "transition_policy": "Distinguish a sourced causal consequence, an explanatory prerequisite and the next task in the same system. Do not invent surprise, discovery order, crisis, private thoughts or a claim that the first solution caused the next problem.",
+    "answer_timing": "The main answer may arrive early or late. Each intervening passage must pay a useful question. Later branches must serve the title/opening promise or a demonstrated consequence; no fixed teaser interval or mandatory new danger.",
+    "runtime_planning": "Use the live channel's measured voice/language calibration only when voice, settings and counting method match. It is a provisional drafting budget, not a duration guarantee; confirm approved native-speed TTS before images. Do not infer speech duration from shot budgets, pad repetition, stretch audio or override an accepted episode runtime.",
+    "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+    "situated_mechanism": "Connect essential general explanation to a sourced condition, action, finding or outcome in this episode's place, event or service task. The consequential middle must depend on those particulars. A place/name substitution test diagnoses a generic spine, but does not prohibit general science or require a field measurement in every paragraph.",
+    "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+    "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+    "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+    "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+    "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+    "narrative_path_policy": "Use the live channel progression as a diagnostic guide, not fixed chapters or an identical opening for every episode. Keep question maps, review labels and source administration in notes. Write connected spoken explanation through concrete supported tasks, objects and findings; each passage adds distinct understanding. Choose order from the evidence and viewer question; do not pad to the 12-20 minute target. One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+    "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+    "topic_scope": {
+      "revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "periods": [
+        "prehistory",
+        "Ice Age human life",
+        "early farming communities",
+        "ancient civilizations, especially ancient Egypt"
+      ],
+      "selection_rule": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges.",
+      "borrowed_topics_not_for_production": [
+        "How ancient Egyptians built the pyramids",
+        "Why ancient women had to cover or veil themselves",
+        "How ancient people gave birth without hospitals"
+      ],
+      "exclusion_rule": "These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible."
+    },
+    "curiosity_and_humor": "Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+    "question_design": {
+      "revision": "everyday-life-question-v2-2026-10-21",
+      "default_shape": "focused_task",
+      "allowed_shapes": [
+        "focused_task",
+        "connected_routines"
+      ],
+      "scope_rule": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+      "opening_rule": "Open on a supported action, object, habit, pleasure, need or contrast that earns the question. A practical difficulty is optional; do not invent deprivation or danger to fit an opening template.",
+      "progression_rule": "Follow what people do and what the viewer newly understands. Connected routines can progress; a single process can still repeat. Judge each passage by its distinct contribution, not the number of procedural steps.",
+      "narration_rule": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+      "second_person_rule": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine."
+    }
+  },
+  "archive_policy": "Archived IDs resolve for recorded legacy episodes; only channels[] is active for new authoring.",
+  "archived_channels_file": "config/archive/pre-relaunch-2026-10-15/config/channels.json",
   "channels": [
     {
-      "id": "hollis-ridge",
-      "display_name": "Hollis Ridge",
-      "language": "en",
-      "voice": "28bd9142",
-      "destination": "D:/Vox-Video/Hollis Ridge",
-      "promise": "Explain how money and economic systems move through everyday life, with concrete objects and flows.",
-      "lanes": [
-        "How payments, credit, insurance, and financial infrastructure work",
-        "How prices and supply chains are formed",
-        "The history behind everyday economic systems",
-        "Wartime economies, logistics, and the home front"
-      ],
-      "market_scope": "Use United States examples by default only when the episode says so; label country, product, and data scope. Explain concepts, not what viewers should buy.",
-      "youtube_research": {
-        "relevance_language": "en",
-        "region_code": "US",
-        "queries": [
-          "how money works explained finance",
-          "economic history documentary explained",
-          "World War II explained documentary economy"
-        ]
-      },
-      "avoid": [
-        "generic trivia lists",
-        "investment picks",
-        "unverified claims about fees, credit, or inflation"
-      ],
-      "pilot_topics": [
-        "What happens between tapping a card and the shop receiving the money?",
-        "How does a dollar of shelf price get divided across a product's supply chain?",
-        "What does insurance do with the premiums from many policyholders?",
-        "How did rationing change daily life on the U.S. home front during World War II?"
-      ],
-      "voice_profile_name": "Hollis Ridge",
+      "voice": "last-safe-minute-male-v1",
+      "voice_profile_name": "Last Safe Minute — Male v1",
       "voice_gender": "male",
       "voice_market": "United States / American English",
       "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Hollis Ridge/Hollis Ridge.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Hollis Ridge/Text.txt"
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/reference.txt",
+        "original_audio": "D:/Coder/Voice/Last Safe Minute.mp3",
+        "source_sha256": "fc61d462375a193afc53acd9712ab7938817dc53149f932760dd409cc18bfc6c",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/last-safe-minute/voice.pt"
       },
-      "narration_direction": "Warm, natural conversational English; tell the explanation as a clear little story in everyday words, with gentle situational wit; explain any necessary technical term simply, no announcer hype."
-    },
-    {
-      "id": "iria-canto",
-      "display_name": "Iria Canto",
-      "language": "es",
-      "voice": "9d61caa7",
-      "destination": "D:/Vox-Video/Iria Canto",
-      "promise": "Tell sourced economic-history stories and explain how money systems changed daily life across Spanish-speaking regions.",
-      "lanes": [
-        "Economic history through a documented regional turning point",
-        "How trade, money, and commodities connected places",
-        "What a change in prices or currency meant in daily life",
-        "Regional conflict history and its economic consequences"
-      ],
-      "region_rule": "Name the country or region in each brief. Do not treat Spain and Latin America as one undifferentiated market; localize examples, vocabulary, institutions, and source material.",
-      "youtube_research": {
-        "relevance_language": "es",
-        "region_code": "ES",
-        "queries": [
-          "finanzas personales explicadas",
-          "historia económica documental",
-          "Segunda Guerra Mundial explicada documental español"
-        ]
-      },
-      "avoid": [
-        "origin myths",
-        "present-day investment advice",
-        "mixing regional terminology or monetary history without explanation"
-      ],
-      "pilot_topics": [
-        "España: ¿Qué cambió en los pagos cotidianos cuando la peseta dio paso al euro?",
-        "México: ¿Cómo llegó el peso de plata novohispano a circular en el comercio internacional?",
-        "Chile: ¿Qué papel tuvo el salitre en la economía chilena del siglo XIX?",
-        "¿Por qué el suministro de alimentos y combustible fue decisivo en el norte de África durante la Segunda Guerra Mundial?"
-      ],
-      "voice_profile_name": "Iria Canto",
-      "voice_gender": "female",
-      "voice_market": "Spanish-speaking markets / Spanish",
-      "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Iria Canto/Iria Canto.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Iria Canto/Text.txt"
-      },
-      "narration_direction": "Narración en español natural, cálida y precisa, como quien cuenta una historia; usa palabras cotidianas y humor sutil ligado al tema, explica cualquier término necesario con sencillez y evita el tono de anuncio."
-    },
-    {
-      "id": "levi-solace",
-      "display_name": "Levi Solace",
+      "id": "last-safe-minute",
+      "display_name": "The Long Road to Lunch",
       "language": "en",
-      "voice": "4f71a047",
-      "destination": "D:/Vox-Video/Levi Solace",
-      "promise": "Explain the history of money and economic systems through one object, institution, or turning point.",
+      "destination": "D:/Video/The Long Road to Lunch",
+      "profile_status": "active",
+      "promise": "Explain one curious everyday food question through the supported tasks and resources of a prehistoric or ancient community.",
       "lanes": [
-        "The history behind currencies, banks, trade, and debt",
-        "Economic turning points shown through one object or flow",
-        "How an institution or policy changed the rules of exchange",
-        "The World Wars through logistics, finance, decisions, and aftermath"
+        "Obtaining, preparing and sharing food in prehistoric and ancient communities",
+        "Keeping and carrying food under early household conditions",
+        "Early cultivation and food changes through concrete daily needs"
       ],
       "avoid": [
-        "hero worship",
-        "single-cause explanations of complex events",
-        "present-day financial advice",
-        "compressed timelines that hide uncertainty"
+        "Retired channel subjects inherited from its name, old assets or benchmark.",
+        "Invented testimony, thoughts or dialogue; illustrative situations presented as fact.",
+        "Universal origins or causality inferred from one region/group.",
+        "Copied scripts, creator characters, layouts or unsupported first/greatest claims.",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
       ],
+      "pilot_topics": [],
+      "story_format": "food_origin_process_history",
+      "narration_direction": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+      "visual_grammar": "People harvesting, selecting, grinding, cooking, preserving and exchanging food; plant comparisons and process diagrams. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states.",
+      "opening_device": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional.",
+      "ending_payoff": "Answer the original question with the supported change in human life and material limits. Return to an opening object only when its meaning changes.",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
       "youtube_research": {
         "relevance_language": "en",
         "region_code": "US",
-        "queries": [
-          "history of money documentary explained",
-          "economic history documentary",
-          "World War II explained history documentary"
-        ]
+        "queries": []
       },
-      "pilot_topics": [
-        "How did the shipping container change the cost of moving ordinary goods?",
-        "What problem was the Bretton Woods system designed to address after World War II?",
-        "How did paper banknotes change what people had to carry to trade?",
-        "How did fuel, shipping, and logistics shape the outcome of one World War II campaign?"
+      "youtube_channel_id": "",
+      "proposed_handle": "@TheLongRoadToLunch",
+      "voice_route_source_profile": "last-safe-minute-male-v1",
+      "youtube_setup": {
+        "description": "Explain one curious everyday food question through the supported tasks and resources of a prehistoric or ancient community. Friendly, lightly witty stories follow concrete objects, daily tasks and supported practical solutions, with dates, places and uncertainty kept clear.",
+        "channel_keywords": [
+          "food history",
+          "origins of food",
+          "crop domestication",
+          "ancient food",
+          "food preservation",
+          "history of cooking",
+          "early agriculture",
+          "food culture"
+        ],
+        "default_video_category_id": "27",
+        "default_video_category": "Education",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "How Did Humans Start Eating Salt?",
+          "url": "https://www.youtube.com/watch?v=M3gaYWDaGqQ",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "How Did Humans Domesticate Corn?",
+          "url": "https://www.youtube.com/watch?v=CmSOqTBTNJk",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "Why Humans Eat 3 Meals a Day",
+          "url": "https://www.youtube.com/watch?v=N2Y4-_dkKe0",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        }
       ],
-      "voice_profile_name": "Levi Solace",
+      "dna_revision": "research-led-documentary-v1",
+      "packaging_direction": {
+        "viewer_question": "Explain one curious everyday food question through the supported tasks and resources of a prehistoric or ancient community.",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "How Did [early community] [everyday task]?",
+          "Why Did [ancient community] [specific everyday habit]?",
+          "How Did [ancient community] Deal with [ordinary inconvenience]?"
+        ],
+        "thumbnail_direction": "People harvesting, selecting, grinding, cooking, preserving and exchanging food; plant comparisons and process diagrams. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "A Chibi person grinding, cooking or preserving the featured food; show the material change clearly.",
+          "Supported wild and cultivated forms beside a person selecting or harvesting; keep scale truthful.",
+          "People preparing or sharing a meal in a researched setting; make the featured food practice legible."
+        ],
+        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "opening_contract": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "Copied creator characters, poses or layouts.",
+          "Generic shock faces or invented scale/stakes.",
+          "Unsupported first/only/never claims.",
+          "Mandatory public source blocks, internal notes or keyword dumps."
+        ],
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "policy": "Standardize scope, localization, original Chibi people, 1280x720 phone QA and title/opening alignment; not a fixed palette, font, layout, chapter quota or CTR guarantee.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+      },
+      "voice_engine": "omnivoice",
+      "writing_contract": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "Open on a supported food action, ingredient, meal habit, pleasure, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional.",
+        "progression_test": "One everyday-life question → bounded setting and people → supported actions, objects and distinct partial answers → changed understanding → earned answer and material limits. A focused task or connected routines may carry this path; no fixed chapters or compulsory origin story.",
+        "reject": "No retired disaster, WWI/WWII-only, medieval-only or infrastructure-only constraint. No fabricated testimony or universal imagined daily life.",
+        "boundary": "Use natural channel-language speech and clearly bounded historical/geographical scope. Define terms and material uncertainty.",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "Make the food's history legible through supported harvesting, selection, processing, preservation, exchange or meal practices. Show what changed in the food or practice and what evidence supports it in a bounded community and period. Do not assume a single inventor, accidental discovery, universal sequence or inevitable spread. Each passage advances the selected food question, not a disaster/response plot.",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "last-safe-minute-male-v1",
+        "engine": "omnivoice",
+        "language": "en",
+        "unit": "English whitespace-delimited words",
+        "count_method": "whitespace_units",
+        "units_per_minute": 131.26439635315378,
+        "sample_episode": "D:\\Video\\Last Safe Minute\\lake-nyos-co2-release-1986",
+        "sample_units": 1487,
+        "sample_speech_seconds": 679.6968749999999,
+        "sample_narration_sha256": "f4dd807fe94410a109faa8a9b435d02a91116c2dc2b5d003f39fcf13955874de",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "302b7437be763d04ad386d0fcf58c4fef604b4a950a0209d77d12414d14170e6",
+        "voice_source_sha256": {
+          "audio": "c7528d3bc3ff3a71c18585fec7243baa012e883bf5b8cd658871e8fb71b9a85b",
+          "transcript": "bd88eceb01259733ae5410b13ec57b20d159d04797a8ed0b6700ba3b42cc11df",
+          "prompt": "d8a23bf81f6b190334af94865e6f7ae6d297b42c08c4b2ac753aeda24405c065"
+        },
+        "tts_speed": 0.9,
+        "pause_after_period_seconds": 0.8,
+        "num_step": 32,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+      },
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "focus": "Food origins, crop domestication and food practices | Prioritize curious everyday-life questions in prehistory, Ice Age communities and antiquity.",
+      "previous_display_names": [
+        "Last Safe Minute",
+        "Origins on the Table"
+      ],
+      "legacy_destinations": [
+        "D:/Video/Last Safe Minute",
+        "D:/Video/Origins on the Table"
+      ],
+      "name_change": {
+        "selected_on": "2026-10-20",
+        "local_status": "applied",
+        "youtube_studio_status": "not_changed",
+        "handle_availability": "unverified",
+        "youtube_search_checked_on": "2026-10-20",
+        "youtube_search_result": "no_exact_channel_name_in_visible_results"
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "Short, exact English labels may appear when they clarify a researched food, crop, process, place or quantity. Plan wording and placement in in_scene_text and text_placement; keep signs and containers period- and place-appropriate. Do not invent claims, quantities, quotations or archival wording. Omit text when it adds no explanatory value.",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope"
+    },
+    {
+      "voice": "terra-rewired-male-v1",
+      "voice_profile_name": "Terra Rewired — Male v1",
       "voice_gender": "male",
       "voice_market": "United States / American English",
       "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Levi Solace/Levi Solace.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Levi Solace/Text.txt"
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/reference.txt",
+        "original_audio": "D:/Coder/Voice/Terra Rewired.mp3",
+        "source_sha256": "0a96c7e05173d3841e0b19bff6c036a76cea21a086299dffd3cbfb672b6d10e7",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/terra-rewired/voice.pt"
       },
-      "narration_direction": "Natural conversational English history narration; tell a vivid, well-sourced story in plain words with dry, gentle situational humor; keep serious events respectful, no trailer voice or false drama."
-    },
-    {
-      "id": "moc-vy",
-      "display_name": "Mộc Vy",
-      "language": "vi",
-      "voice": "d2d51973",
-      "destination": "D:/Vox-Video/Mộc Vy",
-      "promise": "Make Vietnamese household finance and the wider economy understandable through familiar daily examples.",
+      "id": "terra-rewired",
+      "display_name": "From Need to Tool",
+      "language": "en",
+      "destination": "D:/Video/From Need to Tool",
+      "profile_status": "active",
+      "promise": "Explain how an early community managed an ordinary practical job using available tools, materials and skills.",
       "lanes": [
-        "How everyday money products work, without telling viewers what to buy",
-        "Vietnamese prices, work, housing, and supply chains",
-        "Economic history and the changes that shaped daily life in Vietnam",
-        "Vietnamese war history and its documented economic and social aftermath"
+        "Everyday making and tool use in prehistoric and ancient communities",
+        "Carrying, fastening, lighting and repairing with early materials",
+        "Ancient craft through an ordinary practical problem"
       ],
       "avoid": [
-        "personalized investment or borrowing advice",
-        "broad claims about all Vietnamese people",
-        "local anecdotes presented as nationwide data"
+        "Retired channel subjects inherited from its name, old assets or benchmark.",
+        "Invented testimony, thoughts or dialogue; illustrative situations presented as fact.",
+        "Universal origins or causality inferred from one region/group.",
+        "Copied scripts, creator characters, layouts or unsupported first/greatest claims.",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
       ],
+      "pilot_topics": [],
+      "story_format": "invention_material_process_history",
+      "narration_direction": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+      "visual_grammar": "People making, testing, operating and teaching; material cutaways, workshop processes and supply maps. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states.",
+      "opening_device": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional.",
+      "ending_payoff": "Answer the original question with the supported change in human life and material limits. Return to an opening object only when its meaning changes.",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
       "youtube_research": {
-        "relevance_language": "vi",
-        "region_code": "VN",
-        "queries": [
-          "kiến thức tài chính cá nhân giải thích",
-          "lịch sử kinh tế Việt Nam",
-          "giải thích Thế chiến thứ hai lịch sử"
-        ]
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": []
       },
-      "pilot_topics": [
-        "Một khoản vay mua nhà được chia thành tiền gốc và tiền lãi như thế nào qua từng kỳ?",
-        "Từ ruộng lúa đến giá gạo bán lẻ có những chặng chi phí nào?",
-        "Đổi Mới đã thay đổi cách giá cả và hàng hóa vận hành ra sao?",
-        "Đường mòn Hồ Chí Minh vận hành như một hệ thống hậu cần chiến tranh như thế nào?"
+      "youtube_channel_id": "",
+      "proposed_handle": "@FromNeedToTool",
+      "voice_route_source_profile": "terra-rewired-male-v1",
+      "youtube_setup": {
+        "description": "Explain how an early community managed an ordinary practical job using available tools, materials and skills. Friendly, lightly witty stories follow concrete objects, daily tasks and supported practical solutions, with dates, places and uncertainty kept clear.",
+        "channel_keywords": [
+          "history of technology",
+          "invention history",
+          "ancient tools",
+          "materials history",
+          "metallurgy history",
+          "craft production",
+          "early technology",
+          "technology explained"
+        ],
+        "default_video_category_id": "28",
+        "default_video_category": "Science & Technology",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "How Did Humans Invent Bronze?",
+          "url": "https://www.youtube.com/watch?v=Igm9SLBfhQ8",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "Why Did Human Progress EXPLODE in the Last 100 Years — After 10,000 Years of Slow Progress?",
+          "url": "https://www.youtube.com/watch?v=3VpXVAAfa7Y",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        }
       ],
-      "voice_profile_name": "Mộc Vy",
-      "voice_gender": "female",
-      "voice_market": "Vietnam / Vietnamese",
-      "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Mộc Vy/moc-vy.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Mộc Vy/Text.txt"
+      "dna_revision": "research-led-documentary-v1",
+      "packaging_direction": {
+        "viewer_question": "Explain how an early community managed an ordinary practical job using available tools, materials and skills.",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "How Did [early community] [everyday task]?",
+          "Why Did [ancient community] [specific everyday habit]?",
+          "How Did [ancient community] Deal with [ordinary inconvenience]?"
+        ],
+        "thumbnail_direction": "People making, testing, operating and teaching; material cutaways, workshop processes and supply maps. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "A Chibi maker performing the decisive making step; enlarge the tool or material when needed for clarity.",
+          "A material cutaway beside its supported making or use; show the property that answers the title.",
+          "A person attempting the practical task with a supported earlier and later tool; no invented superiority."
+        ],
+        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "opening_contract": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "Copied creator characters, poses or layouts.",
+          "Generic shock faces or invented scale/stakes.",
+          "Unsupported first/only/never claims.",
+          "Mandatory public source blocks, internal notes or keyword dumps."
+        ],
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "policy": "Standardize scope, localization, original Chibi people, 1280x720 phone QA and title/opening alignment; not a fixed palette, font, layout, chapter quota or CTR guarantee.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
       },
-      "narration_direction": "Giọng kể tiếng Việt tự nhiên, gần gũi như đang kể chuyện; dùng từ đời thường, dí dỏm nhẹ nhàng từ chính tình huống, giải thích thuật ngữ bằng ví dụ dễ hình dung; không lên lớp, không đùa trên nỗi đau của người khác."
+      "voice_engine": "omnivoice",
+      "writing_contract": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "Open on a supported object, material, making or use action, habit, need or contrast in a named prehistoric or ancient community; a practical difficulty is optional.",
+        "progression_test": "One everyday-life question → bounded setting and people → supported actions, objects and distinct partial answers → changed understanding → earned answer and material limits. A focused task or connected routines may carry this path; no fixed chapters or compulsory origin story.",
+        "reject": "No retired disaster, WWI/WWII-only, medieval-only or infrastructure-only constraint. No fabricated testimony or universal imagined daily life.",
+        "boundary": "Use natural channel-language speech and clearly bounded historical/geographical scope. Define terms and material uncertainty.",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "Explain the practical job, material properties and supported making or use of this tool or technology. Distinguish invention, production, adoption and transmission; show the conditions and trade-offs that matter to this particular question. Do not assume one inventor, an inevitable improvement or a compulsory infrastructure journey. A list of inventions is not an explanation of this invention.",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "terra-rewired-male-v1",
+        "engine": "omnivoice",
+        "language": "en",
+        "unit": "English whitespace-delimited words",
+        "count_method": "whitespace_units",
+        "units_per_minute": 124.40969253677073,
+        "sample_episode": "D:\\Video\\Terra Rewired\\hong-kong-dongjiang-water-route",
+        "sample_units": 1725,
+        "sample_speech_seconds": 831.92875,
+        "sample_narration_sha256": "31b92889f831e9f6117f3cdc397e411e2630f5bb143c41f4bda0b07213ab8944",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "302b7437be763d04ad386d0fcf58c4fef604b4a950a0209d77d12414d14170e6",
+        "voice_source_sha256": {
+          "audio": "11a932c780be686d2a91804fad91fc96bf49ce3d51f69c9f3ed1059f20f07b31",
+          "transcript": "21917be61d72cbd1b1eeae932e4ab8ca26536dae18bdb9b803a4d957e4c3d76f",
+          "prompt": "10fa2368f43870065f9509160281956fa9ce3d5280c32a01382104044e3b8111"
+        },
+        "tts_speed": 0.9,
+        "pause_after_period_seconds": 0.8,
+        "num_step": 32,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+      },
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "focus": "Origins of technologies, materials and inventions | Prioritize curious everyday-life questions in prehistory, Ice Age communities and antiquity.",
+      "previous_display_names": [
+        "Terra Rewired"
+      ],
+      "legacy_destinations": [
+        "D:/Video/Terra Rewired"
+      ],
+      "name_change": {
+        "selected_on": "2026-10-20",
+        "local_status": "applied",
+        "youtube_studio_status": "not_changed",
+        "handle_availability": "unverified",
+        "youtube_search_checked_on": "2026-10-20",
+        "youtube_search_result": "no_exact_channel_name_in_visible_results; adjacent tool channels present"
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "Short, exact English labels may appear when they clarify a researched material, mechanism, invention, date, unit or process. Plan wording and placement in in_scene_text and text_placement. Do not invent specifications, data, quotations or archival wording. Omit text when it adds no explanatory value.",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope"
     },
     {
-      "id": "rei-asatsuki",
-      "display_name": "Rei Asatsuki",
+      "voice": "battlefield-bearings-male-v1",
+      "voice_profile_name": "Battlefield Bearings — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/reference.txt",
+        "original_audio": "D:/Coder/Voice/Battlefield Bearings.mp3",
+        "source_sha256": "9c89cfef73549abad89304007bd02c569bdd17375bb9ddfeba4cbb2a15ffb112",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/battlefield-bearings/voice.pt"
+      },
+      "id": "battlefield-bearings",
+      "display_name": "Past the Palace",
+      "language": "en",
+      "destination": "D:/Video/Past the Palace",
+      "profile_status": "active",
+      "promise": "Explain a recognizable everyday-life question through one task or connected routines in a bounded prehistoric or ancient community.",
+      "lanes": [
+        "Sleeping, washing, dressing and household comfort in early societies",
+        "Ordinary work and domestic routines in ancient communities",
+        "Everyday inconveniences explained through objects and spaces"
+      ],
+      "avoid": [
+        "Retired channel subjects inherited from its name, old assets or benchmark.",
+        "Invented testimony, thoughts or dialogue; illustrative situations presented as fact.",
+        "Universal origins or causality inferred from one region/group.",
+        "Copied scripts, creator characters, layouts or unsupported first/greatest claims.",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
+      ],
+      "pilot_topics": [],
+      "story_format": "past_daily_life_task_reconstruction",
+      "narration_direction": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional. Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+      "visual_grammar": "Chibi people performing period-specific tasks in legible streets, homes and workplaces; objects and floor plans clarify constraints. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states.",
+      "opening_device": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional.",
+      "ending_payoff": "Answer the original question with the supported change in human life and material limits. Return to an opening object only when its meaning changes.",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
+      "youtube_research": {
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": []
+      },
+      "youtube_channel_id": "",
+      "proposed_handle": "@PastThePalace",
+      "voice_route_source_profile": "battlefield-bearings-male-v1",
+      "youtube_setup": {
+        "description": "Explain how a bounded prehistoric or ancient community handled a recognizable daily task or household inconvenience. Friendly, lightly witty stories follow concrete objects, daily tasks and supported practical solutions, with dates, places and uncertainty kept clear.",
+        "channel_keywords": [
+          "daily life history",
+          "everyday history",
+          "past societies",
+          "ancient daily life",
+          "historical life",
+          "household history",
+          "work history",
+          "history explained"
+        ],
+        "default_video_category_id": "27",
+        "default_video_category": "Education",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "What Did People in Ancient Rome Actually Do All Day?",
+          "url": "https://www.youtube.com/watch?v=U_eV4WbL6Vw",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "What Did Ancient Humans Do all Day Before Jobs Existed?",
+          "url": "https://www.youtube.com/watch?v=TQd2k1pEXp4",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        }
+      ],
+      "dna_revision": "channel-dna-execution-v5-wwi-wwii",
+      "packaging_direction": {
+        "viewer_question": "Explain how a bounded prehistoric or ancient community handled a recognizable daily task or household inconvenience.",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "How Did [early community] [everyday task]?",
+          "Why Did [ancient community] [specific everyday habit]?",
+          "How Did [ancient community] Deal with [ordinary inconvenience]?"
+        ],
+        "thumbnail_direction": "Chibi people performing period-specific tasks in legible streets, homes and workplaces; objects and floor plans clarify constraints. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "A Chibi person carrying out the featured daily task in a researched room, street or workplace.",
+          "A person interacting with the period-specific object that makes the daily experience understandable.",
+          "A supported difference in homes, clothing or routine between bounded groups; make social position clear."
+        ],
+        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "opening_contract": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "Copied creator characters, poses or layouts.",
+          "Generic shock faces or invented scale/stakes.",
+          "Unsupported first/only/never claims.",
+          "Mandatory public source blocks, internal notes or keyword dumps."
+        ],
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "policy": "Standardize scope, localization, original Chibi people, 1280x720 phone QA and title/opening alignment; not a fixed palette, font, layout, chapter quota or CTR guarantee.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+      },
+      "voice_engine": "omnivoice",
+      "writing_contract": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "Open on a supported daily action, object, habit, pleasure, need or contrast in a bounded prehistoric or ancient community; a practical difficulty is optional.",
+        "progression_test": "One everyday-life question → bounded setting and people → supported actions, objects and distinct partial answers → changed understanding → earned answer and material limits. A focused task or connected routines may carry this path; no fixed chapters or compulsory origin story.",
+        "reject": "No retired disaster, WWI/WWII-only, medieval-only or infrastructure-only constraint. No fabricated testimony or universal imagined daily life.",
+        "boundary": "Use natural channel-language speech and clearly bounded historical/geographical scope. Define terms and material uncertainty.",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "Reconstruct a bounded everyday-life question through a focused task or connected routines, supported objects, spaces, actions and social conditions. Each routine must advance the same question. Explain material variation; do not present one household as everyone's experience or combine incompatible places/periods into one day. A protagonist, crisis, military frame or dawn-to-night checklist is optional, never required.",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "battlefield-bearings-male-v1",
+        "engine": "omnivoice",
+        "language": "en",
+        "unit": "English whitespace-delimited words",
+        "count_method": "whitespace_units",
+        "units_per_minute": 130.9307477455243,
+        "sample_episode": "D:\\Video\\Battlefield Bearings\\khe-sanh-airlift-pegasus",
+        "sample_units": 1828,
+        "sample_speech_seconds": 837.6947499999999,
+        "sample_narration_sha256": "e75bf8f205ca7c972edf124c0b13bfa108ef3346d8182bc4f754fc763d4bb378",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "302b7437be763d04ad386d0fcf58c4fef604b4a950a0209d77d12414d14170e6",
+        "voice_source_sha256": {
+          "audio": "55722c0b8e3831131c2166a89b18ae825cf3c9e9f65daf0378cd3ccf461fed10",
+          "transcript": "9a566168bfd22e42ce36d5601ad592bacbe85c5dc87548d138f5bbc51fd4e2cc",
+          "prompt": "ef14d4422a715f7514ddb9b357c69ce9db54ad856da93698f62d6c15021d516f"
+        },
+        "tts_speed": 0.9,
+        "pause_after_period_seconds": 0.8,
+        "num_step": 32,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+      },
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "focus": "Everyday life in societies of the past, beyond military and medieval-only topics | Prioritize curious everyday-life questions in prehistory, Ice Age communities and antiquity.",
+      "previous_display_names": [
+        "Battlefield Bearings"
+      ],
+      "legacy_destinations": [
+        "D:/Video/Battlefield Bearings"
+      ],
+      "name_change": {
+        "selected_on": "2026-10-20",
+        "local_status": "applied",
+        "youtube_studio_status": "not_changed",
+        "handle_availability": "unverified"
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "Short, exact English labels may appear when they clarify a researched place, object, task, date or documented term. Plan wording and placement in in_scene_text and text_placement; keep visible historical signs period-appropriate. Do not invent quotations or present illustrative text as an authentic document. Omit text when it adds no explanatory value.",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope"
+    },
+    {
+      "voice": "status-and-systems-male-v1",
+      "voice_profile_name": "Status & Systems — Male v1",
+      "voice_gender": "male",
+      "voice_market": "United States / American English",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/reference.txt",
+        "original_audio": "D:/Coder/Voice/Status & Systems.mp3",
+        "source_sha256": "054c723838581bc65f57456880ad419dc918fcc91f820d8e165c7c77ed3e4a12",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/status-and-systems/voice.pt"
+      },
+      "id": "status-and-systems",
+      "display_name": "The Things We Agree On",
+      "language": "en",
+      "destination": "D:/Video/The Things We Agree On",
+      "profile_status": "active",
+      "promise": "Explain a curious everyday custom or shared rule through what people did in a dated early community.",
+      "lanes": [
+        "Sharing, exchange and cooperation in early communities",
+        "Everyday customs and group organization in prehistoric and ancient settings",
+        "Early social rules through concrete documented interactions"
+      ],
+      "avoid": [
+        "Retired channel subjects inherited from its name, old assets or benchmark.",
+        "Invented testimony, thoughts or dialogue; illustrative situations presented as fact.",
+        "Universal origins or causality inferred from one region/group.",
+        "Copied scripts, creator characters, layouts or unsupported first/greatest claims.",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
+      ],
+      "pilot_topics": [],
+      "story_format": "social_rule_origin_case_history",
+      "narration_direction": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional. Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+      "visual_grammar": "People encountering rules through transactions, queues, documents and institutions; diagrams distinguish categories, rights and consequences. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states.",
+      "opening_device": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional.",
+      "ending_payoff": "Answer the original question with the supported change in human life and material limits. Return to an opening object only when its meaning changes.",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
+      "youtube_research": {
+        "relevance_language": "en",
+        "region_code": "US",
+        "queries": []
+      },
+      "youtube_channel_id": "",
+      "proposed_handle": "@TheThingsWeAgreeOn",
+      "voice_route_source_profile": "status-and-systems-male-v1",
+      "youtube_setup": {
+        "description": "Explain a curious everyday custom or shared rule through what people did in a dated early community. Friendly, lightly witty stories follow concrete objects, daily tasks and supported practical solutions, with dates, places and uncertainty kept clear.",
+        "channel_keywords": [
+          "social history",
+          "history of rules",
+          "origins of institutions",
+          "history of money",
+          "property history",
+          "social categories",
+          "history of time",
+          "social conventions"
+        ],
+        "default_video_category_id": "27",
+        "default_video_category": "Education",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "How Did Humans Invent Race?",
+          "url": "https://www.youtube.com/watch?v=8q21QDYCMJ0",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "How Did Humans Invent Racism?",
+          "url": "https://www.youtube.com/watch?v=RSCcgY7XzCI",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        }
+      ],
+      "dna_revision": "channel-dna-execution-v5-medieval-systems",
+      "packaging_direction": {
+        "viewer_question": "Explain a curious everyday custom or shared rule through what people did in a dated early community.",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "How Did [early community] [everyday task]?",
+          "Why Did [ancient community] [specific everyday habit]?",
+          "How Did [ancient community] Deal with [ordinary inconvenience]?"
+        ],
+        "thumbnail_direction": "People encountering rules through transactions, queues, documents and institutions; diagrams distinguish categories, rights and consequences. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "Chibi people applying the featured convention through a readable transaction, queue, document or ceremony.",
+          "One familiar classification or symbol beside the dated practice that gives it meaning.",
+          "A supported change in a rule and what people can do under it; use a simple comparison rather than invented conflict."
+        ],
+        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "opening_contract": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "Copied creator characters, poses or layouts.",
+          "Generic shock faces or invented scale/stakes.",
+          "Unsupported first/only/never claims.",
+          "Mandatory public source blocks, internal notes or keyword dumps."
+        ],
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "policy": "Standardize scope, localization, original Chibi people, 1280x720 phone QA and title/opening alignment; not a fixed palette, font, layout, chapter quota or CTR guarantee.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+      },
+      "voice_engine": "omnivoice",
+      "writing_contract": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "Open on a supported everyday act, custom, obligation, exchange or contrast that makes a shared rule worth understanding in a dated early community; a practical difficulty is optional.",
+        "progression_test": "One everyday-life question → bounded setting and people → supported actions, objects and distinct partial answers → changed understanding → earned answer and material limits. A focused task or connected routines may carry this path; no fixed chapters or compulsory origin story.",
+        "reject": "No retired disaster, WWI/WWII-only, medieval-only or infrastructure-only constraint. No fabricated testimony or universal imagined daily life.",
+        "boundary": "Use natural channel-language speech and clearly bounded historical/geographical scope. Define terms and material uncertainty.",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "Explain how this social idea, classification, convention or institution acquired meaning, authority or acceptance in dated cases. Show people applying, contesting or changing it where documented. Distinguish recorded formation from later justification; keep alternatives and scope clear. Neither medieval finance nor a single transaction is a compulsory frame.",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "Start with a relatable, slightly odd daily-life question. Use friendly conversational curiosity, light situational wit and concrete supported objects, tasks and surprising practical solutions. No chronological lecture, joke quota, invented dialogue/private thoughts, caricature of cultures or fake ancient incompetence. Material uncertainty stays natural in speech; source administration belongs in notes.",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "status-and-systems-male-v1",
+        "engine": "omnivoice",
+        "language": "en",
+        "unit": "English whitespace-delimited words",
+        "count_method": "whitespace_units",
+        "units_per_minute": 129.00623248965573,
+        "sample_episode": "D:\\Video\\Status & Systems\\svb-depositor-flight",
+        "sample_units": 1778,
+        "sample_speech_seconds": 826.9367916666667,
+        "sample_narration_sha256": "cc166a670fad9939490adad0c4175da19f6085c53c008dbc160f9b56b1c4c528",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "302b7437be763d04ad386d0fcf58c4fef604b4a950a0209d77d12414d14170e6",
+        "voice_source_sha256": {
+          "audio": "7e016c9edeee171ed23130c0d71c367cb61316ff7277adf21f4b93618d834a05",
+          "transcript": "e700cddc221d33d44e5b412dd71ad7009d5552e8ed6b4768f698e6f7a1323309",
+          "prompt": "2940fb1efbf70fff5078b2cc626b81d1e9eddfb697044fe86d63ba8f0c87de43"
+        },
+        "tts_speed": 0.9,
+        "pause_after_period_seconds": 0.8,
+        "num_step": 32,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+      },
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "focus": "Origins of social ideas, classifications, conventions and institutions | Prioritize curious everyday-life questions in prehistory, Ice Age communities and antiquity.",
+      "previous_display_names": [
+        "Status & Systems"
+      ],
+      "legacy_destinations": [
+        "D:/Video/Status & Systems"
+      ],
+      "name_change": {
+        "selected_on": "2026-10-20",
+        "local_status": "applied",
+        "youtube_studio_status": "not_changed",
+        "handle_availability": "unverified",
+        "youtube_search_checked_on": "2026-10-20",
+        "youtube_search_result": "no_exact_channel_name_visible; surfaced mostly agreement/debate channels"
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "Short, exact English labels may appear when they clarify a researched category, rule, institution, date, jurisdiction or process. Plan wording and placement in in_scene_text and text_placement. Do not invent law text, quotations, categories or archival wording. Omit text when it adds no explanatory value.",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope"
+    },
+    {
+      "voice": "chikyu-shikumi-male-v1",
+      "voice_profile_name": "地球のしくみ帳 — Male v1",
+      "voice_gender": "male",
+      "voice_market": "Japan / Japanese",
+      "voice_reference": {
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/reference.txt",
+        "original_audio": "D:/Coder/Voice/地球のしくみ帳.mp3",
+        "source_sha256": "585411933a77c74bff4fc8716d738a0f64211410afad1591302a8a64001c4a7f",
+        "enrolled_on": "2026-10-16",
+        "prompt": "D:/Coder/Voice/profiles/2026-10-16/chikyu-shikumi/voice.pt"
+      },
+      "id": "chikyu-shikumi",
+      "display_name": "地球のしくみ帳",
       "language": "ja",
-      "voice": "06cbd9d0",
-      "destination": "D:/Vox-Video/Rei Asatsuki",
-      "promise": "Explain Japan's economic history and industrial systems through the products and infrastructure people know.",
+      "destination": "D:/Video/地球のしくみ帳",
+      "profile_status": "active",
+      "promise": "先史時代・氷河時代・古代の小さな暮らしの疑問を、考古学・人類学・科学の証拠から、親しみやすく少しユーモラスに解き明かす。",
       "lanes": [
-        "Economic history through one Japanese product or industry",
-        "How supply chains and industrial systems connect",
-        "How a policy or infrastructure choice changed daily life",
-        "The Pacific War and Japan's postwar economic transformation"
+        "先史時代・氷河時代の食べ物・道具・住まいと日常の工夫",
+        "古代の暮らしの不便や習慣を具体的な行動から説明する",
+        "一つの身近な疑問から人間の行動や変化を証拠でたどる"
       ],
       "avoid": [
-        "exoticizing Japanese culture",
-        "unsupported claims about national uniqueness",
-        "current-market speculation",
-        "technical terms without plain-language glosses"
+        "遺物や研究が示さない先史時代の会話、心情、日課を事実として語ること",
+        "単一の発見や一地域の事例から、人類全体の習慣や起源を断定すること",
+        "推測を確定した因果関係として語ることや、現代の国民性へ安易につなげること",
+        "根拠のない陰謀、予言、扇情的な「人類最大の秘密」表現",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
       ],
+      "pilot_topics": [],
+      "story_format": "evidence_led_human_history_explainer",
+      "narration_direction": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。 自然なです・ます調で具体的な道具や作業を通して親しみやすく説明する。身近な比較と証拠のある意外さから軽いユーモアを生み、講義調や冗談のノルマにしない。古代の人々や文化を笑いものにせず、架空の台詞・心理・失敗を作らない。必要な不確実性は自然に伝え、出典管理は注記に置く。",
+      "visual_grammar": "オリジナルの2Dちびキャラクター、明瞭な輪郭、整理された背景、限定した配色で、語っている関係を読み取りやすくする。人物は時代・地域に合う作業や状況を示し、道具、遺物、地図、比較図、工程図も説明の主役にする。一つの場面で伝える関係を明確にし、数量や規模は正確な図解と短い日本語ラベルで補う。人物の固定比率や一定間隔の画面変更は設けない。実在人物の心理・証言として扱わず、他者の棒人間や固定レイアウトはコピーしない。画像は説明であって証拠ではない。静止画のカメラ移動では身体や物の動作は生まれず、変わる動作・状態には別のキーフレームが必要。 人が作る、使う、教える、移動する場面を説明に役立つ形で積極的に計画する。固定の人物比率は設けない。",
+      "opening_device": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。",
+      "ending_payoff": "証拠が支える答えと重要な限界を一度で示す。冒頭の物や行動に戻る場合は、得られた理解によって意味が変わっていることを条件にする。現在とのつながりは裏付けのある範囲で述べ、結論を重ねない。",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
       "youtube_research": {
         "relevance_language": "ja",
         "region_code": "JP",
-        "queries": [
-          "お金の仕組み 解説 金融",
-          "日本経済史 解説",
-          "第二次世界大戦 解説 ドキュメンタリー"
-        ]
+        "queries": []
       },
-      "pilot_topics": [
-        "戦後の日本で、自動車産業の部品網はどのように広がったの？",
-        "日本の現金中心の買い物は、どんな仕組みでキャッシュレスへ変わってきたの？",
-        "高度経済成長期に、輸出産業は暮らしをどう変えたの？",
-        "太平洋戦争では、海上輸送路と物資の補給が戦局や暮らしにどう関わったの？"
+      "youtube_channel_id": "",
+      "proposed_handle": "@ChikyuShikumi",
+      "voice_route_source_profile": "chikyu-shikumi-male-v1",
+      "youtube_setup": {
+        "description": "先史時代・氷河時代・古代の小さな暮らしの疑問を、考古学・人類学・科学の証拠から、親しみやすく少しユーモラスに解き明かす。 身近な作業や道具、証拠のある意外さから昔の暮らしを読み解きます。",
+        "channel_keywords": [
+          "地球のしくみ帳",
+          "人類史",
+          "先史時代",
+          "人類の進化",
+          "考古学",
+          "人類学",
+          "先史時代の暮らし",
+          "人間の行動",
+          "道具の歴史",
+          "科学解説"
+        ],
+        "default_video_category_id": "27",
+        "default_video_category": "Education",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "Ink Explainer — What Did Ancient Humans Actually Do All Day?",
+          "url": "https://www.youtube.com/watch?v=49_Ph2q6uIM",
+          "lesson": "Reference for the chosen topic territory and question-led popular explanation. English-language subject fit does not establish Japanese-market demand or validate its historical claims.",
+          "checked_on": "2026-10-19",
+          "evidence_class": "original_language_transcript_and_public_metadata"
+        },
+        {
+          "name": "Ink Explainer — What Did Ancient Humans Do When It Rained All Week?",
+          "url": "https://www.youtube.com/watch?v=SD7XyG2wd1k",
+          "lesson": "Reference for everyday prehistory questions; independently verify causal claims and distinguish archaeological evidence from immersive reconstruction.",
+          "checked_on": "2026-10-19",
+          "evidence_class": "original_language_transcript_and_public_metadata"
+        },
+        {
+          "name": "Ink Explainer — Why Human Progress Exploded Only 10,000 Years Ago?",
+          "url": "https://www.youtube.com/watch?v=rEn8OZf848w",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_auto_generated_transcript_and_sampled_visual_frames",
+          "inspected_spans": "Full English auto-caption text 0:00–10:46; sampled frames around 0:00, 2:09, 3:13, 5:24, 7:32 and the closing net scene. Not full audiovisual playback or listening review.",
+          "lesson": "Familiar objects orient a question; concrete tasks explain mechanisms; linked subquestions advance understanding; optional callbacks change meaning. Adapt in original Japanese and original chibi graphics.",
+          "limits": "Automatic captions may contain errors. Reference claims were not independently verified; no private CTR/retention or Japanese-market demand evidence. Channel-DNA reference only; no episode assignment, narration approval or production."
+        }
       ],
-      "voice_profile_name": "Rei Asatsuki — 朝月レイ",
-      "voice_gender": "female",
-      "voice_market": "Japan / Japanese",
-      "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Rei Asatsuki/Rei-Asatsuki.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Rei Asatsuki/Text.txt"
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
       },
-      "narration_direction": "自然な会話調で、身近な言葉を使って一つの物語として説明する。題材に沿った控えめなユーモアを添え、専門用語は簡単に言い換えるか説明する。戦争や被害は敬意を持って扱い、大げさな番組調は避ける。"
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "dna_revision": "research-led-documentary-v1",
+      "packaging_direction": {
+        "viewer_question": "先史時代・氷河時代・古代の小さな暮らしの疑問を、考古学・人類学・科学の証拠から、親しみやすく少しユーモラスに解き明かす。",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "[古代の地域・時代]の人は、どうやって[日常の作業]をしていた？",
+          "[古代の人々]は、なぜ[具体的な習慣]をしていた？",
+          "[先史時代の暮らし]で、[身近な困り事]はどう解決していた？"
+        ],
+        "thumbnail_direction": "オリジナルの2Dちびキャラクター、明瞭な輪郭、整理された背景、限定した配色で、語っている関係を読み取りやすくする。人物は時代・地域に合う作業や状況を示し、道具、遺物、地図、比較図、工程図も説明の主役にする。一つの場面で伝える関係を明確にし、数量や規模は正確な図解と短い日本語ラベルで補う。人物の固定比率や一定間隔の画面変更は設けない。実在人物の心理・証言として扱わず、他者の棒人間や固定レイアウトはコピーしない。画像は説明であって証拠ではない。静止画のカメラ移動では身体や物の動作は生まれず、変わる動作・状態には別のキーフレームが必要。 人が作る、使う、教える、移動する場面を説明に役立つ形で積極的に計画する。固定の人物比率は設けない。 Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "一つの先史時代の道具と、その用途を示す簡潔な場面。",
+          "人間の行動や環境条件を対比する、読みやすい2D図解。",
+          "遺物や痕跡から過去の暮らしをたどる、証拠と解釈の関係図。"
+        ],
+        "text_role": "短い自然な日本語で疑問の焦点を示す。漢字を詰め込まず、スマートフォンでの読みやすさを確認する。 画像だけで問いが伝わる場合は文字なしでもよい。その場合は thumbnail_text を空文字にし、thumbnail_text_reason に理由を記録する。",
+        "opening_contract": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。 Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "証拠の範囲を越えて人類全体の行動や起源を断定すること。",
+          "「世界初」「人類最大」などの比較を根拠なく使うこと。",
+          "キャラクターの表情を実在人物の証言・心情の再現に見せること。",
+          "他チャンネルのキャラクターや固定レイアウトの模倣。"
+        ],
+        "revision": "channel-packaging-v2-prehistory-chibi",
+        "policy": "Editorial angles and optional starting patterns, never fixed title formulas, visual templates or evidence of performance. Each episode requires fresh Japanese-market packaging research and independent factual verification.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
+      },
+      "voice_engine": "omnivoice",
+      "writing_contract": {
+        "revision": "channel-dna-execution-v6-concrete-prehistory",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "先史時代・古代の具体的な道具、食べ物、行動、習慣、楽しみや意外な違いから身近な問いを立て、年代・地域・人々の範囲を定める。困りごとは必須ではない。",
+        "progression_test": "身近な暮らしの問い → 年代・地域・人々を定めた具体的な行動と証拠 → 段落ごとに分かることが進む → 裏付けのある答えと重要な限界。一つの作業でも関連する複数の生活行動でもよい。固定の章立てや起源の説明は必須ではない。",
+        "reject": "現代人のタイムトラベル、過去への介入、架空の証言・心理を標準にしない。一つの地域・集団・遺物から人類全体を断定せず、農耕以前に進歩がなかった、定住後は知識が失われなくなった、といった単純な二分法を避ける。説明用の想像例を実証と取り違えない。",
+        "boundary": "英語の構文や題名をそのまま翻訳しない。日本語で自然な疑問に組み替え、年代・遺跡名の読み・人類集団・研究上の不確実性を確認する。",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "自然な日本語で、具体的な道具・食べ物・行動・習慣から暮らしの問いを解く。一つの作業でも、同じ問いにつながる複数の生活行動でもよい。証拠によって新たに分かることを進め、研究手順や同じ限界の反復を主役にしない。重要な不確実性は必要な箇所に残し、専門語は用途を説明してから導入する。音声と母語話者の確認は別に記録する。",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "concrete_mechanism": "抽象語だけでなく、具体的な道具・食料・住まい・作業の何が変わるかを説明する。比較は同じ関係を理解する助けとして使い、それ自体を因果の証拠にしない。",
+        "callback_policy": "証拠が支える答えと重要な限界を一度で示す。冒頭の物や行動に戻る場合は、得られた理解によって意味が変わっていることを条件にする。現在とのつながりは裏付けのある範囲で述べ、結論を重ねない。",
+        "reference_adaptation": "Ink ExplainerのrEn8OZf848wは具体物、連続する疑問、意味が変わるコールバックの技法の参考。題名、台詞、架空の人物、場面順、キャラクターは移植しない。この動画の主題を全作品の必須主題や制作中のエピソードにはしない。各企画で日本語・日本市場の調査と独立した事実確認を行う。",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "自然なです・ます調で具体的な道具や作業を通して親しみやすく説明する。身近な比較と証拠のある意外さから軽いユーモアを生み、講義調や冗談のノルマにしない。古代の人々や文化を笑いものにせず、架空の台詞・心理・失敗を作らない。必要な不確実性は自然に伝え、出典管理は注記に置く。",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "chikyu-shikumi-male-v1",
+        "engine": "omnivoice",
+        "language": "ja",
+        "unit": "non-whitespace Japanese characters",
+        "count_method": "non_whitespace_characters",
+        "units_per_minute": 327.4715239778453,
+        "sample_episode": "D:\\Video\\地球のしくみ帳\\sapporo-snow-disposal",
+        "sample_units": 2186,
+        "sample_speech_seconds": 400.52337499999993,
+        "sample_narration_sha256": "f742aac60a7627efeab8bc50fd3f825bea7bc9120a77f9668da35ae6359e9539",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "302b7437be763d04ad386d0fcf58c4fef604b4a950a0209d77d12414d14170e6",
+        "voice_source_sha256": {
+          "audio": "c3334be719f95396b7b61d76efba50ffb6e89b7de63df33a76d8c127a7d9190d",
+          "transcript": "7814ca0660efabf53a34b70ea91636e805bef2ff5c1b2b52ec98cfd2fe9c20ee",
+          "prompt": "cdc69cc65ffbc948035368330234754bf7d01945238e02b2394e01436fa9ca77"
+        },
+        "tts_speed": 0.9,
+        "pause_after_period_seconds": 0.8,
+        "num_step": 32,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "説明に役立つ場合、調査で確認した名称・年代・単位・地図や工程の短いラベルを、正確な日本語で画像内に入れてよい。文言と配置は in_scene_text と text_placement に指定する。根拠のない数値、引用、史料らしい文言は作らない。説明に必要なければ文字を入れない。",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope",
+      "focus": "人類は何を食べ、どう暮らし、なぜ今のようになったのか。考古学・人類学・科学の証拠から、人間の歴史と行動を解き明かす。 | 先史時代・氷河時代・古代の身近な暮らしの疑問を優先。"
     },
     {
-      "id": "tavia-noelle",
-      "display_name": "Tavia Noelle",
-      "language": "en",
-      "voice": "3617639a",
-      "destination": "D:/Vox-Video/Tavia Noelle",
-      "promise": "Explain consumer finance products and the incentives behind money decisions, without giving personal financial advice.",
-      "lanes": [
-        "How credit, subscriptions, insurance, and buy-now-pay-later products work",
-        "How fees and repayment rules affect the flow of money",
-        "Behavioral economics explained with evidence and limits"
-      ],
-      "market_scope": "Use United States examples by default only when the episode says so; label jurisdiction and product terms. Never recommend a product or diagnose a viewer.",
-      "youtube_research": {
-        "relevance_language": "en",
-        "region_code": "US",
-        "queries": [
-          "personal finance explained credit debt",
-          "how insurance works explained",
-          "behavioral economics documentary explained"
-        ]
-      },
-      "avoid": [
-        "buy/sell recommendations",
-        "pop psychology labels",
-        "diagnosing viewers",
-        "claiming one study proves universal behavior"
-      ],
-      "pilot_topics": [
-        "How does a buy-now-pay-later purchase move money between the shopper, store, and provider?",
-        "Why can paying only a credit-card minimum keep a balance around for longer?",
-        "How do insurers use a large pool of premiums to pay a smaller number of claims?"
-      ],
-      "voice_profile_name": "Tavia Noelle",
-      "voice_gender": "female",
-      "voice_market": "United States / American English",
+      "voice": "vi-sao-noi-nay-male-v1",
+      "voice_profile_name": "Vì Sao Nơi Này — Male v1",
+      "voice_gender": "male",
+      "voice_market": "Vietnam / Vietnamese",
       "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/Tavia Noelle/Tavia Noelle.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/Tavia Noelle/Text.txt"
+        "audio": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/reference.wav",
+        "transcript": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/reference.txt",
+        "original_audio": "D:/Coder/Voice/Vì Sao Nơi Này.mp3",
+        "source_sha256": "8298a03f3ed7ef245628fb157448b1043773dd66a63e57356a633211bd41ac87",
+        "enrolled_on": "2026-10-16",
+        "vieneu_voice": "D:/Coder/Voice/profiles/2026-10-16/vi-sao-noi-nay/vieneu-voice.json"
       },
-      "narration_direction": "Warm, direct conversational English; explain consumer choices through a relatable story and plain words, with light situational wit that never mocks people or their money worries; explain necessary terms simply, never preachy or diagnostic."
-    },
-    {
-      "id": "seoyun-ui",
-      "display_name": "서윤의",
-      "language": "ko",
-      "voice": "7220c71c",
-      "destination": "D:/Vox-Video/서윤의",
-      "promise": "Explain Korean household finance, housing, work, and economic change with clear local context.",
+      "narration_calibration": {
+        "status": "measured_single_episode_provisional",
+        "measured_on": "2026-10-17",
+        "voice_id": "vi-sao-noi-nay-male-v1",
+        "engine": "vieneu-v3-turbo",
+        "language": "vi",
+        "unit": "Vietnamese whitespace-delimited units (not English words)",
+        "count_method": "whitespace_units",
+        "units_per_minute": 200.59764580092764,
+        "sample_episode": "D:\\Video\\Vì Sao Nơi Này\\ca-mau-song-bun-rung",
+        "sample_units": 1873,
+        "sample_speech_seconds": 560.2259166666666,
+        "sample_narration_sha256": "4dc9fd680d3a8dfa6dbb607b4aff3f2b285d842671f11bbb6892f75d7c609cd1",
+        "post_tts_tempo": 1.0,
+        "settings_status": "all_sample_TTS_fingerprints_and_WAV_headers_verified",
+        "engine_config_sha256": "4f9abe43e006c720c3dc541716435ce6cabf71b4a87382ed6c77a9760ea417c0",
+        "voice_source_sha256": {
+          "audio": "1e49e0125165e2ce943df2567d5e8f2a768497d85252ab2b2c28305171327dcd",
+          "transcript": "fc0cee92780e33da9eb9cd0b4de4d00f04420776947561d7cec3957cc4978824",
+          "vieneu_voice": "bd22a7728cb15c8ccedbc4d55f17258c6c6d5c8e1b8c25013684408d53e9dbb8"
+        },
+        "tts_speed": 1.0,
+        "pause_after_period_seconds": 0.8,
+        "num_step": null,
+        "guidance": "One episode only: provisional first-draft budget for this voice and settings, including sentence pauses. Confirm approved native-speed TTS; never pad or stretch speech to hit the estimate."
+      },
+      "id": "vi-sao-noi-nay",
+      "display_name": "Củ Hũ",
+      "language": "vi",
+      "destination": "D:/Video/Củ Hũ",
+      "profile_status": "active",
+      "promise": "Giải thích một câu hỏi đời sống tiền sử hoặc cổ đại qua một việc hay các sinh hoạt liên kết dưới điều kiện địa lý cụ thể.",
       "lanes": [
-        "How Korean housing and household-finance systems work",
-        "Work, wages, and economic systems in everyday Korea",
-        "Korean economic history through a policy, industry, or object",
-        "The Korean War and modern history, with local context and primary sources"
+        "Chuyện ở, mặc, mang đồ và di chuyển của người tiền sử và cổ đại",
+        "Cách xoay xở đời thường với lạnh, nóng, sông nước và địa hình thời xưa",
+        "Nhà ở, vật dụng và thói quen thích nghi tại nơi và thời kỳ có bằng chứng"
       ],
       "avoid": [
-        "personalized investment advice",
-        "stereotypes about Korean society",
-        "sensationalized housing claims",
-        "confusing Seoul examples with nationwide patterns"
+        "Retired channel subjects inherited from its name, old assets or benchmark.",
+        "Invented testimony, thoughts or dialogue; illustrative situations presented as fact.",
+        "Universal origins or causality inferred from one region/group.",
+        "Copied scripts, creator characters, layouts or unsupported first/greatest claims.",
+        "Broad chronological lectures in place of one everyday-life question.",
+        "Forced jokes, caricatures of ancient people, invented thoughts or dialogue.",
+        "Selecting any of the three user-borrowed tone examples as an episode, including paraphrases."
       ],
+      "pilot_topics": [],
+      "story_format": "human_geography_adaptation_explainer",
+      "narration_direction": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn. Kể gần gũi, tò mò, dí dỏm nhẹ qua vật dụng, hành động và cách xoay xở có bằng chứng. Cái vui đến từ so sánh quen thuộc, vướng mắc thực tế và chi tiết bất ngờ. Không kể như bài giảng, ép chỉ tiêu câu đùa, bịa lời thoại hay tâm lý, chế giễu văn hóa hoặc biến người xưa thành ngốc nghếch. Nói rõ điều chưa chắc ngay khi cần; hồ sơ nguồn để trong ghi chú.",
+      "visual_grammar": "Nhân vật Chibi sinh sống, mặc trang phục, xây dựng, làm việc và di chuyển trong môi trường xác định; bản đồ và mặt cắt giải thích điều kiện. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states.",
+      "opening_device": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn.",
+      "ending_payoff": "Answer the original question with the supported change in human life and material limits. Return to an opening object only when its meaning changes.",
+      "topic_policy": "Prioritize one recognizable everyday-life question in prehistory, Ice Age communities, early farming or antiquity. A focused task is the default; connected routines may answer one coherent lived-experience question. Bound place, period, community and material social variation; do not assemble a universal ancient day from incompatible cases. Later-period or present-day main subjects require an explicit user exception. Modern comparisons are explanatory bridges. These three user-borrowed subjects demonstrate tone only. Do not select, translate, paraphrase or narrow them into episode candidates. Other Egyptian, clothing or household subjects remain possible.",
       "youtube_research": {
-        "relevance_language": "ko",
-        "region_code": "KR",
-        "queries": [
-          "금융 상식 쉽게 설명 대출 신용",
-          "한국 경제 성장 과정 설명",
-          "2차 세계대전 요약 역사"
-        ]
+        "relevance_language": "vi",
+        "region_code": "VN",
+        "queries": []
       },
-      "pilot_topics": [
-        "전세 보증금은 집주인과 세입자 사이에서 어떤 역할을 할까?",
-        "한국의 반도체 수출은 어떤 공급망을 거쳐 세계 시장으로 갈까?",
-        "한국의 산업화 시기에 수출 중심 정책은 일자리와 생활을 어떻게 바꿨을까?",
-        "한국전쟁 이후 한국 경제는 어떤 변화를 거쳐 수출 제조업을 키웠을까?"
+      "youtube_channel_id": "",
+      "proposed_handle": "@cuhuchibi",
+      "voice_route_source_profile": "vi-sao-noi-nay-male-v1",
+      "youtube_setup": {
+        "description": "Giải thích người tiền sử và cổ đại xoay xở một việc đời thường hơi ngộ như thế nào dưới điều kiện địa lý cụ thể. Kể gần gũi, có chút hài hước nhẹ qua vật dụng, hành động và cách xoay xở có bằng chứng.",
+        "channel_keywords": [
+          "địa lý con người",
+          "địa lý và đời sống",
+          "con người thích nghi",
+          "địa lý lịch sử",
+          "cách con người sinh sống",
+          "cư trú và di cư",
+          "khí hậu và con người",
+          "giải thích địa lý"
+        ],
+        "default_video_category_id": "27",
+        "default_video_category": "Education",
+        "banner": "_channel/banner.png",
+        "avatar": "_channel/avatar.png"
+      },
+      "research_basis": [
+        {
+          "name": "Why Desert People Wear More Clothes in Extreme Heat?",
+          "url": "https://www.youtube.com/watch?v=4vAlEh9RN5Y",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        },
+        {
+          "name": "Why Did Ancient Humans Evolve In Africa",
+          "url": "https://www.youtube.com/watch?v=n5QNmEv8XQI",
+          "checked_on": "2026-10-20",
+          "evidence_class": "original_language_transcript_excerpts_and_sampled_visual_frames",
+          "lesson": "Concrete human tasks, objects, comparisons and question-led explanation; create original narration and Chibi art.",
+          "limits": "Excerpt/sample review, not complete audiovisual listening. Automatic or authored/unspecified captions as available. Claims and private audience analytics not independently verified."
+        }
       ],
-      "voice_profile_name": "서윤",
-      "voice_gender": "female",
-      "voice_market": "South Korea / Korean",
-      "voice_reference": {
-        "audio": "D:/Coder/VoiceStudio/list-voice/서윤/서윤.mp3",
-        "transcript": "D:/Coder/VoiceStudio/list-voice/서윤/Text.txt"
+      "dna_revision": "research-led-documentary-v1",
+      "packaging_direction": {
+        "viewer_question": "Giải thích người tiền sử và cổ đại xoay xở một việc đời thường hơi ngộ như thế nào dưới điều kiện địa lý cụ thể.",
+        "title_direction": "Name one everyday task, habit or inconvenience and its supported early setting. Use an immediately understandable curious question, localized naturally. Avoid abstract scholarly surveys, fixed headline formulas or unverified assumptions that every ancient group lacked an object or practice.",
+        "title_patterns": [
+          "Người [nơi chốn/thời kỳ cổ] [việc đời thường] bằng cách nào?",
+          "Sống giữa [điều kiện địa lý thời xưa], họ [việc cụ thể] thế nào?",
+          "Vì sao người [cộng đồng cổ] lại [thói quen thích nghi cụ thể]?"
+        ],
+        "thumbnail_direction": "Nhân vật Chibi sinh sống, mặc trang phục, xây dựng, làm việc và di chuyển trong môi trường xác định; bản đồ và mặt cắt giải thích điều kiện. Original Chibi 2D; actively stage meaningful human action, without a fixed cast ratio. Distinct keyframes for changed states. Favor a Chibi person visibly attempting or solving the specific ordinary-life task in the researched early setting, with readable situational expression and one explanatory object or relationship. No generic shock face, fabricated comic event presented as history or modern-prop anachronism. Objects and diagrams can lead when clearer.",
+        "thumbnail_approaches": [
+          "Nhân vật Chibi đang cư trú, làm việc hoặc di chuyển; cho thấy rõ điều kiện địa lý liên quan.",
+          "Ngôi nhà, trang phục hoặc phương tiện gắn với một hành động thích nghi có bằng chứng.",
+          "Bản đồ hoặc mặt cắt đơn giản kết nối nơi chốn với cách sinh sống; thêm người khi giúp hiểu quan hệ."
+        ],
+        "text_role": "Short exact localized question or missing piece, usually 2–5 words when language permits, at most two lines. Complement the title; no unsupported absolute claims. Lettering is optional when the image communicates the question; an explicitly text-free candidate records thumbnail_text as an empty string and thumbnail_text_reason.",
+        "opening_contract": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn. Confirm the same supported title/thumbnail promise and deliver useful progress by roughly 0:30.",
+        "avoid": [
+          "Copied creator characters, poses or layouts.",
+          "Generic shock faces or invented scale/stakes.",
+          "Unsupported first/only/never claims.",
+          "Mandatory public source blocks, internal notes or keyword dumps."
+        ],
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "policy": "Standardize scope, localization, original Chibi people, 1280x720 phone QA and title/opening alignment; not a fixed palette, font, layout, chapter quota or CTR guarantee.",
+        "metadata_direction": {
+          "revision": "human-history-portfolio-v2-2026-10-20",
+          "public_sources_section": "omit_by_default",
+          "internal_claim_ledger_required": true,
+          "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+          "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+          "hashtags_policy": "Zero to three relevant localized hashtags.",
+          "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+          "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+          "publication_policy": "Local configuration only; no upload, publication or account rename."
+        },
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21"
       },
-      "narration_direction": "친근하고 자연스러운 대화체로 일상적인 말과 구체적인 이야기로 설명한다. 주제와 연결된 가벼운 재치를 쓰고 전문 용어는 쉬운 말로 풀어 준다. 전쟁과 피해를 존중하며 과장된 방송 톤은 피한다."
+      "voice_engine": "vieneu-v3-turbo",
+      "writing_contract": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "reviewed_on": "2026-10-21",
+        "opening_task": "Mở bằng hành động, vật dụng, thói quen, niềm vui, nhu cầu hoặc khác biệt có bằng chứng trong đời sống tiền sử hay cổ đại, gắn với điều kiện địa lý cụ thể; không bắt buộc có khó khăn.",
+        "progression_test": "Một câu hỏi đời sống → nơi, thời kỳ và cộng đồng cụ thể → hành động và chi tiết có bằng chứng → mỗi đoạn thêm một hiểu biết riêng → đáp án và giới hạn quan trọng. Có thể theo một việc hoặc nhiều sinh hoạt liên kết; không ép chương mục hay câu chuyện nguồn gốc.",
+        "reject": "No retired disaster, WWI/WWII-only, medieval-only or infrastructure-only constraint. No fabricated testimony or universal imagined daily life.",
+        "boundary": "Use natural channel-language speech and clearly bounded historical/geographical scope. Define terms and material uncertainty.",
+        "benchmark_reference": "references/channel-benchmarking.md",
+        "native_reference_ids": [],
+        "evidence_limit": "Record this episode's actual source access, sampled/transcript evidence, coverage and language-review limits. Public metadata does not establish spoken structure; translated captions do not establish original phrasing. Text review is not listening, finished-video QA or measured audience performance. Dated sample weaknesses are provenance, not assumptions about a new episode.",
+        "execution_check": "Theo một cách cư trú, di chuyển, làm việc hoặc sinh sống tại nơi cụ thể; giải thích con người thích nghi với điều kiện địa lý bằng hành động, vật dụng và quan sát có nguồn. Phân biệt ảnh hưởng của địa lý với lựa chọn văn hóa, lịch sử và điều kiện kinh tế khi có liên quan. Không biến tập thành danh sách địa danh, bài giảng hạ tầng hoặc khẳng định địa lý quyết định mọi hành vi.",
+        "policy_updated_on": "2026-10-21",
+        "promise_evidence_fit": "Choose the episode promise from the evidence available before drafting. Record which observations, process records or bounded results support the essential answer and what remains unknown. Research a missing essential link or narrow the promise within the agreed subject; do not silently change episode identity or invent a demonstration to fill the gap.",
+        "comparison_scope": "Only when the promise contrasts outcomes, show the actual named or clearly bounded sides, relevant conditions and supported difference. Check comparable definitions, periods and methods before making causal or numerical comparisons. A regional trend or general mechanism cannot stand in for a missing site-specific comparison; labeled illustration explains a rule but cannot prove an observed outcome. A non-comparative question needs no compulsory second case.",
+        "review_scoring": "Review the title/thumbnail promise against the first image and the actual first 30 seconds; record the useful progress made by that point. Map the major passage question → evidence/change → updated understanding → next dependency/payoff, and identify any stall caused by repetition, cognitive overload, unclear transitions or unrelated branches. Review full actual speech before prior scores; use separate story /16 and retention /10 passes. Record source/SHA-256, quote opening/consequential middle/ending and verify claimed cuts. Criterion 3 earns 2 only when passages produce distinct, connected advances; criterion 6 earns 2 only when sourced episode particulars carry the consequential middle and payoff in this channel's grammar. A generic explanation with local names earns at most 1 for fit. A missing promised comparison or essential answer blocks recommendation regardless of totals; research or narrow the promise, never raise a score to pass. Label same-author and text/audio limits; scores and shorter runtime do not demonstrate audience performance. Only published audience analytics can describe measured retention.",
+        "viewer_guidance": "Use psychology to guide attention and comprehension: align title/thumbnail with the opening; confirm the click and deliver useful, verified progress within roughly the first 30 seconds; map each major passage as active viewer question → sourced evidence or event change → updated understanding → next question or dependency. Pay partial answers when evidence permits; keep no question open merely to delay its answer. Orient at meaningful changes of time, place, task, state or model, and introduce terms/numbers when their purpose is clear. Close the promise once with the supported consequence or limit. This is a writing method, not a retention guarantee or fixed schedule of hooks, chapters or visual interruptions.",
+        "curiosity_path": "Before drafting, write the central question and its answerable subquestions. For each major passage, name the evidence that advances or pays one subquestion and the next question that follows from that evidence. If no distinct understanding or necessary scope is lost by deleting a passage, merge or cut it. A missing answer is not a cliffhanger unless the evidence genuinely requires another step.",
+        "cognitive_load": "Orient the viewer to the place, time, task or current state before adding a new causal relation. Explain technical terms after their practical role is clear; keep numbers that support scale, threshold or difference. Use a still, map, comparison or cross-section to clarify the same relation as narration. Do not use image changes, pan/zoom, on-screen text or pacing tricks as substitutes for clear explanation.",
+        "audience_feedback": "After publication, use actual YouTube Studio retention by video, including the 30-second intro and dips, spikes and top moments. Match each signal to the exact narration and visuals; a spike may reflect interest, sharing or confusion. Compare similar lengths and traffic sources where data allows. Report observed analytics separately from text review and hypotheses; scores do not predict retention.",
+        "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+        "humor_direction": "Kể gần gũi, tò mò, dí dỏm nhẹ qua vật dụng, hành động và cách xoay xở có bằng chứng. Cái vui đến từ so sánh quen thuộc, vướng mắc thực tế và chi tiết bất ngờ. Không kể như bài giảng, ép chỉ tiêu câu đùa, bịa lời thoại hay tâm lý, chế giễu văn hóa hoặc biến người xưa thành ngốc nghếch. Nói rõ điều chưa chắc ngay khi cần; hồ sơ nguồn để trong ghi chú.",
+        "question_design_revision": "everyday-life-question-v2-2026-10-21",
+        "question_scope": "One central viewer question, not necessarily one physical operation. Connected routines must each contribute a distinct necessary answer within a bounded community and period, preserving the channel lens. A day is optional, not a dawn-to-night checklist.",
+        "narration_boundary": "Lead with lived actions, objects and their consequences. Keep source administration and author instructions in notes. Merge repeated qualifications with the same function while retaining uncertainty that changes the answer, scope or inference.",
+        "second_person_policy": "Second person may invite an explicitly illustrative viewpoint. It does not require a mission, invented protagonist or intervention, and cannot establish private thoughts, a real individual experience or a universal routine.",
+        "topic_selection_reference": "references/topic-selection.md"
+      },
+      "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+      "metadata_direction": {
+        "revision": "human-history-portfolio-v2-2026-10-20",
+        "public_sources_section": "omit_by_default",
+        "internal_claim_ledger_required": true,
+        "description_policy": "Natural localized question-led introduction and concise episode scope. Do not add a Sources/References/Research block or internal bibliography by default. Include attribution only when required by a used asset/license or explicitly requested.",
+        "tags_policy": "A small relevant episode-specific tag set; no stuffing or fixed quota.",
+        "hashtags_policy": "Zero to three relevant localized hashtags.",
+        "chapters_policy": "Optional useful chapters, using measured final video timestamps only.",
+        "title_policy": "One supported question and a clear subject; no unsupported first/only/greatest claims.",
+        "publication_policy": "Local configuration only; no upload, publication or account rename."
+      },
+      "visual_dna_override": {
+        "revision": "human-history-chibi-v3-reference-look",
+        "reference": "references/chibi-historical-visual-dna.md",
+        "default_style": "chibi-2d",
+        "style_name": "Original hand-drawn Chibi 2D educational illustration",
+        "subject_selection": "Choose a supported human action or experience that explains the passage; objects, maps and diagrams lead when clearer.",
+        "character_presence": "Actively plan people making, using, learning, exchanging, working and adapting. Give them a clear explanatory task and natural restrained expression. No fixed people ratio, obligatory host or whole-cast requirement.",
+        "consistency": "Bold clean dark outlines, warm luminous colors, gentle painterly surface texture, restrained cel shading, readable silhouettes and clear staging; keep researched period/place-specific clothing, tools, materials and palettes. No copied creator characters or layouts.",
+        "scene_options": "Chibi human scenes, environments, artifacts, maps, timelines, cutaways and process/comparison diagrams.",
+        "prompt_policy": "Use the shared Chibi 2D style prompt for every generated frame, including character-free objects, places, maps and diagrams. Generate distinct Codex imagegen keyframes after narration approval and audio review; record provenance internally.",
+        "review": "Inspect factual scope, meaningful human action, clothing/tools, continuity, exact localized text, phone readability and crop. Illustration is not historical evidence.",
+        "motion_limit": "The still renderer adds camera movement only, not body or object animation; changed physical states require distinct keyframes."
+      },
+      "visual_workflow_override": {
+        "revision": "human-history-chibi-stills-v2",
+        "reference": "references/imagegen-stills.md",
+        "source_order": "imagegen_stills",
+        "retrieval_tool": "Codex imagegen",
+        "providers": [
+          "Codex imagegen"
+        ],
+        "default_visual_mode": "revideo_stills",
+        "generated_still_style": "chibi-2d",
+        "source_plan_required": false,
+        "existing_episode_policy": "Keep recorded episodes and assets; no automatic migration."
+      },
+      "focus": "Địa lý và cách con người thích nghi, cư trú, di chuyển và sinh sống | Ưu tiên câu hỏi đời thường hơi ngộ trong tiền sử, thời Băng hà và cổ đại.",
+      "previous_display_names": [
+        "Vì Sao Nơi Này"
+      ],
+      "legacy_destinations": [
+        "D:/Video/Vì Sao Nơi Này"
+      ],
+      "name_change": {
+        "selected_on": "2026-10-20",
+        "local_status": "applied",
+        "youtube_studio_status": "user_changed",
+        "handle_availability": "observed_current",
+        "youtube_search_checked_on": "2026-10-20",
+        "youtube_search_result": "user reports name changed to Củ Hũ; current handle observed as @cuhuchibi"
+      },
+      "image_text_policy": "contextual",
+      "visual_text_direction": "Có thể thêm nhãn ngắn, chính xác bằng tiếng Việt khi giúp làm rõ địa danh, mốc thời gian, đơn vị, điều kiện địa lý hoặc quy trình đã được nghiên cứu. Ghi nguyên văn trong in_scene_text và vị trí trong text_placement. Không tự tạo số liệu, lời trích dẫn, biển hiệu hay chữ giả tư liệu. Bỏ chữ nếu không giúp giải thích.",
+      "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+      "topic_scope_reference": "narration_dna.topic_scope"
     }
-  ]
+  ],
+  "portfolio_revision": "human-history-portfolio-v2-2026-10-20",
+  "editorial_revision": "everyday-ancient-curiosity-v1-2026-10-21",
+  "topic_discovery": {
+    "revision": "topic-selection-v3-2026-10-21",
+    "reference": "references/topic-selection.md",
+    "shortlist_template": "references/templates/topic-shortlist.md",
+    "pre_binding_command": "python scripts/channels.py scout <channel-id>",
+    "lead_sources": [
+      "primary-market audience questions",
+      "authoritative objects, sites, texts and practices"
+    ],
+    "separate_judgments": [
+      "viewer_curiosity",
+      "evidence_and_story_feasibility",
+      "observed_market_evidence"
+    ],
+    "stages": [
+      "resolve_live_scope_market_and_history",
+      "generate_varied_leads_and_screen",
+      "check_plain_language_curiosity",
+      "research_finalists_separately",
+      "inspect_references_and_verify_answer",
+      "compare_two_leading_subject_treatments",
+      "challenge_the_choice",
+      "recommend_with_alternative_and_limits",
+      "append_finalist_decisions_and_real_outcomes"
+    ],
+    "dispositions": [
+      "research_next",
+      "ready_for_drafting",
+      "defer",
+      "reject"
+    ],
+    "candidate_requirements": [
+      "viewer_question",
+      "question_shape",
+      "bounded_setting_and_group",
+      "channel_lens",
+      "exclusion_and_overlap_check",
+      "separate_native_market_query_ledger",
+      "reference_relevance_and_access",
+      "supported_answer_and_source_locators",
+      "distinctive_treatment",
+      "opening_and_linked_passage_contributions",
+      "visual_and_runtime_feasibility",
+      "market_uncertainty",
+      "disposition_and_next_check",
+      "early_curiosity_judgment",
+      "decision_memory_lookup"
+    ],
+    "market_policy": "Classify direct vs adjacent long-form, Shorts, wrong-language, unrelated, reupload and possible own-channel results before comparing. Sparse or irrelevant results are weak evidence for the query, not proof of an empty market. Record age, format, publisher and coverage limits. No invented volumes, views forecasts or success percentages.",
+    "evidence_policy": "Public discovery does not verify historical claims or reveal CTR/retention. Verify the essential answer independently, and distinguish metadata, chapters, sampled playback and original vs translated transcript access. A missing essential answer blocks readiness; unknown demand may remain an explicitly labeled editorial experiment.",
+    "decision_policy": "Recommend one question with a substantively different alternative and reasons to defer/reject others; state what evidence would reverse the choice. Normally research 3–5 finalists per requested channel, without manufacturing a quota. Recommendations do not bind episodes or approve narration/production.",
+    "feedback_policy": "Preserve the hypothesis and exact published version; learn from authorized traffic-source CTR, early/middle retention, watch time and relevant feedback together. Do not revise whole-channel DNA from one low-view upload or empty query.",
+    "curiosity_check": {
+      "when": "before_deep_research",
+      "output": [
+        "plain_audience_language_question",
+        "one_sentence_why_the_answer_is_worth_hearing",
+        "continue_reframe_or_defer_with_reason"
+      ],
+      "policy": "Use a recognizable action/object, a truthful gap and a concrete viewer gain. Artifact rarity, specialist names and competitor views alone do not establish curiosity. Verify or reframe false absence/first-ever/crisis premises. This is editorial judgment, not measured demand."
+    },
+    "angle_trials": {
+      "when": "leading_viable_subject_before_full_script",
+      "count": 2,
+      "output": [
+        "distinct_question_or_narrative_route",
+        "brief_target_language_opening",
+        "first_useful_answer",
+        "linked_passage_contributions",
+        "supported_reveal",
+        "earned_ending",
+        "comparison_and_choice"
+      ],
+      "policy": "Compare genuinely different treatments of the same bounded subject/evidence, not two title paraphrases. Keep uncertainty in both. Do not create full scripts, TTS or images for the comparison, or label it an audience A/B test. If neither promise is supportable, reframe or defer."
+    },
+    "challenge_pass": {
+      "when": "after_treatment_comparison_before_final_recommendation",
+      "output": [
+        "candidate_and_treatment_version",
+        "reviewer_and_independence",
+        "specific_objections",
+        "evidence_and_actions",
+        "unresolved_blockers",
+        "proceed_revise_or_defer"
+      ],
+      "checks": [
+        "truth_of_premise",
+        "essential_answer_and_middle",
+        "direct_vs_adjacent_demand",
+        "sparse_query_vs_competition",
+        "useful_runtime",
+        "runner_up_tradeoff",
+        "reversal_evidence"
+      ],
+      "policy": "Same-author second-pass is not independent review. No compulsory objection count or automatic agent delegation. Resolve essential factual/causal/promise blockers before unqualified readiness; unknown demand may stay an explicit experiment."
+    },
+    "decision_memory": {
+      "root": "research/topic-memory",
+      "reference": "references/topic-memory.md",
+      "list_command": "python scripts/topic_memory.py list --channel <channel-id>",
+      "record_command": "python scripts/topic_memory.py record <decision-json>",
+      "event_types": [
+        "decision",
+        "outcome"
+      ],
+      "policy": "Consult full/cross-channel history before repeats. Append sourced serious-finalist decisions and changes; keep Agent recommendations, actual selection for development and real published observations distinct. Preserve old reasons, record what changed, and never infer narration approval or unavailable analytics. Memory is provenance, not authoring instructions."
+    },
+    "leading_candidate_requirements": [
+      "two_treatment_comparison",
+      "critical_pass_with_actions_and_blockers"
+    ]
+  }
 }

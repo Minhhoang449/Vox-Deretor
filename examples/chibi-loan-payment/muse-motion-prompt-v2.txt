@@ -1,0 +1,11 @@
+Animate this frame as one continuous 6-second shot in hand-drawn Chibi 2D. Preserve the two adult characters, their faces, proportions, clothes, table, model house, blank statement, plain tokens, and hourglass exactly; do not add text or new props.
+
+Start: the woman studies the blank payment statement with a mildly puzzled look. The friend raises one plain amber token and gestures toward the two paths on the table.
+
+Action: the friend moves one token along the first path; one small wooden block is removed from the model house, making the remaining stack visibly smaller. Then a second token moves along the other path and settles beside the hourglass. The woman follows the motion with her eyes and gives a small, understanding nod.
+
+Camera: one gentle, slow push-in toward the table and the two paths. Keep both faces and the cause-and-effect action in frame.
+
+End: hold briefly on the smaller block stack, the separate token by the hourglass, and the woman's clearer expression.
+
+Use fluid, restrained character acting and subtle environmental motion only where it helps the explanation. Show cause before consequence; let the action settle on its payoff. One continuous shot, no cuts, no looping, no reset, no morphing, no extra hands or characters, no floating text, no labels, no invented currency marks, and no unrelated motion.

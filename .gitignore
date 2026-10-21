@@ -25,4 +25,7 @@ PROMO_SUBMISSIONS.md
 # material (videos, images, non-English notes) out of the repo
 references/*
 !references/*.md
+# English authoring templates are source dependencies, not generated research.
+!references/templates/
+!references/templates/*.md
 references/PIPELINE_PLAYBOOK.md

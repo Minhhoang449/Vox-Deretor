@@ -1,0 +1,112 @@
+{
+  "test_kind": "nonproduction_visual_acceptance",
+  "visual_dna_revision": "mission-visual-v1",
+  "narration_source": "../sahara-mission/master-narration.md",
+  "narration_version": "v1.2",
+  "channel_id": "moc-vy",
+  "aspect": "16:9",
+  "animation_style": "chibi-2d",
+  "visual_bible": {
+    "style": "Original 2D Historical Chibi Animation (Q-Version Cartoon) world. Clean rounded dark outlines, simplified legible shapes, flat colors and restrained two-tone cel shading. Apply Q-Version anatomy only to people actually present. Maps and cutaways use the same hand-drawn contour language.",
+    "palette": "Warm ochre/sand terrain, pale cream, teal-blue water, muted olive vegetation, dark charcoal outlines. Color supports real subject identity; hypothetical state is labeled rather than inferred from color alone.",
+    "world": "Sahara-related illustrative scenes and fictional contemporary intervention. Landscapes are reconstructions, not exact surveyed views. Diagrams are explanatory simplifications, not measurements or forecasts.",
+    "linework": "Consistent confident rounded dark outlines; no photorealism, 3D or paper collage.",
+    "environment_design": "Geography, water, installed pipes and ecological links can lead without people. Adjust detail density to the view and knowledge task.",
+    "scale_rules": "Do not extrapolate the illustrative water box into a measured Sahara forecast. Earth/map shapes and ocean direction remain geographically legible. Aquifer section is schematic, not a measured geological profile.",
+    "continuity_rules": ["Water stays teal-blue and terrain ochre throughout", "Follow source -> resource accounting -> decision -> conditional aftermath -> connected ecosystems", "No named protagonist cameos in character-free scenes", "Preserve branch and explicit illustrative status across scene changes"],
+    "characters": [
+      {
+        "id": "minh",
+        "display_name": "Minh",
+        "status": "fictional one-off operator for this sample",
+        "description": "Adult survey engineer, rounded oversized head and compact Q-Version body, short black hair, cream wide-brim sun hat, teal work shirt, tan trousers, charcoal boots. Calm focused expression. Present-day clothing is a design choice, not a historical witness.",
+        "continuity": "Identity only; pose, distance and frame occupancy follow the decision scene. Do not insert Minh in other shots.",
+        "reference_image": ""
+      }
+    ]
+  },
+  "beats": [
+    {
+      "id": "S01",
+      "narration_span": "Paragraph 1 opening: freshwater lakes in Ounianga, an engaging subject before assignment",
+      "evidence": ["C1"],
+      "shots": [{
+        "id": "A",
+        "scene": "A very wide high-oblique illustrative Sahara vista inspired by Ounianga: several long dunes separate deep teal freshwater lake surfaces, sparse reed fringes near water, ochre rocky desert continuing to the far horizon. The water and surrounding dry landscape are the main subject, not a settlement or a character. Do not claim an exact recreation or add lush vegetation across the desert.",
+        "characters": [], "people_policy": "none", "image_text_policy": "none", "dur": 6,
+        "visual_intent": {"function": "subject discovery and orientation", "primary_subject": "lake water within a much larger dry landscape", "representation": "wide environmental scene", "hierarchy": "lake shapes and dry extent readable first; sparse details", "transition": "the teal lake surface leads into the water-source cutaway"},
+        "scenario_context": {"layer": "baseline illustration", "basis": "Scoped NASA Ounianga explanation; not a surveyed photograph"},
+        "animation": {"start": "A calm single wide landscape", "keyframe": "Lake water lies between dry dune ridges with a broad dry horizon", "action": "Let the viewer read the geographical contrast", "end": "The lake water is the visual question for the next scene", "camera": "subtle horizontal pan, preserve lake edges", "framing": "extreme-wide high oblique view, uneven natural dune/lake shapes", "continuity": "Same ochre terrain and teal water in the section that follows"}
+      }]
+    },
+    {
+      "id": "S02",
+      "narration_span": "Paragraph 1 ending and paragraphs 2–3: the hidden source, changed historical conditions and the question of what sustains vegetation",
+      "evidence": ["C1", "C2"],
+      "shots": [{
+        "id": "A",
+        "scene": "A clean schematic ground cutaway beneath a small desert lake. A connected blue groundwater-bearing layer below ground reaches the lake basin; a few clear blue upward flow arrows show groundwater reaching the surface. Dry ochre soil above, simplified rock layers below, a small reed fringe only by the lake. Do not draw a limitless subterranean ocean, an invented recharge rate or a hydraulic pipe as the natural source. No exact geological measurement implied.",
+        "characters": [], "people_policy": "none", "dur": 7,
+        "in_scene_text": "NƯỚC NGẦM → HỒ", "text_placement": "one large dark label above the cutaway on its cream diagram area; use the arrow glyph exactly; no other letters or numbers",
+        "visual_intent": {"function": "explain a hidden mechanism", "primary_subject": "groundwater connection to the lake", "representation": "schematic cutaway", "hierarchy": "connected blue water layer and flow arrows dominate; simplified few layers", "transition": "blue source becomes the water resource that the operator must audit"},
+        "scenario_context": {"layer": "baseline explanation", "basis": "C1-C2; schematic mechanism, no measured aquifer profile", "uncertainty": "No renewable supply rate is established"},
+        "animation": {"start": "One visible connected water-bearing layer and lake", "keyframe": "The cutaway makes the hidden supply-to-lake relationship readable", "action": "Hold on the relationship; arrows are explanatory drawing elements", "end": "Viewer recognizes the source as a resource requiring accounting", "camera": "locked-off hold", "framing": "close section view with open cream space and a small surface above", "continuity": "Teal lake from S01; simplified terrain layers with shared linework"}
+      }]
+    },
+    {
+      "id": "S03",
+      "narration_span": "Paragraphs 4–6: the fictional project delays expansion to audit water before buying plants",
+      "evidence": ["A1", "D1"],
+      "shots": [{
+        "id": "A",
+        "scene": "At an open desert field-work table, fictional operator Minh deliberately places a large water-allocation map above a small tray of seedlings, making the supply audit the priority. One gloved hand indicates the blue supply line on the map; the other holds a pencil still. No presenter pose or giant portrait. Map and deliberate choice are the focus; sparse desert behind. No additional people and no readable map letters.",
+        "characters": ["minh"], "people_policy": "listed", "image_text_policy": "none", "dur": 5,
+        "visual_intent": {"function": "make a consequential choice tangible", "primary_subject": "water-map audit taking priority over seedling purchase", "representation": "human action in a medium three-quarter scene", "hierarchy": "hands, blue map route and seedlings readable; character expressive but not frame-filling", "transition": "the map's bounded plot leads into the area/depth budget diagram"},
+        "scenario_context": {"layer": "hypothetical intervention", "branch": "A", "basis": "Invented operator/choice, researched resource constraint"},
+        "animation": {"start": "Minh is already consulting the map", "keyframe": "The audit decision is visible in hand placement and map above seedlings", "action": "Hold the decision at its clearest instant; do not depict multiple hand positions", "end": "The visible blue supply line motivates the budget explanation", "camera": "gentle short push-in on hands and map", "framing": "medium three-quarter view, entire head/body readable without crowding the map", "continuity": "Minh identity from the visible spec; teal water line remains the motif"}
+      }]
+    },
+    {
+      "id": "S04",
+      "narration_span": "Paragraphs 7–12: illustrative area × additional net depth consumes the cap before extra costs; not a measured requirement",
+      "evidence": ["A2", "A3", "A4", "D2"],
+      "shots": [{
+        "id": "A",
+        "scene": "An uncluttered 2D explanatory diagram on cream: a flat ochre land rectangle with a thin translucent teal water layer demonstrates area times water depth. Beside it, a simple bounded blue water-volume container stands at its illustrated cap with zero reserved headroom. This is a conceptual unit diagram, not a real terrain model, a software interface or a forecast. Preserve 2D flat/cartoon linework, no photorealistic water and no character or anthropomorphic equipment.",
+        "characters": [], "people_policy": "none", "dur": 8,
+        "in_scene_text": "GIẢ ĐỊNH MINH HỌA\n100 km² × 0,3 m = 30 triệu m³/năm\nCHƯA TÍNH KHOẢN PHỤ", "text_placement": "three clear large dark diagram labels, arranged on cream above and below the conceptual area/water relationship, keep the equation on one readable line; no extra text",
+        "visual_intent": {"function": "explain quantitative scale and a constraint", "primary_subject": "area, net depth and limited volume", "representation": "diagram with a deliberately designed comparison of need and cap", "hierarchy": "equation and blue quantity dominate; sparse shapes with generous negative space", "transition": "budget limit prepares the conditional result and site obligations"},
+        "scenario_context": {"layer": "hypothetical calculation", "branch": "A", "basis": "Only A2-A4 illustrative inputs; correct units, not measured irrigation demand", "uncertainty": "The original source does not establish actual site/species demand or viable project design"},
+        "animation": {"start": "A single designed area/depth/volume diagram", "keyframe": "Net need equals the assumed cap before additional needs", "action": "Hold for labels and quantity relationship; do not create a character reaction", "end": "Viewer understands the lack of headroom", "camera": "locked-off hold", "framing": "flat diagram composition with large labels, no dense scenic backdrop", "continuity": "Same blue supply motif and ochre land; exact assumed quantities from narration"}
+      }]
+    },
+    {
+      "id": "S05",
+      "narration_span": "Paragraphs 13–14: after deployment and cancellation, installed infrastructure and obligations persist",
+      "evidence": ["A5", "R1"],
+      "shots": [{
+        "id": "A",
+        "scene": "A quiet ground-level long view of a fictional stopped pilot site: a closed blue-grey irrigation valve and installed pipe in the near foreground, sparse unused planting rows and a small locked equipment shelter beyond. The pipe remains intact; some modest vegetation survives near an outlet, the wider desert remains dry. Show a lingering constructed state, not an apocalyptic wasteland or proven ecological devastation. No person or mourning face. The old water line now ends at a closed valve.",
+        "characters": [], "people_policy": "none", "dur": 6,
+        "in_scene_text": "NHÁNH GIẢ ĐỊNH", "text_placement": "one short large phrase on a plain illustrative field placard beside the valve, legible within wide framing; no official logos or invented project title",
+        "visual_intent": {"function": "show consequences that remain after failure", "primary_subject": "installed infrastructure and changed site after stopping", "representation": "quiet environment/consequence scene", "hierarchy": "near valve versus lingering site depth; restrained details", "transition": "the local pipe/source motif opens into a wider question about connected systems"},
+        "scenario_context": {"layer": "conditional aftermath", "branch": "A after deployment and cancellation", "basis": "A5/R1; invented site, not a documentary record", "uncertainty": "No quantified damage or exact future loss is claimed"},
+        "animation": {"start": "The pilot site is already stopped", "keyframe": "Closed valve and installed pipe visibly persist", "action": "Hold the consequence rather than stage a character reaction", "end": "World retains infrastructure and maintenance responsibility", "camera": "slow restrained horizontal pan along the pipe, then hold", "framing": "low wide view with a dominant near object and quiet site depth", "continuity": "Teal/blue supply motif now closed; warm ochre/cream style preserved"}
+      }]
+    },
+    {
+      "id": "S06",
+      "narration_span": "Paragraphs 15–19: explicitly reorient into added conditional success assumptions, then consider the actual dust/nutrient link without certain future ecosystem/climate claims",
+      "evidence": ["C4", "R3"],
+      "shots": [{
+        "id": "A",
+        "scene": "A simplified hand-drawn 2D Atlantic-basin map: northern Africa/Sahara on the right/east, northeast South America/Amazon on the left/west, teal Atlantic between them. A restrained ochre dust ribbon/arrows travels westward from the Sahara toward the Amazon, with a modest patch of olive rainforest canopy at the receiving end. Keep actual continent silhouettes geographically legible, not mirrored. This shows the established nutrient transport connection, not a predicted future change, dying Amazon, inevitable greening feedback or anthropomorphic planet. No people.",
+        "characters": [], "people_policy": "none", "dur": 7,
+        "in_scene_text": "SAHARA\nAMAZON\nBỤI MANG DINH DƯỠNG", "text_placement": "large dark map labels by the correct regions and along the connecting ribbon, no other country names or measured future percentages",
+        "visual_intent": {"function": "make an indirect ecological link visible", "primary_subject": "Sahara-to-Amazon dust/nutrient connection", "representation": "regional map and ecological pathway", "hierarchy": "two continents, connecting route and receiving vegetation; readable sparse layout", "transition": "Narration explicitly introduces B1 conditions before widening to the established connection; do not imply failure causes this transport or draw a certain future outcome"},
+        "scenario_context": {"layer": "established mechanism considered in aftermath research", "basis": "C4 actual dust connection; R3 future modification remains conditional", "uncertainty": "No amount of change or certain forest/climate outcome is depicted"},
+        "animation": {"start": "A single schematic Atlantic relationship map", "keyframe": "The westward dust/nutrient pathway connects the actual regions", "action": "Hold for geography and pathway reading", "end": "Viewer understands why a large intervention needs wider-system research", "camera": "locked-off hold", "framing": "top-down regional map; different scale/layout from the opening vista", "continuity": "Ochre source, blue water and olive receiving ecosystem preserve color semantics"}
+      }]
+    }
+  ]
+}

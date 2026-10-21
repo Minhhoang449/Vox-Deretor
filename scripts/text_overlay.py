@@ -7,14 +7,20 @@ import os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 FONT_BOLD = [
+    "C:/Windows/Fonts/arialbd.ttf",
     "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
     "/Library/Fonts/Arial Bold.ttf",
     "/System/Library/Fonts/Supplemental/Arial.ttf",
 ]
 FONT_REG = [
+    "C:/Windows/Fonts/arial.ttf",
     "/System/Library/Fonts/Supplemental/Arial.ttf",
     "/Library/Fonts/Arial.ttf",
 ]
+FONT_WATERMARK = {
+    "ja": ["C:/Windows/Fonts/YuGothR.ttc", *FONT_REG],
+    "ko": ["C:/Windows/Fonts/malgun.ttf", *FONT_REG],
+}
 
 CAPTION_STYLES = ("white", "paper")
 
@@ -153,16 +159,24 @@ def render_title(text, out_path, W=1080, H=1920, sub=None):
     return out_path
 
 
-def render_watermark(text, out_path, W=1920, H=1080):
-    # cream text + ink edge (no black box), consistent across caption styles
+def render_watermark(text, out_path, W=1920, H=1080, language=None):
+    # Compact channel signature: cream text + ink edge, no box or opaque panel.
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    size = int(min(W, H) * 0.022)
-    fnt = _font(FONT_REG, size)
+    margin_x = max(24, round(W * 0.035))
+    margin_y = max(24, round(H * 0.04))
+    max_width = W * 0.28
+    size = max(14, round(min(W, H) * 0.022))
+    while size > 14:
+        fnt = _font(FONT_WATERMARK.get(language, FONT_REG), size)
+        if d.textlength(text, font=fnt) <= max_width:
+            break
+        size -= 1
+    fnt = _font(FONT_WATERMARK.get(language, FONT_REG), size)
     tw = d.textlength(text, font=fnt)
-    x, y = W - tw - 30, H - size - 30
+    x, y = W - tw - margin_x, margin_y
     ow = max(2, round(size * 0.14))
-    d.text((x, y), text, font=fnt, fill=(250, 244, 232, 225),
-           stroke_width=ow, stroke_fill=(18, 12, 8, 205))
+    d.text((x, y), text, font=fnt, fill=(250, 244, 232, 210),
+           stroke_width=ow, stroke_fill=(18, 12, 8, 180))
     img.save(out_path)
     return out_path

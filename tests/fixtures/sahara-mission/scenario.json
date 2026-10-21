@@ -1,0 +1,44 @@
+{
+  "test_kind": "shortened_nonproduction_narrative_acceptance",
+  "channel_id": "moc-vy",
+  "topic": "Can an intervention green the Sahara sustainably, and what happens afterward?",
+  "dna_revision": "mission-simulation-v1",
+  "assumptions": {
+    "area_km2": 100,
+    "annual_net_water_depth_m": 0.3,
+    "annual_project_water_cap_m3": 30000000,
+    "note": "Illustrative scenario inputs; not measured Sahara needs or a validated vegetation model."
+  },
+  "expected_arithmetic": {
+    "annual_net_water_m3": 30000000,
+    "headroom_before_losses_m3": 0,
+    "annual_net_water_if_depth_doubles_m3": 60000000
+  },
+  "story_premise": {
+    "format": "mission_simulation",
+    "subject": "Sahara and the systems that sustain vegetation",
+    "place": "Sahara; Ounianga used as a scoped opening example",
+    "period": "Contemporary hypothetical intervention; past climate is a comparison",
+    "subject_opening": "Freshwater lakes and their hidden water supply, then the different climate of the past",
+    "mission_introduction": "After subject exploration, grant a fictional coalition a sustainable Sahara-greening mission",
+    "objective": "Green the Sahara sustainably without depleting its supporting water or abandoning long-term costs",
+    "success_criteria": "Durable vegetation at mission scale with a verified sustainable supply and continued operation; a pilot alone does not meet the full objective",
+    "baseline": "Present conditions; groundwater and past vegetation do not establish a future self-sustaining supply",
+    "divergence": "Hypothetical intervention; no historical event is rewritten as fact",
+    "assumptions": ["A1: bounded authority and present technology", "A2-A4: illustrative area, net need and water cap", "A5: sunk costs after deployment"],
+    "resources": ["Survey and pilot authority with consent", "Illustrative annual water cap", "Bounded operating support"],
+    "constraints": ["No guaranteed additional rainfall", "Existing community allocation protected", "Soil, drainage and maintenance not waived"],
+    "decisions": ["Audit supply before expansion", "Calculate water demand and sensitivity", "Keep salt-management costs", "Do not book speculative rainfall as supply"],
+    "outcome": "failure",
+    "outcome_reason": "Under the granted inputs the mission-scale sustainable supply and expansion have not been established; the illustrative pilot already consumes the cap before additional needs",
+    "consequences": ["If deployment preceded cancellation, used water/materials and site obligations persist", "Data or suitable smaller infrastructure may retain conditional value", "Separate success branch B1 still has maintenance and allocation demands", "Large success branch requires investigation of dust/nutrients and remote climate links"],
+    "uncertainty": "The main verdict is conditional on these inputs; it does not prove greening impossible under every future scenario. B1 is an additional grant, not a measured success.",
+    "hypothetical_frame": "Fictional coalition introduced after exploring the subject"
+  },
+  "shot_context": {
+    "layer": "aftermath",
+    "branch": "A: intervention stopped after deployment",
+    "basis": "Conditional persistence of installed equipment and obligations",
+    "uncertainty": "Illustration; no measured damage extent or authentic project photograph"
+  }
+}

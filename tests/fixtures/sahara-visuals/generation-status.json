@@ -1,0 +1,35 @@
+{
+  "test_kind": "nonproduction_visual_acceptance",
+  "checked_on": "2026-10-13",
+  "backend": "built-in imagegen",
+  "status": "blocked_usage_limit",
+  "tool_error": "HTTP 429 usage_limit_reached",
+  "generated_images": 0,
+  "image_QA": "not_run",
+  "assets": [
+    {
+      "key": "S01A",
+      "status": "not_generated"
+    },
+    {
+      "key": "S02A",
+      "status": "not_generated"
+    },
+    {
+      "key": "S03A",
+      "status": "not_generated"
+    },
+    {
+      "key": "S04A",
+      "status": "not_generated"
+    },
+    {
+      "key": "S05A",
+      "status": "not_generated"
+    },
+    {
+      "key": "S06A",
+      "status": "not_generated"
+    }
+  ]
+}

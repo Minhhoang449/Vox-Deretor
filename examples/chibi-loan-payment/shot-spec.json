@@ -1,0 +1,47 @@
+{
+  "doc": {
+    "animation_style": "chibi-2d",
+    "aspect": "16:9",
+    "visual_bible": {
+      "style": "hand-drawn Chibi 2D cartoon; oversized rounded heads, compact bodies, thick clean dark outlines, simple expressive faces, flat vibrant colors, subtle cel shading",
+      "palette": "warm cream apartment, amber-gold, blue shirt, muted coral-pink sweater",
+      "world": "contemporary Vietnamese apartment dining room; no historical setting",
+      "characters": [
+        {
+          "id": "woman",
+          "description": "friendly adult Vietnamese woman, dark hair in a bun, coral-pink sweater, curious then understanding expression"
+        },
+        {
+          "id": "friend",
+          "description": "friendly adult Vietnamese man, short dark hair, blue shirt, calm explanatory expression"
+        }
+      ],
+      "recurring_props": [
+        "blank repayment sheet",
+        "small model house",
+        "plain amber coin stacks",
+        "glass hourglass",
+        "two yellow arrows"
+      ],
+      "continuity_rules": [
+        "keep the exact faces, hairstyles, clothes, proportions, table layout, house, hourglass, arrows, and coin stacks from the uploaded frame",
+        "no text, currency symbols, added props, or extra characters"
+      ]
+    }
+  },
+  "beat": {
+    "feel": "warm, friendly, lightly playful",
+    "bg": "warm cream, amber-gold, and blue"
+  },
+  "shot": {
+    "scene": "Two Chibi friends explain a loan payment at a dining table using a model house, two coin paths, and an hourglass.",
+    "dur": 8,
+    "animation": {
+      "start": "Match the uploaded frame exactly. Both characters hold their current pose; the coin stacks, arrows, model house, and hourglass stay in their current positions.",
+      "action": "The friend makes one small natural speaking gesture toward the model house, then toward the hourglass. The woman follows the gesture with her eyes and gives one gentle nod. The two existing yellow arrows glow softly one after the other, and sand trickles slowly inside the hourglass. Keep the coins still.",
+      "end": "Both characters settle into a friendly, understanding smile and hold the final pose for a moment.",
+      "camera": "One very slow subtle push-in, no more than about 3 percent over the full shot; otherwise keep the camera steady.",
+      "continuity": "Preserve the exact Chibi head-to-body proportions, faces, hair, clothes, hand shapes, and all prop positions from the source frame. No new objects, no extra fingers, no character morphing, no outfit or background changes."
+    }
+  }
+}

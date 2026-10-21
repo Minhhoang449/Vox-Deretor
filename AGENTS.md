@@ -1,49 +1,64 @@
-# Vox Director — Agent Guide
+# Research-led Documentary — Agent Guide
 
-This repository is an **agent skill**: a self-contained workflow that turns one
-topic into a finished Vox-style paper-collage video (script → collage keyframes →
-motion → voice-over → music → captions). It is not tied to any single assistant —
-any coding agent that can read instructions and run scripts can drive it.
+Active topic-decision update: topic-selection-v3-2026-10-21. Before deep research, state the audience-language question and why its answer is worth hearing. For the leading viable subject compare two distinct treatments with short openings and linked passage contributions, then run a critical pass before recommending. Label same-author review honestly. Consult references/topic-memory.md and the history exposed by channels.py scout before proposing repeats; append sourced finalist decisions and actual publication outcomes separately. Memory is provenance, not current authoring instructions or narration approval. Never invent user choices or unavailable analytics.
 
-## How to use it (for the agent)
+Active question-design update: everyday-life-question-v2-2026-10-21. A focused task remains the default; connected routines may answer one bounded everyday-life question while preserving the channel lens. Open with an action, object, habit, pleasure, need or contrast; difficulty is optional. Follow lived actions and new understanding, compress repeated qualifications while retaining material uncertainty, and keep source administration in notes. Before recommending topics use references/topic-selection.md and python scripts/channels.py scout <channel-id>; research finalists separately in their native markets and distinguish curiosity, factual feasibility and market observation. Recommendations do not bind episodes or approve narration/production.
 
-1. Read **`references/local-pipeline.md`** first. This checkout does not call
-   Atlas for stills, video, or narration.
-2. Pick the channel before any writing. The roster is **`config/channels.json`**.
-   Bind it with `python scripts/channels.py bind <channel-id> <slug>`.
-   The episode folder is `D:\Vox-Video\<channel>\<slug>`. Do not write under `out/`.
-   Narration language, promise, lanes, avoid list, and VoiceStudio profile all
-   come from that channel. Do not mix channels in one film.
-3. Research the episode before writing it. `python scripts/research_youtube.py`
-   reads `YOUTUBE_API_KEY` from `.env` and saves a public search scan in that
-   episode's `research/` folder. Read the report for the question, the opening,
-   and the gap. Do not copy titles, scripts, or thumbnails, and do not treat
-   views as evidence. Verify facts with primary sources. Steps:
-   `references/topic-research.md`.
-4. Read **`SKILL.md`** for the beat map, the two human approval gates, and the
-   collage prompt rules. (`SKILL.zh.md` is the same skill in Chinese.)
-5. Before writing any prompt, read **`references/`** (prompt structures, the
-   vocabulary/theme bank, and the narrative-beat library).
-6. Work one episode at a time in its `D:\Vox-Video\<channel>\<slug>` folder, driven by
-   `beats.json` with `"pipeline": "local"` and a `channel_id`. First
-   `plan_runtime.py --minutes <7-20>`, then media stages:
-   `codex_prompts.py` (Codex renders the stills) → `muse_pack.py` (you animate
-   in Muse.ai) → `voicestudio_tts.py` → `assemble.py` (also writes `final.srt`)
-   → `research_packaging.py` (titles, thumbnails, description openings, tag pool)
-   → `export_youtube.py` (Codex renders thumbnails, then the upload package).
-   Packaging rules: `references/packaging-research.md`. Do not copy titles or thumbnails.
+Active editorial revision: everyday-ancient-curiosity-v1-2026-10-21. For new work across all six channels, read references/everyday-ancient-curiosity.md and narration_dna.topic_scope from the live configuration. Prioritize small, curious everyday-life questions in prehistory, Ice Age communities, early farming and ancient civilizations, especially ancient Egypt. Keep each channel's own lens. Use warm, conversational, lightly witty narration rather than a chronological lecture. Later-period/present-day main subjects need an explicit user exception. The three user-borrowed tone examples in the live exclusion list must not become episode candidates, including paraphrases. This editorial revision narrows the broader 20/10/2026 lanes; it does not alter approved production.
 
-## Requirements
+Active narration revision: research-led-documentary-v1. Active portfolio revision: human-history-portfolio-v2-2026-10-20. The user explicitly replaced the old topics and mandatory mission-simulation DNA in the six-channel relaunch. There are exactly six active channels: four English, one Japanese and one Vietnamese. Spanish and Korean profiles are retired.
 
-- Codex (or another agent) that can generate images and save them to disk
-- Muse.ai, used by hand for image-to-video
-- VoiceStudio open on this machine — local API at `http://localhost:3900`
-- `ffmpeg` + `ffprobe`
-- Python 3 with `pillow`
+Use references/authoring-sources.md to distinguish active instructions, optional specialists and archived provenance. Earlier chat, memory, fixtures and dated audit scores may describe the retired portfolio; resolve the live channel and current writing guidance before drafting. The live config/channels.json and current references are the only authoring sources. Retired setup, migration and sample generators are stored under config/archive/retired-authoring-tools-2026-10-20 and must not be executed or imported into active code.
 
-## Agent notes
+Read references/local-pipeline.md first, then references/channel-strategy-adoption.md and references/scripting-dna.md. Resolve the live profile with python scripts/channels.py show <channel-id>. Each channel's focus, lanes, story_format, narration_direction and research-derived visual grammar govern new work. Do not force every topic into a hypothetical mission, traveler, civilization rescue, alternate victory or nature-transformation plot. Counterfactuals are optional when an episode specifically calls for them.
 
-- **Claude Code** auto-loads this as a skill from `SKILL.md`'s frontmatter — just
-  ask for a "vox video".
-- **Codex / other agents**: follow `SKILL.md` as your instructions; this
-  `AGENTS.md` is your entry point.
+V2 editorial samples were deleted at the user request on 16/10/2026. Do not reconstruct or reuse them from history, reports, generators, exports or old audition audio. The remaining V3 proposed samples are unapproved drafts; narration approval is required before production.
+
+## Active channels
+- last-safe-minute: Food origins, crop domestication and food practices; food_origin_process_history.
+- terra-rewired: Origins of technologies, materials and inventions; invention_material_process_history.
+- battlefield-bearings: Everyday life in societies of the past, beyond military and medieval-only topics; past_daily_life_task_reconstruction.
+- status-and-systems: Origins of social ideas, classifications, conventions and institutions; social_rule_origin_case_history.
+- chikyu-shikumi: 人類は何を食べ、どう暮らし、なぜ今のようになったのか。考古学・人類学・科学の証拠から、人間の歴史と行動を解き明かす。; evidence_led_human_history_explainer.
+- vi-sao-noi-nay: Địa lý và cách con người thích nghi, cư trú, di chuyển và sinh sống; human_geography_adaptation_explainer.
+
+Portfolio revision: human-history-portfolio-v2-2026-10-20. Names and IDs are retained; prior disaster, military-only, medieval-only and infrastructure-only topics are retired for new work. All six channels use original Chibi 2D with meaningful human action and explanatory graphics. Public metadata omits source sections by default; keep evidence ledgers internally.
+
+## Topic, research and narration
+
+Before narration approval use references/channel-benchmarking.md and the live profile's writing_contract. Compare actual opening, mechanism/turn and ending with dated reference evidence; distinguish original-language transcripts from translated captions or metadata. Short explicitly authorized audit samples are non-production tests. Self-review scores and public views do not prove better audience performance. Read historical-fiction.md for documentary reconstruction boundaries; invented dialogue, private thoughts and intervention arcs are not documentary defaults.
+Choose a fresh researched topic that fits the selected channel; the launch slate contains candidates, never approved episodes. New subject means a new slug. Existing projects require brief.json and PROJECT_HANDOFF.md inspection when present, then channels.py context. Never change a folder's topic to recycle assets. For every candidate topic, resolve the live channel's configured `youtube_research.relevance_language` and `region_code` before discovery, then query that topic in the intended audience language and market. Use English for English channels, Japanese for the Japanese channel, and Vietnamese for the Vietnamese channel; do not research English or Japanese audience topics with Vietnamese queries. Pass matching `--query-language` and `--relevance-language` into the discovery script. Any deliberate cross-language scan is supplemental, separately labeled with `--cross-language-note` and justified, and cannot replace the primary-language scan. Keep each candidate's query ledger separate.
+
+Use skills/vox-channel-documentary/SKILL.md. For war also read skills/vox-war-scriptwriting/SKILL.md and references/war-storytelling.md. Research important mechanisms and claims through primary/authoritative sources; YouTube Data API discovery only reveals public topics and formats. It does not prove facts, supply transcripts, expose retention or establish why recommendations changed. Keep dates, place, jurisdiction, definitions and uncertainty clear. Do not invent sources, dialogue, real-person thoughts or testimony.
+
+Plan runtime before drafting. New main episodes across all six channels run 12–20 minutes, default 15, as requested on 20/10/2026. Develop only useful supported material; do not pad to 20 minutes. Preserve existing approved episode targets and explicit user exceptions. Write continuous narration before shots. Review the actual opening, consequential middle and earned answer/ending against this channel's narrative grammar. Use separate story-editor /16 and retention /10 passes; criterion 6 must reach 2/2 for channel fit and voice. Unsupported essential causality, fabricated fact or a broken central promise blocks approval. Present revised narration for approval before beats. Reviews based only on text must be labeled.
+
+## Production
+
+Use references/narration-review.md to record actual user approval of the specific speech, verify it before TTS/render, and listen to the generated narration review copy before producing all images. New bindings require a machine-readable approval record; unrecorded legacy episodes retain their manual approval history. Never infer approval from a score or a request to improve the workflow.
+New episodes live at D:\Video\<channel display name>\<slug>, never repository out/. Bind one channel and language using channels.py bind <id> <slug> --topic "<question>". Legacy episodes remain at their recorded destinations; old IDs resolve through the archived catalog for continuation, not new authoring.
+
+After narration approval, read references/visual-dna.md and use skills/vox-visual-direction/SKILL.md. For new episodes follow references/imagegen-stills.md and the selected channel's live visual_dna: all six channels use original Chibi 2D educational frames, with meaningful human action, objects and explanatory graphics. Generate frames with Codex imagegen after approved narration and audio review. Do not use Montage or video montage. Ground depictions in verified sources and use sourced explanatory maps/diagrams where useful. Do not add user-visible AI/illustration disclosure labels to generated images or rendered video. Keep factual role and provenance in internal research and asset records. Select environments, artifacts, maps, comparisons and supported human action from the passage's purpose. No fixed protagonist ratio or copied publisher identity. Existing episodes keep their recorded media settings unless a revision is requested.
+
+Choose BGM from D:\Music and set bgm_path. Read references/voices.md. Use existing cloned voice routes; a brand name is not a voice-profile ID. OmniVoice defaults remain speed 0.9, 32 steps, 0.8-second sentence-ending pauses; Vietnamese VieNeu v3 Turbo stays native speed 1.0 with 0.8-second pauses. Preserve explicit episode overrides. Generate approved TTS and measure duration before image generation; revise/reapprove rather than stretch audio or pad silence.
+
+Use scripts/codex_prompts.py <episode> to export still prompts after the audio review gate. Follow references/image-reuse.md: full-image reuse only for related unchanged states, at most floor(0.35 * scene shots) reused shots, and at most two later uses per original. Changed action, expression, setting or visible fact needs a distinct image. Freeze key actions in animation.keyframe because the still renderer adds camera movement, not physical animation. Do not add user-visible AI/illustration disclosure labels to images or rendered video; retain provenance internally. Plan concise localized in_scene_text/text_placement for useful scene and diagram text; opt out per shot where distracting. Review spelling, factual accuracy, phone readability and planned crop.
+
+For every render read references/render-defaults.md after local-pipeline.md. New episodes use pipeline: local and visual_mode: revideo_stills with the selected channel's configured image style (chibi-2d for all six channels), FFmpeg/NVENC, two workers, balanced still camera and valid cache reuse. The still renderer moves the camera but does not animate physical actions or character motion. Do not use Montage or video clips for new episodes. Existing episodes retain their recorded visual route. Music root is D:\Music. Caption defaults remain same-language, white proportional sans-serif, at most two lines, 50 px at 1080p, opaque black outlines. SRT and static ASS serialize the same captions-timeline.json; use WhisperX alignment to approved speech. Structural/content/coverage errors block render; estimated alignment and reading-speed warnings need review. Do not regenerate delivered audio only to add alignment anchors.
+
+## Packaging and delivery
+Before long narration read the live packaging_direction, references/channel-packaging-dna.md, references/packaging-research.md and references/script-packaging-coordination.md. Compare two title/thumbnail/opening concepts with the two treatments and check native-market subject/search intent. Review the actual speech and package together before narration approval. After story lock finalize and recheck that package. Each channel has its own viewer question, optional title starting points, thumbnail editorial approaches, text role and opening alignment. These guide the episode's concept, not a fixed palette/font/layout. The exporter injects the live thumbnail editorial angle and writes packaging-direction.md for title review. Channel banners/avatars do not impose thumbnail templates. New thumbnails match the selected channel's visual_dna (original Chibi 2D for all six channels), with explanatory graphics when useful; preserve exact localized text, phone QA and 1280x720 delivery. Existing approved media retain their recorded style. Align title, thumbnail and opening. Evaluate watch-time share, traffic-source CTR and retention together.
+
+Use config/playlists.json and references/playlist-catalog.md. The 20/10/2026 topic reset authorizes the replacement local catalog; episode packaging later selects one existing primary playlist and at most two substantive additions with selection_reason. Internal catalog keys are not YouTube IDs. Do not invent channel/playlist platform IDs or claim local setup is publication. Category is a video/upload default, not a separate channel-category field. Names and proposed handles require Studio availability confirmation.
+
+Old mandatory mission DNA is archived under config/archive/pre-relaunch-2026-10-15 and is not an active authoring source. Existing approved narration/media remain their recorded production versions until a revision is requested and approved. Never expose API keys.
+
+## YouTube marketing specialist
+
+For topic discovery, thumbnails and metadata, use references/youtube-marketing-integration.md and the installed youtube-marketing skill's relevant modules. The six live profiles and project evidence/approval rules govern its adaptation; unavailable analytics or keyword volumes remain unknown.
+
+## Story execution update — 17/10/2026
+
+Apply the Story execution section in references/scripting-dna.md, references/viewer-guidance.md and the live writing_contract (channel-dna-execution-v4). Choose the promise from available episode evidence; align title, thumbnail and opening; deliver useful verified progress by roughly 0:30; and map each major passage through a real viewer question, evidence/change, new understanding and next dependency. Pay partial answers as evidence allows. Use meaningful transitions and clear term/number order; never add arbitrary cliffhanger, chapter or visual-interrupt quotas. Let sourced particulars carry the consequential middle and only compare outcomes when the promise requires bounded sides. Identify each passage's distinct contribution and merge adjacent restatements. Score progression and channel fit using the explicit anchors in references/story-editing.md; clear general explanation with local names does not earn full fit. Distinguish causal consequences, prerequisites and next tasks without invented crises. Keep material uncertainty in speech and source administration in notes. Record actual speech source/fingerprint in separate story/retention reviews; self-scores and shorter runtime do not prove audience performance. Use matching provisional voice calibration, then measure approved native-speed TTS. After publication, inspect real YouTube Studio analytics against the exact narration/visuals and mark hypotheses separately. These rules apply to new drafts and requested revisions; existing approved narration/media and accepted runtime exceptions retain their recorded versions.
+
+Before continuous narration for a new episode or requested rewrite, complete the **Adapted episode spine** in references/templates/story-card.md, following references/documentary-writing-framework.md. Treat it as a diagnostic route, not a fixed six-part script: adapt it to the live channel's story_format and evidence, and combine or omit stages that do not advance the bounded question. After drafting, verify distinct passage contributions, early useful progress, a consequential middle advance, an earned answer, and title/thumbnail/opening alignment against the actual speech.

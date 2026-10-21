@@ -1,5 +1,7 @@
 # Prompt Guide — the heart of the Vox collage look
 
+> **Archived collage/Atlas guidance.** Use only to inspect an existing legacy project. It does not define the current visuals, narration, voice, or workflow. New episodes follow `local-pipeline.md`, `animation-direction.md`, `scripting-dna.md`, and `voices.md`.
+
 Two prompts decide whether the film reads as a real Vox collage or a moving poster: the
 **image prompt** (makes the collage look) and the **video/motion prompt** (makes it move like
 collage). Get these right and the rest is plumbing.

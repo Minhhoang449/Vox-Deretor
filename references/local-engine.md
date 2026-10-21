@@ -1,5 +1,7 @@
 # Advanced: element-level motion collage (local keyframe engine)
 
+> **Archived collage engine.** This is a legacy implementation note, not an alternative default for current episodes. Follow `local-pipeline.md` and `render-defaults.md` for production, and `scripting-dna.md` for writing.
+
 Use this when the standard whole-poster animation isn't dramatic enough — when you want the
 **pieces-fly-in-and-assemble** look (à la cr7v2), or you must animate **real people with full
 control and zero content filters**. The video model is not used here at all; frames are drawn

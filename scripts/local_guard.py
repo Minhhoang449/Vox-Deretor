@@ -1,5 +1,12 @@
 """Stop Atlas calls, and keep local episodes out of the repo out/ folder."""
 import os
+import sys
+
+
+def configure_console():
+    """Keep UTF-8 channel names and episode paths printable on Windows consoles."""
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUT_DIR = os.path.join(ROOT, "out")
@@ -20,7 +27,7 @@ def refuse_out_dir(project_dir):
 def refuse_if_local(doc):
     if doc.get("pipeline") == "local":
         raise SystemExit(
-            "pipeline=local: Codex renders stills, Muse.ai animates them, "
-            "VoiceStudio speaks the narration. Do not call Atlas. "
+            "pipeline=local: generate photorealistic stills with Codex imagegen and assemble locally, "
+            "VieNeu speaks Vietnamese, OmniVoice speaks other configured languages, and FFmpeg assembles locally. "
             "See references/local-pipeline.md"
         )

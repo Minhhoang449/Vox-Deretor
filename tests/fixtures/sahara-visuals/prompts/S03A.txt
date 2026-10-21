@@ -1,0 +1,45 @@
+Create one clean keyframe from an original animated explainer in this visual style: original 2D Historical Chibi Animation (Q-Version Cartoon) visual world; confident clean dark outlines, coherent flat colors, restrained cel shading and clear simplified forms across landscapes, buildings, ecosystems, maps, cutaways, mechanisms and people. Match the representation to the scene's purpose; this style does not require a human subject or a historical setting in every frame.
+
+SCENE: At an open desert field-work table, fictional operator Minh deliberately places a large water-allocation map above a small tray of seedlings, making the supply audit the priority. One gloved hand indicates the blue supply line on the map; the other holds a pencil still. No presenter pose or giant portrait. Map and deliberate choice are the focus; sparse desert behind. No additional people and no readable map letters.
+
+FRAME MOMENT: The audit decision is visible in hand placement and map above seedlings. Depict the authored state or causal relationship. Do not turn an action sequence into a multi-moment storyboard. An explicitly authored comparison, map or cutaway can use the explanatory layout it needs; it is one designed frame.
+
+VISUAL INTENT: function: make a consequential choice tangible; primary_subject: water-map audit taking priority over seedling purchase; representation: human action in a medium three-quarter scene; hierarchy: hands, blue map route and seedlings readable; character expressive but not frame-filling; transition: the map's bounded plot leads into the area/depth budget diagram
+
+CINEMATIC FRAMING: Compose this shot as medium three-quarter view, entire head/body readable without crowding the map.
+
+CONTINUITY: Minh identity from the visible spec; teal water line remains the motif.
+
+VISUAL BIBLE — keep these designs and rules consistent across shots:
+Style: Original 2D Historical Chibi Animation (Q-Version Cartoon) world. Clean rounded dark outlines, simplified legible shapes, flat colors and restrained two-tone cel shading. Apply Q-Version anatomy only to people actually present. Maps and cutaways use the same hand-drawn contour language.
+Palette: Warm ochre/sand terrain, pale cream, teal-blue water, muted olive vegetation, dark charcoal outlines. Color supports real subject identity; hypothetical state is labeled rather than inferred from color alone.
+World: Sahara-related illustrative scenes and fictional contemporary intervention. Landscapes are reconstructions, not exact surveyed views. Diagrams are explanatory simplifications, not measurements or forecasts.
+Characters: id: minh, display_name: Minh, status: fictional one-off operator for this sample, description: Adult survey engineer, rounded oversized head and compact Q-Version body, short black hair, cream wide-brim sun hat, teal work shirt, tan trousers, charcoal boots. Calm focused expression. Present-day clothing is a design choice, not a historical witness., continuity: Identity only; pose, distance and frame occupancy follow the decision scene. Do not insert Minh in other shots.
+Continuity rules: Water stays teal-blue and terrain ochre throughout; Follow source -> resource accounting -> decision -> conditional aftermath -> connected ecosystems; No named protagonist cameos in character-free scenes; Preserve branch and explicit illustrative status across scene changes
+Linework: Consistent confident rounded dark outlines; no photorealism, 3D or paper collage.
+Environment design: Geography, water, installed pipes and ecological links can lead without people. Adjust detail density to the view and knowledge task.
+Scale rules: Do not extrapolate the illustrative water box into a measured Sahara forecast. Earth/map shapes and ocean direction remain geographically legible. Aquifer section is schematic, not a measured geological profile.
+
+CHARACTER REFERENCE: Use the attached approved reference image(s) only as identity guides for Minh. Preserve face, hair, silhouette, proportions, outfit, colors, and props only for the cast visible here. Do not reproduce the reference-sheet grid or force its pose, size or composition onto this scene.
+
+CHIBI DESIGN: characters have a rounded oversized head and a small simplified body; the head is about one-half to one-third of the full character height. Use clean thick dark outlines, simple cartoon eyes and mouth, bold readable eyebrows, exaggerated but clear expressions, flat vibrant colors, and only subtle cel shading. Apply this anatomy only to visible people; background density follows the visual purpose. NEGATIVE STYLE: no photorealism, no 3D rendering, no realistic anatomy, no thin fashion-anime proportions, no stick figures, no inconsistent character proportions, no excessive gradients, no random style changes, and no Vox-style motion graphics.
+
+For any historical scene, follow the researched place and period for clothing, architecture, tools, transport, symbols, and landscape. Do not default to Chinese historical motifs unless the episode is about that context. Do not invent archival documents, quotations, insignia, or source artifacts; avoid graphic depictions of war. If a visual detail is uncertain, keep it restrained rather than presenting it as evidence.
+
+For scientific or environmental scenes, preserve the researched spatial and time scale. Separate the actual baseline from a hypothetical intervention and its conditional aftermath; do not depict a scenario assumption or inferred outcome as an observed fact or a certain forecast. Keep the specified branch, resource constraints and uncertainty consistent across scenes.
+
+SCENARIO CONTEXT: layer: hypothetical intervention; branch: A; basis: Invented operator/choice, researched resource constraint
+
+The film uses an off-screen voice-over narrator. Do not add a presenter or narrator character unless the scene explicitly names one.
+
+Choose visual hierarchy, viewpoint, distance, detail density and negative space for the authored subject and scene purpose. A landscape, map, natural process, built system or changed world may fill the frame without people. Do not illustrate each narration sentence literally or substitute a reacting character for the mechanism.
+
+Keep linework, color logic, geography, object identity and branch state coherent with neighboring scenes. Character identity is conditional on presence and does not lock viewpoint, framing or composition. Use original designs; do not imitate a named studio, film, publisher or artist.
+
+No paper collage, torn edges, scrapbook layers, magazine clippings, halftone print, title card, captions, logos, watermarks, borders, or UI.
+
+Aspect ratio 16:9.
+
+PEOPLE: Show only the recurring character IDs listed for this shot. Keep their authored scale, pose, action and identity; do not insert other cast or a presenter.
+
+TEXT-FREE SHOT: No readable letters, numbers, labels, signage, subtitles, logos, watermarks, interface elements, or title cards.

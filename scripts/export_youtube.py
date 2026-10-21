@@ -2,12 +2,11 @@
 """
 Validate YouTube packaging on beats.json and export thumbnail prompts.
 
-Codex fills youtube_metadata, this script writes thumbnail-prompts.md, Codex
-generates each thumbnail image, then a second run (after selected_candidate_id
-and the chosen file exist) writes youtube-upload.txt.
+The script writes thumbnail-prompts.md for generation with the Codex imagegen skill. After a
+selected candidate's image exists, a second run writes youtube-upload.txt.
 
-Rules match Vox-AI export_youtube_metadata.py: 1–3 candidates, title ≤ 100
-characters, description + hashtags ≤ 5000, studio tags ≤ 500.
+Rules: 1–3 candidates, title ≤ 100 characters, description + hashtags ≤ 5000,
+studio tags ≤ 500. Thumbnail prompts follow the episode's selected animation style.
 
 Usage: python export_youtube.py <episode_dir>
 """
@@ -16,6 +15,9 @@ import os
 import sys
 
 from local_guard import refuse_out_dir
+from thumbnail_visual_direction import resolve_thumbnail_profile, thumbnail_visual_prompt
+from playlists import episode_playlists, export_episode_playlists, playlist_text
+from channel_packaging import packaging_guide
 
 
 def clean(value):
@@ -27,7 +29,10 @@ def run(project_dir):
     path = os.path.join(project_dir, "beats.json")
     with open(path, encoding="utf-8-sig") as f:
         doc = json.load(f)
+    visual_profile = resolve_thumbnail_profile(doc.get("channel_id") or "", episode=doc)
+    visual_prompt = thumbnail_visual_prompt(visual_profile)
     metadata = doc.get("youtube_metadata") or {}
+    playlist_bundle = episode_playlists(doc)
     research_dir = os.path.join(project_dir, "research")
     packaging_reports = []
     if os.path.isdir(research_dir):
@@ -52,7 +57,7 @@ def run(project_dir):
     if not isinstance(candidates, list) or not 1 <= len(candidates) <= 3:
         raise SystemExit(
             "youtube_metadata.candidates needs 1 to 3 packages. "
-            "Each needs id, title, thumbnail_concept, thumbnail_prompt, thumbnail_file."
+            "Each needs id, title, thumbnail_concept, thumbnail_prompt, thumbnail_file, and thumbnail_text."
         )
     seen = set()
     for index, candidate in enumerate(candidates, start=1):
@@ -68,6 +73,10 @@ def run(project_dir):
         for key in ("thumbnail_concept", "thumbnail_prompt", "thumbnail_file"):
             if not clean(candidate.get(key)):
                 raise SystemExit(f"Candidate {candidate_id} needs {key}.")
+        if not isinstance(candidate.get("thumbnail_text"), str):
+            raise SystemExit(f"Candidate {candidate_id} needs thumbnail_text (a phrase or an explicit empty string).")
+        if not clean(candidate["thumbnail_text"]) and not clean(candidate.get("thumbnail_text_reason")):
+            raise SystemExit(f"Candidate {candidate_id} needs thumbnail_text_reason explaining why the image works without lettering.")
         image_rel = clean(candidate["thumbnail_file"]).replace("\\", "/")
         if image_rel.startswith("/") or ".." in image_rel.split("/"):
             raise SystemExit(f"Candidate {candidate_id} thumbnail_file must stay inside the episode folder.")
@@ -79,7 +88,7 @@ def run(project_dir):
     if selected:
         image = os.path.join(project_dir, clean(selected["thumbnail_file"]))
         if not os.path.isfile(image):
-            raise SystemExit(f"Selected thumbnail is missing: {image}. Codex must generate it first.")
+            raise SystemExit(f"Selected thumbnail is missing: {image}. Generate it with imagegen first.")
 
     description = clean(metadata.get("description"))
     if not description:
@@ -101,13 +110,18 @@ def run(project_dir):
         raise SystemExit(f"Studio tags use {len(tag_text)} characters; max is 500.")
 
     ratio = doc.get("aspect", "16:9")
-    language = doc.get("language", "unknown")
+    language = visual_profile["language"]
     title = doc.get("topic") or doc.get("project") or "Untitled episode"
     research = metadata.get("packaging_research") or []
     search_phrases = metadata.get("search_phrases") or []
     experiment = metadata.get("experiment") or {}
 
     if selected:
+        thumbnail_text = clean(selected["thumbnail_text"])
+        thumbnail_text_line = (
+            f"Text rendered in image (exact wording): {thumbnail_text}" if thumbnail_text else
+            f"No lettering. Editorial reason: {clean(selected['thumbnail_text_reason'])}"
+        )
         lines = [
             f"YOUTUBE UPLOAD PACKAGE — {title}",
             f"Channel: {doc.get('channel_id', 'unknown')} | Language: {language} | Video ratio: {ratio}",
@@ -122,8 +136,10 @@ def run(project_dir):
             tag_text,
             "",
             "4. THUMBNAIL",
+            f"Visual direction: {visual_profile['style']} / {visual_profile['revision']}",
+            f"Thumbnail delivery: {visual_profile['width']}x{visual_profile['height']} ({visual_profile['aspect']})",
             f"Concept: {clean(selected['thumbnail_concept'])}\n"
-            f"Overlay text (add as editable text in the editor): {clean(selected.get('thumbnail_text')) or '(none)'}\n"
+            f"{thumbnail_text_line}\n"
             f"Image file: {clean(selected['thumbnail_file'])}",
             "",
             "5. TEST CANDIDATES",
@@ -136,38 +152,62 @@ def run(project_dir):
             )
         lines.extend(["", "6. PER-EPISODE SEARCH PHRASES"])
         lines.append("\n".join(f"- {item}" for item in search_phrases) or "(none recorded)")
+        lines.extend(["", "7. PLAYLISTS", playlist_text(playlist_bundle)])
         upload = os.path.join(project_dir, "youtube-upload.txt")
         with open(upload, "w", encoding="utf-8") as f:
             f.write("\n".join(lines) + "\n")
         print(f"Exported upload package: {upload}")
     else:
-        print("No selected_candidate_id yet. Codex generates the thumbnails, you pick one, then rerun.")
+        print("No selected_candidate_id yet. Generate thumbnails with imagegen from the prompt pack, pick one, then rerun.")
 
     prompt_lines = [
         f"# Thumbnail prompts — {title}",
         "",
-        f"Channel: {doc.get('channel_id', 'unknown')} | Language: {language} | Target ratio: {ratio}",
+        f"Output language: {language} | Target ratio: {visual_profile['aspect']}",
+        f"Shared thumbnail visual DNA: {visual_profile['revision']}",
         "The title and the thumbnail make one promise. Each candidate must show this episode's real subject.",
-        "Make the candidates different in composition, not just background color.",
-        "If thumbnail_text is set, render only that exact text in the channel language and keep its spelling.",
-        "If thumbnail_text is empty, render no lettering.",
-        "Codex generates each image and saves it at the path below.",
+        "Choose the focal subject from the actual story: a person is optional; a place, map, structure, vessel, mechanism, ecosystem, natural process or consequence may lead.",
+        "Show one clear subject and one story-relevant question, action, scale, mechanism or consequence; do not add the protagonist just to fill the frame.",
+        "Choose palette, typography, text placement and composition for each episode and concept; no per-channel visual template is required.",
+        "Vary candidate visual hypotheses, subject scale, camera angle, action or focal scene enough to test a different idea, not merely a minor color or expression change.",
+        "Keep curiosity accurate: do not imply a counterfactual outcome is certain or promise what the episode does not deliver.",
+        "Lettering is optional when the image communicates the question; a text-free candidate needs an explicit editorial reason.",
+        "When thumbnail_text is supplied, render it exactly in the channel language; do not paraphrase, translate, or add lettering.",
+        "Use the Codex imagegen skill to generate each image and save it at the path below.",
         "",
     ]
     for candidate in candidates:
+        phrase = clean(candidate['thumbnail_text'])
+        text_instruction = (
+            f"Render only this exact {language} phrase: {phrase}" if phrase else
+            "Do not render any text, letters, numbers, labels, logos or watermarks."
+        )
+        text_summary = (
+            f"Text to render in image, exactly: {phrase}" if phrase else
+            f"No lettering. Editorial reason: {clean(candidate['thumbnail_text_reason'])}"
+        )
+        typography = (
+            "Render the supplied phrase as large, high-contrast, cleanly spelled thumbnail typography with safe margins. "
+            if phrase else "Keep the visual question understandable without lettering. "
+        )
         prompt_lines.extend([
             f"## Candidate {clean(candidate['id'])} — {clean(candidate['title'])}",
             "",
             f"Concept: {clean(candidate['thumbnail_concept'])}",
-            f"Optional overlay text: {clean(candidate.get('thumbnail_text')) or '(none)'}",
+            text_summary,
             f"Save to: {clean(candidate['thumbnail_file'])}",
             "",
             "```text",
             clean(candidate["thumbnail_prompt"]),
-            f"Create a YouTube thumbnail at {ratio}. One dominant subject, a readable silhouette, "
-            "clear contrast, a simple background, and safe margins. It must still read when very small "
-            "on a phone. Match the episode's real claim. Original layered cut-paper collage. "
-            "No logos, watermarks, gore, fake documents, or extra lettering beyond the overlay above.",
+            visual_prompt,
+            f"Create a YouTube thumbnail at {visual_profile['aspect']} using this episode's resolved visual style. "
+            "Let the episode's real subject lead. A person is optional: use a person only when their action, emotion or viewpoint helps explain the story; otherwise make the place, map, structure, vessel, mechanism, ecosystem, natural process or consequence the focal subject. "
+            "Use one dominant subject or relationship, a readable silhouette, strong contrast, "
+            "a restrained background, and safe margins. Make the image clear at phone size. Show the "
+            "episode's real subject and claim without implying an uncertain or hypothetical result is guaranteed. "
+            + typography + "Do not add collage, torn paper, "
+            "fake documents, logos, watermarks, gore, or any other lettering.",
+            text_instruction,
             "```",
             "",
         ])
@@ -175,6 +215,13 @@ def run(project_dir):
     with open(prompt_file, "w", encoding="utf-8") as f:
         f.write("\n".join(prompt_lines) + "\n")
     print(f"Exported thumbnail prompts: {prompt_file}")
+    direction_file = os.path.join(project_dir, 'packaging-direction.md')
+    with open(direction_file, 'w', encoding='utf-8') as handle:
+        handle.write(packaging_guide(visual_profile['channel_name'], language,
+                                    visual_profile.get('editorial_packaging') or {}))
+    print(f"Exported live title/thumbnail direction: {direction_file}")
+    export_episode_playlists(project_dir, playlist_bundle)
+    print(f"Exported playlists: {os.path.join(project_dir, 'youtube-playlists.txt')} ({playlist_bundle['status']})")
     if len([item for item in hashtags if item.strip()]) > 3:
         print("Warning: more than three hashtags. YouTube may show only three above the title.")
     if not search_phrases:

@@ -1,0 +1,29 @@
+Duration: 8 seconds. One continuous image-to-video shot.
+
+Animate this frame as one continuous shot in this visual style: hand-drawn Chibi 2D cartoon animation; oversized rounded head with a compact simplified body, bold clean dark outlines, minimal expressive facial features, strong readable eyebrows, flat vibrant colors, subtle cel shading, and a clear storybook look. Preserve the established character and prop designs.
+
+START: Match the uploaded frame exactly. Both characters hold their current pose; the coin stacks, arrows, model house, and hourglass stay in their current positions.
+
+MAIN ACTION: The friend makes one small natural speaking gesture toward the model house, then toward the hourglass. The woman follows the gesture with her eyes and gives one gentle nod. The two existing yellow arrows glow softly one after the other, and sand trickles slowly inside the hourglass. Keep the coins still.
+
+PAYOFF: Both characters settle into a friendly, understanding smile and hold the final pose for a moment.
+
+CAMERA: One very slow subtle push-in, no more than about 3 percent over the full shot; otherwise keep the camera steady. Use one deliberate move that supports the action; do not drift without purpose.
+
+TONE AND COLOR: warm, friendly, lightly playful; warm cream, amber-gold, and blue.
+
+Use fluid character acting and purposeful secondary motion in the environment where it clarifies the story. Show the cause before the consequence. Let the motion build through the shot and settle on the payoff; no looping, reset, internal edit, or unrelated movement.
+
+Keep the scene recognizably animated. Preserve faces, clothing, object identity, proportions, and layout. Do not morph characters or invent extra subjects, text, labels, subtitles, logos, or collage textures.
+
+Keep the same compact Chibi body and oversized head throughout the motion. Preserve the character's face, outfit, colors, and silhouette; do not stretch, shrink, or morph the head or body.
+
+SHOT CONTINUITY: Preserve the exact Chibi head-to-body proportions, faces, hair, clothes, hand shapes, and all prop positions from the source frame. No new objects, no extra fingers, no character morphing, no outfit or background changes.
+
+VISUAL BIBLE:
+Style: hand-drawn Chibi 2D cartoon; oversized rounded heads, compact bodies, thick clean dark outlines, simple expressive faces, flat vibrant colors, subtle cel shading
+Palette: warm cream apartment, amber-gold, blue shirt, muted coral-pink sweater
+World: contemporary Vietnamese apartment dining room; no historical setting
+Characters: id: woman, description: friendly adult Vietnamese woman, dark hair in a bun, coral-pink sweater, curious then understanding expression; id: friend, description: friendly adult Vietnamese man, short dark hair, blue shirt, calm explanatory expression
+Recurring props: blank repayment sheet; small model house; plain amber coin stacks; glass hourglass; two yellow arrows
+Continuity rules: keep the exact faces, hairstyles, clothes, proportions, table layout, house, hourglass, arrows, and coin stacks from the uploaded frame; no text, currency symbols, added props, or extra characters

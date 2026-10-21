@@ -1,0 +1,10 @@
+Use case: animation-keyframe
+Asset type: one clean wide keyframe for a Vietnamese educational animation and Muse.ai image-to-video test
+Primary request: create a new original Chibi 2D scene that visually supports the opening explanation of a loan payment splitting into principal and interest
+Scene/backdrop: a warm, contemporary Vietnamese apartment dining area; a modest table, soft daylight, simple home details, no historical setting
+Subject: two friendly adult Vietnamese chibi characters, one woman looking at a completely blank payment statement and a phone with a blank screen, one friend gently explaining; both characters have clearly oversized rounded heads, compact small bodies, simple readable faces and relaxed gestures
+Action in this still: the friend points to two distinct paths of plain amber tokens on the tabletop; one path removes a small wooden block from a simple model house to show the balance becoming smaller, the other path places a token beside a small glass hourglass to show the cost of borrowing over time; the woman looks curious and beginning to understand
+Style/medium: original hand-drawn 2D Chibi cartoon, consistent thick clean outlines, bold simple shapes, flat warm colors, restrained cel shading, expressive but not anime-realistic, not 3D, visibly illustrated throughout
+Composition/framing: landscape 16:9 medium-wide table-height view, both characters and the two token paths readable at phone size, uncluttered silhouette, one continuous scene suitable for later animation
+Lighting/mood: warm natural window light, friendly and relaxed, professional educational storytelling with a small hint of humor
+Constraints: preserve adult character identities and proportions, natural simple hands, one clear instant of cause and effect, no text, no letters, no numbers, no currency symbols, no labels, no logos, no watermark, no social UI, no infographic panels, no collage, no Chinese historical clothing or architecture, no photorealism, no 3D, no extra characters, no split panels, no poster layout

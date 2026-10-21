@@ -1,33 +1,19 @@
-# Nghiên cứu trước khi triển khai
+# Research a channel documentary
+Before selection use [topic-selection.md](topic-selection.md), [topic-shortlist.md](templates/topic-shortlist.md) and `python scripts/channels.py scout <channel-id>`; no episode binding is needed to research leads. New candidates follow live topic_scope/question_design: one recognizable everyday-life question through this channel's lens, carried by a focused task or connected routines. Identify an action, object, habit, pleasure, need or contrast that earns curiosity; difficulty is optional. Check the three borrowed exclusions, period and false-premise risks. Later-period/present-day main topics need an explicit exception. Chat examples are unverified leads, not evidence. Research each finalist independently and separate curiosity, factual feasibility and market observation before recommending it.
+Resolve the active channel before discovery and the exact selected topic/slug before episode development. Read its focus, audience question, format, avoid list and narration_direction. Do not inherit old pilots as assignments. Pre-selection ledgers can live in a dated repository research folder; selected episodes use their own configured research destination.
 
-Mỗi bộ cần một gói nghiên cứu riêng cho câu hỏi của bộ đó, trước khi viết beat map và trước khi Codex vẽ ảnh.
+Resolve the channel's primary language and market from `channels.py show <channel-id>` before writing queries. Research each candidate topic separately with topic-specific queries in that channel's language and configured market (for example, Last Safe Minute: English/US; 地球のしくみ帳: Japanese/Japan; Vì Sao Nơi Này: Vietnamese/Vietnam). Pass `--query-language`, `--relevance-language` and `--region-code` explicitly for topic scans so the saved record shows the intended slice. Do not use Vietnamese queries for English- or Japanese-language topics. A cross-language scan is optional supplemental research only when it answers a stated question; label it as supplemental, preserve the primary-language scan, and use `--cross-language-note` to record why it was needed.
 
-## Key
+Use scripts/research_youtube.py with the channel, one selected question, unique slug tag and target region. It loads YOUTUBE_API_KEY from .env; never expose the key. Save dated discovery under D:\Video\<channel>\<slug>\research. Public results reveal topics, titles and formats only, not factual evidence, transcripts or retention. If the runtime denies outbound sockets, rerun with approved network access; a socket permission error is not evidence of a bad key. The script reports HTTP/API errors separately from DNS, timeout, proxy and sandbox/network failures. Treat region/language as discovery filters, not demand metrics, and treat public counts only as dated snapshots.
 
-`scripts/research_youtube.py` đọc `YOUTUBE_API_KEY` từ `.env` ở gốc repo. Nếu biến cùng tên đã có trong môi trường tiến trình, giá trị đó được dùng. Không ghi key vào lệnh, báo cáo, `beats.json`, hay chat.
+Verify essential claims with primary sources and authoritative scholarship/technical records. Build the topic brief, dossier, claim ledger and story card. Record dates, jurisdiction, quantities/definitions, event chronology or flow and alternative explanations. Explain uncertainty at its claim. Distinguish source-based reconstruction and illustrative examples from documented observation. Research aftermath where relevant; do not invent one for a tidy ending.
 
-## Hai tầng
+Before committing to the narration promise, check that the evidence can demonstrate its essential answer at the episode's place/event/task. Identify the observations or operating records that will carry the middle. If the question contrasts outcomes, locate the actual bounded sides and check compatible definitions, periods, methods and relevant conditions. A regional trend does not establish a particular structure's effect. Research a missing link or propose a narrower promise within the agreed subject; a single-system question does not require a second case. Do not fill a bound folder with a different topic to use available assets.
 
-1. **Khám phá kênh**, khi cần chọn hướng. Script dùng các query sẵn trong `youtube_research` của kênh và ghi báo cáo vào `references/research/`. Không chạy lại toàn bộ query này cho mỗi bộ.
+Use [viewer-guidance.md](viewer-guidance.md) while choosing the question and promise. Look for a real gap between what an interested viewer might expect and what the evidence shows. Write the gap in one accurate sentence, then list the subquestions the research can answer and the evidence for each. A useful topic makes the gap understandable to a new viewer and answerable through the selected channel's grammar; vague mystery, shock or a conflict without evidence is not a stronger premise.
 
-```text
-python scripts/research_youtube.py --channel moc-vy
-```
+Use new channel-specific candidates and a fresh question. If a hypothetical episode is selected, separately research baseline, divergence, input assumptions and inference limits. Mission simulation is optional, not the six-channel default.
 
-2. **Nghiên cứu đúng bộ**, sau khi đã `bind`. Một kênh, vài query sát câu hỏi, tag riêng, báo cáo nằm trong thư mục bộ:
+## Adopted marketing specialist
 
-```text
-python scripts/research_youtube.py --channel moc-vy --query "giá gạo Việt Nam từ ruộng đến bán lẻ" --tag gia-gao --order relevance --output-dir "D:\Vox-Video\Mộc Vy\gia-gao\research"
-```
-
-`--query` lặp được. `--order` nhận `relevance`, `date`, hoặc `viewCount`. Muốn đối chiếu cả ba thì chạy ba lần, mỗi lần một tag khác. `--tag` tránh ghi đè báo cáo cũ.
-
-## Đọc báo cáo như thế nào
-
-Báo cáo có tiêu đề, kênh, lượt xem, lượt xem/ngày ước tính, thời lượng, link thumbnail và đoạn mô tả. Dùng nó để xem người khác đang trả lời câu hỏi nào, mở đầu ra sao, và chỗ nào còn trống.
-
-Lượt xem không phải tỷ lệ giữ chân, mức hài lòng, hay bằng chứng cho một con số. Không chép lời dẫn, tiêu đề, thumbnail, hay nhận diện hình ảnh.
-
-Sau đó mới kiểm từng dữ kiện quan trọng bằng nguồn gốc hoặc nguồn có thẩm quyền, rồi viết beat map. `codex_prompts.py` dừng nếu `research/youtube-market-scan-*.md` chưa có trong thư mục bộ.
-
-Khi câu hỏi đã khóa, nghiên cứu thumbnail, tiêu đề, mô tả và tag bằng `scripts/research_packaging.py`. Đó là bước riêng, ghi ở `references/packaging-research.md`.
+Use [youtube-marketing-integration.md](youtube-marketing-integration.md) to route ideate/competitor research through the six live profiles. Run ideate/competitor scans per candidate topic in the live profile's audience language and region; never substitute a Vietnamese scan for English or Japanese market discovery. Save dated native-language discovery evidence, source feasibility and shortlist reasons; unavailable search volume and private analytics stay unknown.

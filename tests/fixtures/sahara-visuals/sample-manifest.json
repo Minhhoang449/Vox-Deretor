@@ -1,0 +1,108 @@
+{
+  "test_kind": "nonproduction_visual_acceptance",
+  "narration_version": "v1.2",
+  "assets": [
+    {
+      "key": "S01A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraph 1 opening: freshwater lakes in Ounianga, an engaging subject before assignment",
+      "people_policy": "none",
+      "visual_intent": {
+        "function": "subject discovery and orientation",
+        "primary_subject": "lake water within a much larger dry landscape",
+        "representation": "wide environmental scene",
+        "hierarchy": "lake shapes and dry extent readable first; sparse details",
+        "transition": "the teal lake surface leads into the water-source cutaway"
+      },
+      "prompt_file": "prompts/S01A.txt",
+      "save_as": "images/S01A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    },
+    {
+      "key": "S02A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraph 1 ending and paragraphs 2–3: the hidden source, changed historical conditions and the question of what sustains vegetation",
+      "people_policy": "none",
+      "visual_intent": {
+        "function": "explain a hidden mechanism",
+        "primary_subject": "groundwater connection to the lake",
+        "representation": "schematic cutaway",
+        "hierarchy": "connected blue water layer and flow arrows dominate; simplified few layers",
+        "transition": "blue source becomes the water resource that the operator must audit"
+      },
+      "prompt_file": "prompts/S02A.txt",
+      "save_as": "images/S02A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    },
+    {
+      "key": "S03A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraphs 4–6: the fictional project delays expansion to audit water before buying plants",
+      "people_policy": "listed",
+      "visual_intent": {
+        "function": "make a consequential choice tangible",
+        "primary_subject": "water-map audit taking priority over seedling purchase",
+        "representation": "human action in a medium three-quarter scene",
+        "hierarchy": "hands, blue map route and seedlings readable; character expressive but not frame-filling",
+        "transition": "the map's bounded plot leads into the area/depth budget diagram"
+      },
+      "prompt_file": "prompts/S03A.txt",
+      "save_as": "images/S03A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    },
+    {
+      "key": "S04A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraphs 7–12: illustrative area × additional net depth consumes the cap before extra costs; not a measured requirement",
+      "people_policy": "none",
+      "visual_intent": {
+        "function": "explain quantitative scale and a constraint",
+        "primary_subject": "area, net depth and limited volume",
+        "representation": "diagram with a deliberately designed comparison of need and cap",
+        "hierarchy": "equation and blue quantity dominate; sparse shapes with generous negative space",
+        "transition": "budget limit prepares the conditional result and site obligations"
+      },
+      "prompt_file": "prompts/S04A.txt",
+      "save_as": "images/S04A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    },
+    {
+      "key": "S05A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraphs 13–14: after deployment and cancellation, installed infrastructure and obligations persist",
+      "people_policy": "none",
+      "visual_intent": {
+        "function": "show consequences that remain after failure",
+        "primary_subject": "installed infrastructure and changed site after stopping",
+        "representation": "quiet environment/consequence scene",
+        "hierarchy": "near valve versus lingering site depth; restrained details",
+        "transition": "the local pipe/source motif opens into a wider question about connected systems"
+      },
+      "prompt_file": "prompts/S05A.txt",
+      "save_as": "images/S05A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    },
+    {
+      "key": "S06A",
+      "test_kind": "nonproduction_visual_acceptance",
+      "narration_span": "Paragraphs 15–19: explicitly reorient into added conditional success assumptions, then consider the actual dust/nutrient link without certain future ecosystem/climate claims",
+      "people_policy": "none",
+      "visual_intent": {
+        "function": "make an indirect ecological link visible",
+        "primary_subject": "Sahara-to-Amazon dust/nutrient connection",
+        "representation": "regional map and ecological pathway",
+        "hierarchy": "two continents, connecting route and receiving vegetation; readable sparse layout",
+        "transition": "Narration explicitly introduces B1 conditions before widening to the established connection; do not imply failure causes this transport or draw a certain future outcome"
+      },
+      "prompt_file": "prompts/S06A.txt",
+      "save_as": "images/S06A.png",
+      "image_status": "not_generated",
+      "reference_images": []
+    }
+  ]
+}

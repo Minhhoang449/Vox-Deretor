@@ -1,0 +1,40 @@
+Create one clean keyframe from an original animated explainer in this visual style: original 2D Historical Chibi Animation (Q-Version Cartoon) visual world; confident clean dark outlines, coherent flat colors, restrained cel shading and clear simplified forms across landscapes, buildings, ecosystems, maps, cutaways, mechanisms and people. Match the representation to the scene's purpose; this style does not require a human subject or a historical setting in every frame.
+
+SCENE: A clean schematic ground cutaway beneath a small desert lake. A connected blue groundwater-bearing layer below ground reaches the lake basin; a few clear blue upward flow arrows show groundwater reaching the surface. Dry ochre soil above, simplified rock layers below, a small reed fringe only by the lake. Do not draw a limitless subterranean ocean, an invented recharge rate or a hydraulic pipe as the natural source. No exact geological measurement implied.
+
+FRAME MOMENT: The cutaway makes the hidden supply-to-lake relationship readable. Depict the authored state or causal relationship. Do not turn an action sequence into a multi-moment storyboard. An explicitly authored comparison, map or cutaway can use the explanatory layout it needs; it is one designed frame.
+
+VISUAL INTENT: function: explain a hidden mechanism; primary_subject: groundwater connection to the lake; representation: schematic cutaway; hierarchy: connected blue water layer and flow arrows dominate; simplified few layers; transition: blue source becomes the water resource that the operator must audit
+
+CINEMATIC FRAMING: Compose this shot as close section view with open cream space and a small surface above.
+
+CONTINUITY: Teal lake from S01; simplified terrain layers with shared linework.
+
+VISUAL BIBLE — keep these designs and rules consistent across shots:
+Style: Original 2D Historical Chibi Animation (Q-Version Cartoon) world. Clean rounded dark outlines, simplified legible shapes, flat colors and restrained two-tone cel shading. Apply Q-Version anatomy only to people actually present. Maps and cutaways use the same hand-drawn contour language.
+Palette: Warm ochre/sand terrain, pale cream, teal-blue water, muted olive vegetation, dark charcoal outlines. Color supports real subject identity; hypothetical state is labeled rather than inferred from color alone.
+World: Sahara-related illustrative scenes and fictional contemporary intervention. Landscapes are reconstructions, not exact surveyed views. Diagrams are explanatory simplifications, not measurements or forecasts.
+Continuity rules: Water stays teal-blue and terrain ochre throughout; Follow source -> resource accounting -> decision -> conditional aftermath -> connected ecosystems; No named protagonist cameos in character-free scenes; Preserve branch and explicit illustrative status across scene changes
+Linework: Consistent confident rounded dark outlines; no photorealism, 3D or paper collage.
+Environment design: Geography, water, installed pipes and ecological links can lead without people. Adjust detail density to the view and knowledge task.
+Scale rules: Do not extrapolate the illustrative water box into a measured Sahara forecast. Earth/map shapes and ocean direction remain geographically legible. Aquifer section is schematic, not a measured geological profile.
+
+For any historical scene, follow the researched place and period for clothing, architecture, tools, transport, symbols, and landscape. Do not default to Chinese historical motifs unless the episode is about that context. Do not invent archival documents, quotations, insignia, or source artifacts; avoid graphic depictions of war. If a visual detail is uncertain, keep it restrained rather than presenting it as evidence.
+
+For scientific or environmental scenes, preserve the researched spatial and time scale. Separate the actual baseline from a hypothetical intervention and its conditional aftermath; do not depict a scenario assumption or inferred outcome as an observed fact or a certain forecast. Keep the specified branch, resource constraints and uncertainty consistent across scenes.
+
+SCENARIO CONTEXT: layer: baseline explanation; basis: C1-C2; schematic mechanism, no measured aquifer profile; uncertainty: No renewable supply rate is established
+
+The film uses an off-screen voice-over narrator. Do not add a presenter or narrator character unless the scene explicitly names one.
+
+Choose visual hierarchy, viewpoint, distance, detail density and negative space for the authored subject and scene purpose. A landscape, map, natural process, built system or changed world may fill the frame without people. Do not illustrate each narration sentence literally or substitute a reacting character for the mechanism.
+
+Keep linework, color logic, geography, object identity and branch state coherent with neighboring scenes. Character identity is conditional on presence and does not lock viewpoint, framing or composition. Use original designs; do not imitate a named studio, film, publisher or artist.
+
+No paper collage, torn edges, scrapbook layers, magazine clippings, halftone print, title card, captions, logos, watermarks, borders, or UI.
+
+Aspect ratio 16:9.
+
+PEOPLE: No people, human faces, human figures or human silhouettes appear. The authored environment, object, mechanism, geography or ecosystem is the subject. Plants and animals may appear when the scene calls for them; do not anthropomorphize them.
+
+IN-SCENE TEXT: Render this exact wording: "NƯỚC NGẦM → HỒ". Placement: one large dark label above the cutaway on its cream diagram area; use the arrow glyph exactly; no other letters or numbers. Use clear, correctly spelled, high-contrast lettering that is readable at phone size and remains inside the camera crop. Integrate it into the scene with period-appropriate lettering; keep it subordinate to the focal action. Do not add other wording, subtitles, title cards, logos, watermarks, or UI. Do not present an illustrative label as an authentic historical quotation or document.

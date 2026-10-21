@@ -1,5 +1,7 @@
 # Host mode — a presenter speaks on camera
 
+> **Legacy/experimental branch, not the active Chibi imagegen/Revideo workflow.** The current film format uses an off-screen voice-over over animated scenes. This host path is built around paper collage and external video models, has known sync and background-drift limits, and is not included in `references/local-pipeline.md`. Do not use it for a standard episode unless the user explicitly requests an on-camera presenter and separately approves this branch.
+
 A **host shot** (`"kind": "host"`) cuts to a presenter who speaks the beat's narration,
 lip-synced, standing inside the paper-collage world. The input is ONE still image of the
 presenter (a finished character design). It is not A-roll (that needs a real recorded

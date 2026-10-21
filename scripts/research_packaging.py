@@ -90,8 +90,8 @@ def channel_research(channel_id):
 
 def parse_args(argv):
     if not argv:
-        raise SystemExit('usage: python scripts/research_packaging.py <episode_dir> --query "..." [--query "..."] [--max-results 8] [--orders relevance,date,viewCount]')
-    args = {"episode": os.path.abspath(argv[0]), "queries": [], "max_results": 8, "orders": ["relevance", "date", "viewCount"]}
+        raise SystemExit('usage: python scripts/research_packaging.py <episode_dir> --query "..." [--query "..."] [--region-code MX] [--max-results 8] [--orders relevance,date,viewCount]')
+    args = {"episode": os.path.abspath(argv[0]), "queries": [], "max_results": 8, "orders": ["relevance", "date", "viewCount"], "region_code": ""}
     i = 1
     while i < len(argv):
         token = argv[i]
@@ -106,6 +106,11 @@ def parse_args(argv):
         elif token == "--orders":
             i += 1
             args["orders"] = [part.strip() for part in argv[i].split(",") if part.strip()]
+        elif token == "--region-code":
+            i += 1
+            if i >= len(argv):
+                raise SystemExit("--region-code needs a value")
+            args["region_code"] = argv[i].strip().upper()
         else:
             raise SystemExit(f"Unknown argument {token}")
         i += 1
@@ -114,11 +119,13 @@ def parse_args(argv):
     allowed = {"relevance", "date", "viewCount"}
     if not args["orders"] or any(order not in allowed for order in args["orders"]):
         raise SystemExit("--orders must be a comma list of relevance, date, viewCount.")
+    if args["region_code"] and (len(args["region_code"]) != 2 or not args["region_code"].isalpha()):
+        raise SystemExit("--region-code must be a two-letter country code, such as VN, MX, or ES.")
     args["queries"] = [query for query in args["queries"] if query]
     return args
 
 
-def search_once(query, order, research, max_results, api_key):
+def search_once(query, order, research, max_results, api_key, region_code=""):
     params = {
         "part": "snippet",
         "type": "video",
@@ -128,8 +135,9 @@ def search_once(query, order, research, max_results, api_key):
         "relevanceLanguage": research["relevance_language"],
         "safeSearch": "moderate",
     }
-    if research.get("region_code"):
-        params["regionCode"] = research["region_code"]
+    region_code = region_code or research.get("region_code") or ""
+    if region_code:
+        params["regionCode"] = region_code
     result = api_get("search", params, api_key)
     rows = []
     for item in result.get("items", []):
@@ -243,7 +251,7 @@ def tag_pool(queries, words):
     return pool, len(text)
 
 
-def render(channel, queries, orders, videos, language, skipped):
+def render(channel, queries, orders, videos, language, region_code, skipped):
     stats = title_stats(videos)
     words = repeated_words(videos, language)
     tags, tag_chars = tag_pool(queries, words)
@@ -252,9 +260,11 @@ def render(channel, queries, orders, videos, language, skipped):
         "# Packaging research",
         "",
         f"Channel: {channel['display_name']} ({channel['id']}) | Language: {language}",
+        f"Search region: {region_code or 'YouTube default'}",
         f"Orders: {', '.join(orders)}",
         "",
-        "Public search only. Views are not retention or proof that a title works. "
+        "Public search only. Region and language are discovery filters, not audience analytics. "
+        "Views are not retention or proof that a title works. "
         "Do not copy a title, thumbnail, description, or visual identity. "
         "YouTube does not return another channel's Studio tags. "
         f"Videos whose titles do not share enough words with the search phrases are left out ({skipped} left out).",
@@ -268,15 +278,15 @@ def render(channel, queries, orders, videos, language, skipped):
         lines.append(
             f"{stats['count']} distinct videos. Title length: shortest {stats['shortest']}, "
             f"median {stats['median']}, longest {stats['longest']}. "
-            f"{stats['questions']} titles contain a question mark. "
-            "Our title limit is 100 characters. Put the subject in the first words. "
-            "One candidate can be a clear search phrase. Another can be curious and still name the subject. "
-            "The title, the thumbnail, and the first spoken line must promise the same thing."
+        f"{stats['questions']} titles contain a question mark. "
+            "The title limit is 100 characters. Keep titles accurate and concise, with the subject near the beginning. "
+            "Make one candidate searchable and another curiosity-led while still naming the subject. "
+            "The title, thumbnail, and opening must share one promise. Public view counts do not reveal audience preference."
         )
     else:
         lines.append("No videos returned. Try a closer query in this channel's language.")
     lines.extend(["", "## Description openings", ""])
-    lines.append("The first lines should say what this episode explains and its country or time scope. Do not stuff keywords.")
+    lines.append("Use a unique opening that says what this episode explains and its country or time scope. Include one or two natural search phrases; do not stuff keywords. Add source links and useful chapter timestamps after the opening when available.")
     lines.append("")
     for video in videos:
         title = video["title"].replace("\n", " ")
@@ -290,10 +300,11 @@ def render(channel, queries, orders, videos, language, skipped):
         lines.append("None returned. Add a hashtag only if it names this episode. Three is enough.")
     lines.extend(["", "## Studio tag pool", ""])
     lines.append(
-        "This pool is the search phrases plus words repeated in public titles. "
+        "This is a heuristic idea pool from search phrases and repeated public-title words, not competitor tag data. "
         f"Pasting all of it would use {tag_chars} characters. The upload limit is 500. "
-        "Keep spelling, diacritic, transliteration, and abbreviation variants that help this episode. "
-        "Drop broad tags that could belong to any video on the channel."
+        "Tags play a minimal role in discovery; prioritize an accurate title, a clear thumbnail, and a useful description. "
+        "Keep only episode-specific names and useful spelling, diacritic, transliteration, or abbreviation variants. "
+        "Drop broad or duplicate tags."
     )
     lines.append("")
     if tags:
@@ -301,7 +312,7 @@ def render(channel, queries, orders, videos, language, skipped):
     else:
         lines.append("- (add variants of the episode question by hand)")
     lines.extend(["", "## Thumbnails to open", ""])
-    lines.append("Open each image. Note the main object, the contrast, the question the picture asks, and what it leaves out. The API cannot see the picture.")
+    lines.append("Open each image. Note its focal subject/action, contrast, the question the picture asks, and what it leaves out. Check whether the real subject is visible without a forced host character. Views are discovery context, not evidence that its thumbnail earns clicks or viewing time; the API cannot judge what the image communicates.")
     lines.append("")
     lines.append("| Title | Length | Views | Published | Thumbnail |")
     lines.append("|---|---:|---:|---|---|")
@@ -321,14 +332,15 @@ def render(channel, queries, orders, videos, language, skipped):
         '{ "observation": "What the titles name first, what the thumbnails show, and the gap this episode can answer. Do not copy." }',
         "```",
         "",
-        "Then fill `promise`, up to three `candidates`, `description`, `hashtags`, and `studio_tags`. "
+        "Then fill `promise`, up to three materially different `candidates`, `description`, `hashtags`, and a short relevant `studio_tags` list. "
+        "If available after upload, test up to three genuinely different title/thumbnail options together in YouTube Studio. The native result uses watch-time share, so judge CTR in context and check retention to confirm the promise brought the right viewers. "
         "`export_youtube.py` stops until that observation exists.",
         "",
     ])
     return "\n".join(lines)
 
 
-def remember(doc, queries, orders, report_rel, video_count):
+def remember(doc, queries, orders, report_rel, video_count, region_code):
     metadata = doc.setdefault("youtube_metadata", {})
     phrases = [item for item in (metadata.get("search_phrases") or []) if isinstance(item, str) and item.strip()]
     for query in queries:
@@ -342,6 +354,7 @@ def remember(doc, queries, orders, report_rel, video_count):
         "queries": queries,
         "orders": orders,
         "videos": video_count,
+        "region_code": region_code or "",
     })
     metadata["packaging_research"] = notes
 
@@ -351,6 +364,7 @@ def main(argv):
     args = parse_args(argv)
     path, doc = load_episode(args["episode"])
     channel, research = channel_research(doc["channel_id"])
+    region_code = args["region_code"] or research.get("region_code") or ""
     queries = args["queries"] or [item.strip() for item in (doc.get("youtube_metadata") or {}).get("search_phrases") or [] if isinstance(item, str) and item.strip()]
     if not queries and (doc.get("topic") or "").strip():
         queries = [doc["topic"].strip()]
@@ -364,7 +378,7 @@ def main(argv):
     videos = {}
     for query in queries:
         for order in args["orders"]:
-            for row in search_once(query, order, research, args["max_results"], api_key):
+            for row in search_once(query, order, research, args["max_results"], api_key, region_code):
                 existing = videos.get(row["video_id"])
                 if existing:
                     for key in ("orders", "queries"):
@@ -387,8 +401,8 @@ def main(argv):
     name = f"packaging-{now.strftime('%Y-%m-%d')}-{safe_slug}.md"
     report_path = os.path.join(research_dir, name)
     with open(report_path, "w", encoding="utf-8") as handle:
-        handle.write(render(channel, queries, args["orders"], ranked, language, skipped))
-    remember(doc, queries, args["orders"], os.path.join("research", name), len(ranked))
+        handle.write(render(channel, queries, args["orders"], ranked, language, region_code, skipped))
+    remember(doc, queries, args["orders"], os.path.join("research", name), len(ranked), region_code)
     with open(path, "w", encoding="utf-8") as handle:
         json.dump(doc, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
