@@ -16,6 +16,8 @@ For new topic selection, also read everyday-ancient-curiosity.md and live narrat
 
 ## Script and packaging coordination
 
+After every narration draft, follow "Mandatory after narration" in packaging-research.md: write `youtube_metadata` and run `export_youtube.py` before handoff.
+
 Before presenting a narration draft, apply the six manual questions and draft handoff in script-packaging-coordination.md, and run `python scripts/draft_review_checks.py <narration.md>`. Include chosen title, a one-line thumbnail concept and passage-level visual/source feasibility notes, without starting shot production. Exact-repeat/mapping diagnostics supplement factual and semantic review; zero findings never grants approval.
 
 Before presenting a narration draft, apply the six manual questions and draft handoff in script-packaging-coordination.md, and run `python scripts/draft_review_checks.py <narration.md>`. Include chosen title, a one-line thumbnail concept and passage-level visual/source feasibility notes, without starting shot production. Exact-repeat/mapping diagnostics supplement factual and semantic review; zero findings never grants approval.

@@ -50,6 +50,38 @@ def check_seo_metadata(title, description, tags, search_phrases):
     return problems
 
 
+def check_early_phrase(beats, search_phrases, window_seconds=60):
+    """Warn (not fail) when no recorded search phrase is spoken in the first window_seconds.
+
+    Uses measured beat timing (start/duration seconds) when present; otherwise estimates
+    150 words/min (300 chars/min for CJK). Returns a list of warning strings."""
+    phrases = [clean(p).casefold() for p in search_phrases or [] if clean(p)]
+    if not phrases:
+        return ["No search_phrases recorded; cannot check the first 60 seconds."]
+    spoken, elapsed = [], 0.0
+    for beat in beats or []:
+        if not isinstance(beat, dict):
+            continue
+        text = str(beat.get("narration", ""))
+        start = beat.get("start")
+        if isinstance(start, (int, float)) and not isinstance(start, bool):
+            elapsed = float(start)
+        if elapsed >= window_seconds:
+            break
+        spoken.append(text)
+        dur = beat.get("duration")
+        if isinstance(dur, (int, float)) and not isinstance(dur, bool):
+            elapsed += float(dur)
+        else:
+            cjk = sum(1 for c in text if "\u3040" <= c <= "\u9fff") > len(text) * 0.2
+            elapsed += (len("".join(text.split())) / 300 if cjk else len(text.split()) / 150) * 60
+    head = " ".join(" ".join(spoken).casefold().split())
+    if any(" ".join(p.split()) in head for p in phrases):
+        return []
+    return [f"Main search phrase not spoken in the first {window_seconds}s of narration "
+            f"(phrases: {', '.join(search_phrases)}). Say it once naturally in the opening."]
+
+
 def _secs(stamp):
     parts = [int(x) for x in stamp.split(":")]
     total = 0
@@ -123,6 +155,9 @@ def run(project_dir):
     visual_profile = resolve_thumbnail_profile(doc.get("channel_id") or "", episode=doc)
     visual_prompt = thumbnail_visual_prompt(visual_profile)
     metadata = doc.get("youtube_metadata") or {}
+    if not metadata:
+        raise SystemExit("beats.json has no youtube_metadata. After the narration step, write youtube_metadata "
+                         "(search_phrases, title candidates, description, 3-5 studio_tags) and rerun export_youtube.py.")
     playlist_bundle = episode_playlists(doc)
     research_dir = os.path.join(project_dir, "research")
     packaging_reports = []
@@ -224,6 +259,8 @@ def run(project_dir):
         if len(full_description) > 5000:
             raise SystemExit(f"Description plus chapters and hashtags is {len(full_description)} characters; max is 5000.")
 
+    for warning in check_early_phrase(doc.get("beats") or [], metadata.get("search_phrases") or []):
+        print("WARNING: " + warning)
     ratio = doc.get("aspect", "16:9")
     language = visual_profile["language"]
     title = doc.get("topic") or doc.get("project") or "Untitled episode"

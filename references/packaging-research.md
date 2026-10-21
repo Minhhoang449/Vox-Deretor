@@ -121,3 +121,12 @@ The active six-channel default is a research-led documentary or explainer whose 
 ## Adopted marketing specialist
 
 Read [youtube-marketing-integration.md](youtube-marketing-integration.md) when using upstream thumbnail/seo/metadata modules. This document and the live packaging_direction govern localized output, schema and QA; upstream product templates and unsupported performance forecasts do not apply.
+
+### Mandatory after narration: metadata and export (Studio rule, 2026-10-22)
+
+A narration draft is not finished until both steps run, in this order:
+
+1. Write `youtube_metadata` into the episode's `beats.json`: `search_phrases` (each checked with `python scripts/research_autocomplete.py --channel <id> --title --phrase "..."`), title candidates, a description whose first sentence contains a search phrase, and 3-5 `studio_tags`. Leave `chapters` out until timing is measured (`chapter_timing_source: "measured"`).
+2. Run `python scripts/export_youtube.py <project_dir>`. A `SEO check failed` exit blocks the handoff; fix the metadata, not the checker. A `WARNING: Main search phrase not spoken in the first 60s` means the opening should say the phrase once, naturally; flag it to the writer.
+
+Do not report a script or score as done while either step is missing.
