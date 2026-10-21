@@ -56,6 +56,8 @@ Open concretely with supported action, an object, habit, pleasure, need or contr
 - Restate the hanging question once around one third and once around two thirds of the runtime, one sentence each, without answering it.
 - Reach the channel's target length with sourced material only (for example daily-life detail from excavation reports), never padding.
 - Packaging (thumbnail text, Shorts, description) may only name items that appear in the narration's source table.
+- When `draft_review_checks.py` reports `runtime_below_target`, do not lock the draft. First write a "sources to find" list in the story card: each item names the passage it would serve, the viewer question it answers, and a likely primary or authoritative source (for example work journals, tool and lamp-wick issue records, excavation reports). Research those items, add only material that is sourced and that advances the episode question, then rerun the checks. Record what was searched and what was not found. If the target still is not reached after this pass, keep the shorter draft and note the gap; never pad.
+- Say the main search phrase from `search_phrases` naturally in the narration within the first 60 seconds (for example "So what did ancient Egyptians eat on a working day?"), without forcing it.
 
 ## Evaluation of the supplied comparison
 
