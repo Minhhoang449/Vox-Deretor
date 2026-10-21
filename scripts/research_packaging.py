@@ -31,6 +31,12 @@ from research_youtube import (
 )
 
 
+STUDIO_MIN_MINUTES, STUDIO_MAX_MINUTES = 8, 16
+MIN_SUBS_FOR_RATIO = 100
+BREAKOUT_VIEWS_PER_SUB = 0.8
+SHORT_WARNING_PERCENT = 15
+
+
 HASHTAG = re.compile(r"#[\w]{2,}", re.UNICODE)
 WORD = re.compile(r"[^\W\d_]{3,}", re.UNICODE)
 
@@ -188,11 +194,55 @@ def merge_details(videos, api_key, now):
             row["views"] = int((item.get("statistics") or {}).get("viewCount", 0))
             row["duration_seconds"] = parse_duration((item.get("contentDetails") or {}).get("duration", ""))
             row["views_per_day"] = round(row["views"] / age_days(published, now)) if published else 0
+            row["channel_id"] = snippet.get("channelId") or row.get("channel_id", "")
             row["thumbnail_url"] = (
                 thumbs.get("maxres", {}).get("url")
                 or thumbs.get("high", {}).get("url")
                 or row["thumbnail_url"]
             )
+
+
+def merge_subscribers(videos, api_key):
+    """Add subscribers (None when hidden) per video from the channels endpoint."""
+    channel_ids = sorted({v.get("channel_id") for v in videos.values() if v.get("channel_id")})
+    subs = {}
+    for start in range(0, len(channel_ids), 50):
+        result = api_get("channels", {"part": "statistics", "id": ",".join(channel_ids[start:start + 50])}, api_key)
+        for item in result.get("items", []):
+            stats = item.get("statistics") or {}
+            subs[item["id"]] = None if stats.get("hiddenSubscriberCount") else int(stats.get("subscriberCount", 0) or 0)
+    for video in videos.values():
+        video["subscribers"] = subs.get(video.get("channel_id"))
+
+
+def target_length(videos, top_n=5):
+    """Median duration of strong competitor videos, clamped to the Studio 8-16 min range.
+
+    Strong = channel has >=100 subscribers and the video is a breakout (views/sub >= 0.8)
+    or among the top_n by views/day. Shorts (<3 min) and missing durations are ignored."""
+    eligible = [v for v in videos
+                if isinstance(v.get("subscribers"), int) and v["subscribers"] >= MIN_SUBS_FOR_RATIO
+                and isinstance(v.get("duration_seconds"), int) and v["duration_seconds"] >= 180]
+    top_ids = {v["video_id"] for v in sorted(eligible, key=lambda v: -(v.get("views_per_day") or 0))[:top_n]}
+    strong = [v for v in eligible if v["video_id"] in top_ids
+              or (v.get("views") or 0) / v["subscribers"] >= BREAKOUT_VIEWS_PER_SUB]
+    if not strong:
+        return None
+    durations = sorted(v["duration_seconds"] for v in strong)
+    mid = len(durations) // 2
+    median = durations[mid] if len(durations) % 2 else (durations[mid - 1] + durations[mid]) / 2
+    raw = median / 60
+    target = min(max(raw, STUDIO_MIN_MINUTES), STUDIO_MAX_MINUTES)
+    return {
+        "target_minutes": round(target, 1),
+        "competitor_median_minutes": round(raw, 1),
+        "clamped": raw != target,
+        "studio_range_minutes": [STUDIO_MIN_MINUTES, STUDIO_MAX_MINUTES],
+        "short_warning_percent": SHORT_WARNING_PERCENT,
+        "min_minutes_before_warning": round(target * (1 - SHORT_WARNING_PERCENT / 100), 1),
+        "videos": [{"video_id": v["video_id"], "url": v.get("url"), "duration_seconds": v["duration_seconds"]}
+                   for v in strong],
+    }
 
 
 def opening(description):
@@ -251,7 +301,7 @@ def tag_pool(queries, words):
     return pool, len(text)
 
 
-def render(channel, queries, orders, videos, language, region_code, skipped):
+def render(channel, queries, orders, videos, language, region_code, skipped, target=None):
     stats = title_stats(videos)
     words = repeated_words(videos, language)
     tags, tag_chars = tag_pool(queries, words)
@@ -285,6 +335,16 @@ def render(channel, queries, orders, videos, language, region_code, skipped):
         )
     else:
         lines.append("No videos returned. Try a closer query in this channel's language.")
+    lines.extend(["", "## Target length", ""])
+    if target:
+        lines.append(
+            f"Target {target['target_minutes']} min = median of {len(target['videos'])} strong competitor videos "
+            f"({target['competitor_median_minutes']} min; channels >={MIN_SUBS_FOR_RATIO} subs, breakout or top views/day), "
+            f"clamped to the Studio {STUDIO_MIN_MINUTES}-{STUDIO_MAX_MINUTES} min range"
+            f"{' (clamped)' if target['clamped'] else ''}. A script shorter than {target['min_minutes_before_warning']} min "
+            f"(>= {SHORT_WARNING_PERCENT}% under target) should be lengthened with sourced material, never padded.")
+    else:
+        lines.append("Unavailable: no strong competitor video with a known length and >=100 subscribers.")
     lines.extend(["", "## Description openings", ""])
     lines.append("Use a unique opening that says what this episode explains and its country or time scope. Include one or two natural search phrases; do not stuff keywords. Add source links and useful chapter timestamps after the opening when available.")
     lines.append("")
@@ -314,14 +374,16 @@ def render(channel, queries, orders, videos, language, region_code, skipped):
     lines.extend(["", "## Thumbnails to open", ""])
     lines.append("Open each image. Note its focal subject/action, contrast, the question the picture asks, and what it leaves out. Check whether the real subject is visible without a forced host character. Views are discovery context, not evidence that its thumbnail earns clicks or viewing time; the API cannot judge what the image communicates.")
     lines.append("")
-    lines.append("| Title | Length | Views | Published | Thumbnail |")
-    lines.append("|---|---:|---:|---|---|")
+    lines.append("| Title | Title chars | Duration | Views | Published | Thumbnail |")
+    lines.append("|---|---:|---:|---:|---|---|")
     for video in videos:
         title = video["title"].replace("|", "\\|").replace("\n", " ")
         label = f"[{title}]({video['url']})"
         thumb = f"[open]({video['thumbnail_url']})" if video.get("thumbnail_url") else "—"
         published = (video.get("published_at") or "")[:10]
-        lines.append(f"| {label} | {len(video['title'])} | {video['views']:,} | {published} | {thumb} |")
+        secs = video.get("duration_seconds") or 0
+        dur = f"{secs // 60}:{secs % 60:02d}" if secs else "unavailable"
+        lines.append(f"| {label} | {len(video['title'])} | {dur} | {video['views']:,} | {published} | {thumb} |")
     lines.extend([
         "",
         "## Write this before export",
@@ -340,8 +402,10 @@ def render(channel, queries, orders, videos, language, region_code, skipped):
     return "\n".join(lines)
 
 
-def remember(doc, queries, orders, report_rel, video_count, region_code):
+def remember(doc, queries, orders, report_rel, video_count, region_code, target=None):
     metadata = doc.setdefault("youtube_metadata", {})
+    if target:
+        metadata["target_length"] = target
     phrases = [item for item in (metadata.get("search_phrases") or []) if isinstance(item, str) and item.strip()]
     for query in queries:
         if query not in phrases:
@@ -389,11 +453,13 @@ def main(argv):
                     videos[row["video_id"]] = row
             time.sleep(0.1)
     merge_details(videos, api_key, now)
+    merge_subscribers(videos, api_key)
     language = doc.get("language") or channel.get("language") or "unknown"
     words = query_words(queries, language)
     matched = [video for video in videos.values() if on_topic(video, words)]
     skipped = len(videos) - len(matched)
     ranked = sorted(matched, key=lambda video: (-len(video["orders"]), -video["views"]))[:15]
+    target = target_length(matched)
     research_dir = os.path.join(args["episode"], "research")
     os.makedirs(research_dir, exist_ok=True)
     slug = doc.get("episode_slug") or doc.get("project") or "episode"
@@ -401,12 +467,13 @@ def main(argv):
     name = f"packaging-{now.strftime('%Y-%m-%d')}-{safe_slug}.md"
     report_path = os.path.join(research_dir, name)
     with open(report_path, "w", encoding="utf-8") as handle:
-        handle.write(render(channel, queries, args["orders"], ranked, language, region_code, skipped))
-    remember(doc, queries, args["orders"], os.path.join("research", name), len(ranked), region_code)
+        handle.write(render(channel, queries, args["orders"], ranked, language, region_code, skipped, target))
+    remember(doc, queries, args["orders"], os.path.join("research", name), len(ranked), region_code, target)
     with open(path, "w", encoding="utf-8") as handle:
         json.dump(doc, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
     print(f"Packaging scan: {len(ranked)} videos")
+    print(f"Target length: {target['target_minutes']} min" if target else "Target length: unavailable")
     print(f"Report: {report_path}")
     print("Open the thumbnail links, then add packaging_research.observation before export_youtube.py.")
 

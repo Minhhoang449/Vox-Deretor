@@ -49,7 +49,9 @@ class YtDlpParsingTests(unittest.TestCase):
         self.assertEqual(row["published_at"], "2026-10-01T00:00:00Z")
         self.assertEqual(row["subscribers"], 68)
         ry.add_ratios(row, NOW)
-        self.assertTrue(row["breakout"])
+        # 68 subscribers is below the 100-sub floor: ratio shown, not counted as breakout.
+        self.assertFalse(row["breakout"])
+        self.assertTrue(row["small_channel"])
 
     def test_blocked_video_recorded(self):
         search = mock.Mock(returncode=0, stdout=json.dumps({"id": "v1"}) + "\n", stderr="")

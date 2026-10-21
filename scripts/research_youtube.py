@@ -40,6 +40,11 @@ from local_guard import ROOT, refuse_out_dir
 CHANNELS_FILE = os.path.join(ROOT, "config", "channels.json")
 API_ROOT = "https://www.googleapis.com/youtube/v3"
 BREAKOUT_VIEWS_PER_SUB = 0.8
+MIN_SUBS_FOR_RATIO = 100
+SATURATION_MIN_VIDEOS = 4
+SATURATION_SIMILARITY = 0.8
+TITLE_FILLER_WORDS = {"actually", "really", "truly", "every", "day", "daily", "the", "a", "an",
+                      "secret", "shocking", "revealed", "real"}
 VALID_ORDERS = ("relevance", "date", "viewCount")
 
 
@@ -234,10 +239,59 @@ def add_ratios(row, now):
         row["views_per_sub"] = round(views / subs, 3)
     else:
         row["views_per_sub"] = None
+    row["small_channel"] = not (isinstance(subs, int) and subs >= MIN_SUBS_FOR_RATIO)
     row["breakout"] = bool(
-        row["views_per_sub"] is not None and row["views_per_sub"] >= BREAKOUT_VIEWS_PER_SUB
+        not row["small_channel"]
+        and row["views_per_sub"] is not None and row["views_per_sub"] >= BREAKOUT_VIEWS_PER_SUB
     )
     return row
+
+
+def sort_by_views_per_day(rows):
+    """Rank competitor rows by views/day first (missing last), then total views."""
+    return sorted(rows, key=lambda r: (
+        -(r.get("views_per_day") if isinstance(r.get("views_per_day"), (int, float)) else -1),
+        -(r.get("views") if isinstance(r.get("views"), int) else -1)))
+
+
+def normalize_title(title):
+    words = re.findall(r"\w+", (title or "").casefold())
+    return " ".join(w for w in words if w not in TITLE_FILLER_WORDS)
+
+
+def saturated_patterns(rows, min_videos=SATURATION_MIN_VIDEOS, threshold=SATURATION_SIMILARITY):
+    """Clusters of >=min_videos rows whose normalized titles are nearly identical."""
+    from difflib import SequenceMatcher
+    clusters = []
+    for row in rows:
+        norm = normalize_title(row.get("title"))
+        if not norm:
+            continue
+        for cluster in clusters:
+            if SequenceMatcher(None, norm, cluster["pattern"]).ratio() >= threshold:
+                cluster["rows"].append(row)
+                break
+        else:
+            clusters.append({"pattern": norm, "rows": [row]})
+    return [c for c in clusters if len(c["rows"]) >= min_videos]
+
+
+def top_models(rows, n=3):
+    """Top n distinct videos from channels with >=MIN_SUBS_FOR_RATIO subs, by views/day."""
+    seen, out = set(), []
+    for row in sort_by_views_per_day(r for r in rows if not r.get("small_channel")
+                                     and isinstance(r.get("views_per_day"), (int, float))):
+        if row.get("video_id") in seen:
+            continue
+        seen.add(row.get("video_id"))
+        out.append(row)
+        if len(out) == n:
+            break
+    return out
+
+
+def _length_label(seconds):
+    return f"{seconds // 60}:{seconds % 60:02d}" if isinstance(seconds, int) and seconds > 0 else "unavailable"
 
 
 def parse_ytdlp_date(value):
@@ -364,6 +418,13 @@ def _num(value, fmt="{:,}"):
     return fmt.format(value) if isinstance(value, (int, float)) else "unavailable"
 
 
+def _ratio_label(video):
+    label = _num(video.get("views_per_sub"), "{:.2f}")
+    if video.get("small_channel") and video.get("views_per_sub") is not None:
+        label += f" (small channel, not counted)"
+    return label
+
+
 def normalize_tag(value):
     """Use the same ASCII-safe tag in report filenames and episode gates."""
     return re.sub(r"[^a-zA-Z0-9_-]+", "-", value or "").strip("-")
@@ -414,7 +475,7 @@ def render_report(report, top_per_query):
                 "The API total is approximate; only the first page was requested."
             )
             lines.append("")
-            rows = query["results"][:top_per_query]
+            rows = sort_by_views_per_day(query["results"])[:top_per_query]
             if not rows:
                 lines.extend(["No results returned for this query.", ""])
                 continue
@@ -434,11 +495,14 @@ def render_report(report, top_per_query):
                 duration_label = f"{duration}s" if isinstance(duration, int) else "unavailable"
                 lines.append(
                     f"| {result_rank} | {label} | {thumbnail} | {views_label} | "
-                    f"{_num(video.get('subscribers'))} | {_num(video.get('views_per_sub'), '{:.2f}')} | "
+                    f"{_num(video.get('subscribers'))} | {_ratio_label(video)} | "
                     f"{_num(video.get('views_per_day'), '{:,.1f}')} | "
                     f"{(video.get('published_at') or 'unavailable')[:10]} | {duration_label} | "
                     f"{'**yes**' if video.get('breakout') else ''} |"
                 )
+            lines.append("")
+            lines.append(f"Rows are sorted by views/day. Views/sub and breakout count only channels with "
+                         f">={MIN_SUBS_FOR_RATIO} subscribers.")
             lines.append("")
             lines.extend([f"#### Breakout videos (>={BREAKOUT_VIEWS_PER_SUB} views/sub)", ""])
             groups = breakout_summary(query["results"])
@@ -458,6 +522,35 @@ def render_report(report, top_per_query):
                 description = description.replace("|", "\\|") or "(no description returned)"
                 lines.append(f"- **{video['title']}** — {description}")
             lines.append("")
+    all_rows = [r for c in report["channels"] for q in c["queries"] for r in q["results"]]
+    lines.extend(["## Saturated title pattern", ""])
+    found, seen_patterns = False, set()
+    for channel in report["channels"]:
+        for query in channel["queries"]:
+            for cluster in saturated_patterns(query["results"]):
+                if (query["query"], cluster["pattern"]) in seen_patterns:
+                    continue
+                seen_patterns.add((query["query"], cluster["pattern"]))
+                found = True
+                lines.append(f"- `{query['query']}`: {len(cluster['rows'])} videos share nearly the same title "
+                             f"(\"{cluster['rows'][0]['title']}\"). Keep the searched phrase at the title start, "
+                             "but pick a distinct angle in the second half of the title and in the thumbnail.")
+    if not found:
+        lines.append(f"None (no group of >={SATURATION_MIN_VIDEOS} near-identical titles in one query).")
+    lines.append("")
+    lines.extend(["## Top 3 models to sit beside", "",
+                  f"Channels with >={MIN_SUBS_FOR_RATIO} subscribers, highest views/day.", ""])
+    models = top_models(all_rows)
+    if models:
+        for row in models:
+            lines.append(f"- [{row['title']}]({row['url']}) · {row.get('channel_title', '')} — "
+                         f"{_num(row.get('views_per_day'), '{:,.1f}')} views/day, {_num(row.get('subscribers'))} subs, "
+                         f"length {_length_label(row.get('duration_seconds'))}")
+    else:
+        lines.append(f"None (no channel with >={MIN_SUBS_FOR_RATIO} subscribers and views/day).")
+    lines.extend(["",
+                  "End screens can only link this channel's own videos. Positioning beside these competitors "
+                  "happens only through the title, tags and description.", ""])
     failures = report.get("failed_cells") or []
     if failures:
         lines.extend(["## Cells that could not be fetched", "",
@@ -817,6 +910,12 @@ def main(argv):
         for query in channel_result["queries"]:
             for row in query["results"]:
                 add_ratios(row, now)
+    all_rows = [r for c in report["channels"] for q in c["queries"] for r in q["results"]]
+    report["top_models"] = [{k: r.get(k) for k in ("video_id", "title", "url", "channel_title", "subscribers",
+                                                   "views_per_day", "duration_seconds")} for r in top_models(all_rows)]
+    report["saturated_title_patterns"] = [
+        {"query": q["query"], "pattern": cl["pattern"], "videos": len(cl["rows"])}
+        for c in report["channels"] for q in c["queries"] for cl in saturated_patterns(q["results"])]
     id_to_rows = {r["video_id"] for c in report["channels"] for q in c["queries"] for r in q["results"]}
     os.makedirs(output_dir, exist_ok=True)
     date_tag = now.strftime("%Y-%m-%d")
