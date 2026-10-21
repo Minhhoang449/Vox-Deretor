@@ -32,6 +32,24 @@ def long_title_cap(title):
     return 32 if any("\u3040" <= c <= "\u9fff" for c in title) else 60
 
 
+def check_seo_metadata(title, description, tags, search_phrases):
+    """Studio SEO rules: 3-5 tags; a recorded search phrase must appear in the
+    title and in the first two sentences of the description. Returns problems."""
+    import re
+    problems = []
+    tags = [t.strip() for t in tags if t.strip()]
+    if not 3 <= len(tags) <= 5:
+        problems.append(f"studio_tags has {len(tags)} tags; use 3 to 5 close to the episode.")
+    phrases = [str(p).strip().lower() for p in search_phrases if str(p).strip()]
+    if phrases:
+        head = " ".join(re.split(r"(?<=[.!?。！？])\s*", description.strip())[:2]).lower()
+        if not any(p in title.lower() for p in phrases):
+            problems.append("no recorded search phrase appears in the title.")
+        if not any(p in head for p in phrases):
+            problems.append("no recorded search phrase appears in the first two sentences of the description.")
+    return problems
+
+
 def validate_shorts(metadata, long_title, language, narration=""):
     """Studio Shorts rule: 0-3 Shorts, each cut from a named passage, ends by pointing to the long video."""
     shorts = metadata.get("shorts") or []
@@ -155,6 +173,11 @@ def run(project_dir):
     tag_text = ", ".join(tag.strip() for tag in tags if tag.strip())
     if len(tag_text) > 500:
         raise SystemExit(f"Studio tags use {len(tag_text)} characters; max is 500.")
+
+    seo_title = clean((selected or candidates[0]).get("title"))
+    seo_problems = check_seo_metadata(seo_title, description, tags, metadata.get("search_phrases") or [])
+    if seo_problems:
+        raise SystemExit("SEO check failed:\n- " + "\n- ".join(seo_problems))
 
     ratio = doc.get("aspect", "16:9")
     language = visual_profile["language"]

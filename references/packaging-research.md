@@ -50,6 +50,8 @@ For manual chapters, start at `00:00`, use at least three timestamps in ascendin
 - Treat Studio tags as a small supporting field. YouTube says titles, thumbnails, and descriptions matter more for discovery; tags mainly help with common misspellings.
 - Use only episode-specific names and useful spelling, diacritic, transliteration, or abbreviation variants. Remove broad, duplicate, and speculative tags. The 500-character limit is a ceiling, not a target.
 - Use at most three relevant hashtags. Do not put a tag list into the description.
+- Use 3 to 5 Studio tags: the searched phrase(s) recorded in `search_phrases` plus episode-specific proper names from the source table. `export_youtube.py` blocks other counts.
+- A recorded search phrase must appear in the title and in the first two sentences of the description. `export_youtube.py` blocks the export otherwise.
 
 ### Playlists
 

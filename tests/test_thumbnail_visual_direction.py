@@ -39,8 +39,9 @@ def packaging_doc(channel_id, phrase):
         "channel": {"thumbnail_brand": {"primary_color": "#BADBAD"}},
         "youtube_metadata": {
             "packaging_research": [{"observation": "An episode-specific question."}],
-            "description": "The researched historical question and sources.",
-            "search_phrases": ["Titanic rescue mission"],
+            "description": "Could we save the Titanic? The researched historical question and sources.",
+            "search_phrases": ["save the titanic"],
+            "studio_tags": ["save the titanic", "titanic rescue", "titanic iceberg"],
             "candidates": [{
                 "id": "map-led",
                 "title": "Could we save the Titanic?",
@@ -85,6 +86,8 @@ class ThumbnailVisualDirectionTests(unittest.TestCase):
             doc['animation_style'] = 'chibi-2d'
             candidate = doc['youtube_metadata']['candidates'][0]
             candidate['title'] = 'An ancient material process'
+            doc['youtube_metadata']['search_phrases'] = ['ancient material process']
+            doc['youtube_metadata']['description'] = 'An ancient material process, researched.'
             path = os.path.join(folder, 'beats.json')
             def save():
                 with open(path, 'w', encoding='utf-8') as handle:
