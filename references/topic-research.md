@@ -18,3 +18,7 @@ Use new channel-specific candidates and a fresh question. If a hypothetical epis
 ## Adopted marketing specialist
 
 Use [youtube-marketing-integration.md](youtube-marketing-integration.md) to route ideate/competitor research through the six live profiles. Run ideate/competitor scans per candidate topic in the live profile's audience language and region; never substitute a Vietnamese scan for English or Japanese market discovery. Save dated native-language discovery evidence, source feasibility and shortlist reasons; unavailable search volume and private analytics stay unknown.
+
+## Mandatory research-gap step before finalizing
+
+Before finalizing any draft, run `python scripts/research_gaps.py --draft <script.md> --packaging <beats.json> --scan <youtube-market-scan.json>`. If the narration is under 85% of `target_length.target_minutes`, the command exits nonzero and writes a checklist of open source questions; the draft cannot be finalized until every item is `sourced` (real citation) or `sources_exhausted` (with what was searched). Never pad; when sources are exhausted, accept the shorter length.
