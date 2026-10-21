@@ -84,7 +84,27 @@ def studio_checks(paragraphs, text):
     return out, est
 
 
+NARRATION_HEADINGS = ("## lời dẫn", "## narration", "## ナレーション")
+
+
+def narration_only(text):
+    """If the file has a narration heading, keep only that section (notes and source tables excluded)."""
+    out, keep, found = [], False, False
+    for line in text.splitlines():
+        low = line.strip().casefold()
+        if low.startswith("#"):
+            if low in NARRATION_HEADINGS:
+                keep, found = True, True
+                out.append("")
+                continue
+            if keep and low.startswith("## "):
+                keep = False
+        out.append(line if keep else "")
+    return "\n".join(out) if found else text
+
+
 def review(text, evidence=None):
+    text = narration_only(text)
     lines = text.splitlines()
     paragraphs = []
     start, chunk = 1, []
